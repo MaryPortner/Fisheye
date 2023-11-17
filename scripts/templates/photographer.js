@@ -1,6 +1,5 @@
 function photographerTemplate(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
-    console.log (name, portrait, id, city, country, tagline, price);
     // Récupère l'image en fonction de la donnée 'portrait' du tableau JSON récupéré via data
     const picture = `${portrait}`;
     // fonction qui permet la mise en page de la card du photographe
@@ -10,10 +9,16 @@ function photographerTemplate(data) {
         const article = document.createElement( 'article' );
         article.classList.add("cardUser");
 
-          // On crée un élément image
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
-        img.classList.add("cardUser__img");
+        // On crée un lien sur l'élément image
+        const linkImgPhotographe = document.createElement('a');
+        linkImgPhotographe.setAttribute("title", `page de ${name}`);
+        linkImgPhotographe.setAttribute("href", "");
+
+        const imgPhographerHomePage = document.createElement('img');
+        imgPhographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
+        imgPhographerHomePage.setAttribute("title", name);
+        imgPhographerHomePage.classList.add("cardUser__img");
+        linkImgPhotographe.appendChild(imgPhographerHomePage);
 
         // On crée le titre avec le nom
         const h2 = document.createElement( 'h2' );
@@ -30,15 +35,15 @@ function photographerTemplate(data) {
         taglineText.innerText =  tagline;
         taglineText.classList.add("cardUser__tagline");
 
-        // Création du paragraphe de la tagline
+        // Création du paragraphe du tarif
         const priceData = document.createElement('p');
         priceData.innerText =  `${price} € / jour`;
-        priceData.classList.add("cardUser__tagline");
+        priceData.classList.add("cardUser__priceData");
 
 
 
         //on ajoute un enfant img à article 
-        article.appendChild(img);
+        article.appendChild(linkImgPhotographe);
         // Puis on ajoute le h2
         article.appendChild(h2);
         // ajout de la ville et du pays
