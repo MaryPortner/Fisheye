@@ -1,5 +1,8 @@
-    async function getPhotographers() {
-     // requête sur le fichier JSON en utilisant "fetch".
+import { photographerTemplateSingle } from './photographer.js';
+import { photographerTemplate } from './../templates/photographer.js';
+
+async function getPhotographers() {
+    // requête sur le fichier JSON en utilisant "fetch".
         const response = await fetch("./../../data/photographers.json");
         const photographers = await response.json();
         // console.log(photographers);
@@ -28,7 +31,7 @@
     }
 
     init();
-    
+
 
 
     async function displayDataSingle(photographers) {
@@ -53,4 +56,3 @@
     }
 
     initSingle();
-    

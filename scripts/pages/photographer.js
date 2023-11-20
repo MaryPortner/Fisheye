@@ -1,5 +1,8 @@
-function photographerTemplateSingle(data) {
+import { photographerPresentation } from './../utils/photographerPresentation.js';
+
+export function photographerTemplateSingle(data) {
     const { name, portrait, id, city, country, tagline } = data;
+    console.log(data);
     // Récupère l'image en fonction de la donnée 'portrait' du tableau JSON récupéré via data
     const picture = `${portrait}`;
     // fonction qui permet la mise en page de la card du photographe
@@ -34,22 +37,31 @@ function photographerTemplateSingle(data) {
         linkImgPhotographe.setAttribute("title", `page de ${name}`);
         linkImgPhotographe.setAttribute("href", "");
 
-        const imgPhographerHomePage = document.createElement('img');
-        imgPhographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
-        imgPhographerHomePage.setAttribute("title",`photo de ${name}`);
-        imgPhographerHomePage.classList.add("cardUser__img");
+        const imgPhotographerHomePage = document.createElement('img');
+        imgPhotographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
+        imgPhotographerHomePage.dataset.id = id;
+        imgPhotographerHomePage.setAttribute("title",`photo de ${name}`);
+        imgPhotographerHomePage.classList.add("cardUser__img");
   
 
         //on ajoute la présentation du photographe
         mainPhotographer.appendChild(presentationPhotographer);
         //On ajoute l'image du photographe 
-        mainPhotographer.appendChild(imgPhographerHomePage);
+        mainPhotographer.appendChild(imgPhotographerHomePage);
         // on retourne l'article
         return (mainPhotographer);
    
     }
 
-    function listPhotographerCards(){}
+    // function listPhotographerCards(){}
     // on retourne notre constante et notre fonction.
-    return {getUserSingleCardDOM}
+    return {picture, getUserSingleCardDOM}
+
+    function getCardDOMPhotographer(id){
+        photographerPresentation();
+
+
+
+    }
+
 }

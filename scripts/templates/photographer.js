@@ -1,4 +1,4 @@
-function photographerTemplate(data) {
+export function photographerTemplate(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
     // Récupère l'image en fonction de la donnée 'portrait' du tableau JSON récupéré via data
     const picture = `${portrait}`;
@@ -14,11 +14,12 @@ function photographerTemplate(data) {
         linkImgPhotographe.setAttribute("title", `page de ${name}`);
         linkImgPhotographe.setAttribute("href", "");
 
-        const imgPhographerHomePage = document.createElement('img');
-        imgPhographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
-        imgPhographerHomePage.setAttribute("title", name);
-        imgPhographerHomePage.classList.add("cardUser__img");
-        linkImgPhotographe.appendChild(imgPhographerHomePage);
+        const imgPhotographerHomePage = document.createElement('img');
+        imgPhotographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
+        imgPhotographerHomePage.setAttribute("title", name);
+        imgPhotographerHomePage.dataset.id = id;
+        imgPhotographerHomePage.classList.add("cardUser__img");
+        linkImgPhotographe.appendChild(imgPhotographerHomePage);
 
         // On crée le titre avec le nom
         const h2 = document.createElement( 'h2' );
