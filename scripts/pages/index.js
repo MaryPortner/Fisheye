@@ -1,6 +1,6 @@
 import { photographerTemplateSingle } from './photographer.js';
 import { photographerTemplate } from './../templates/photographer.js';
-import { photographerPresentation } from './../utils/photographerPresentation.js';
+// import { photographerPresentation } from './../utils/photographerPresentation.js';
 
 export async function getPhotographers() {
     // requête sur le fichier JSON en utilisant "fetch".
@@ -41,7 +41,7 @@ export async function getPhotographers() {
             const photographerId = photographersSectionSingle[i];
             
        
-            const photographerModelSingle = photographerTemplateSingle(photographerId);
+            const photographerModelSingle = photographerTemplateSingle(photographers);
             console.log(photographerModelSingle);
             //Ici on va récupérer l'article dans son ensemble, créé grâce à la fonction getUserCardDOM
             const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM(photographerModelSingleId);

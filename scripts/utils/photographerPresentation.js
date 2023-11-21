@@ -8,6 +8,7 @@ export function photographerPresentation(){
         imgPhotographers[i].addEventListener("click", async function(event){
         // On va maintenant récupérer la valeur de l'attribut data-id à l'aide de la propriété dataset
         const id = event.target.dataset.id;
+        fetch(`/http://127.0.0.1:5500/pages/photographer/${id}/photographers.json`);
     
         });
     }
