@@ -8,7 +8,7 @@ export function photographerTemplate(data) {
         // On crée un élément article
         const article = document.createElement( 'article' );
         article.classList.add("cardUser");
-
+        article.dataset.id = id;
         // On crée un lien sur l'élément image
         const linkImgPhotographe = document.createElement('a');
         linkImgPhotographe.setAttribute("title", `page de ${name}`);

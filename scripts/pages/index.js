@@ -1,11 +1,11 @@
 import { photographerTemplateSingle } from './photographer.js';
 import { photographerTemplate } from './../templates/photographer.js';
+import { photographerPresentation } from './../utils/photographerPresentation.js';
 
-async function getPhotographers() {
+export async function getPhotographers() {
     // requête sur le fichier JSON en utilisant "fetch".
         const response = await fetch("./../../data/photographers.json");
         const photographers = await response.json();
-        // console.log(photographers);
         return photographers;
     }
 
@@ -35,16 +35,19 @@ async function getPhotographers() {
 
 
     async function displayDataSingle(photographers) {
-        const photographersSectionSingle = document.querySelector(".photograph-header");
-        photographers.forEach((photographer) => {
+        const photographersSectionSingle = document.querySelectorAll(".photographer_section .cardUser");
+        for(let i = 0 ; i < photographersSectionSingle.length ; i++){
             //Récupère les données d'un seul photographe du tableau photographers.
-            const photographerModelSingle = photographerTemplateSingle(photographer);
+            const photographerId = photographersSectionSingle[i];
+            
+       
+            const photographerModelSingle = photographerTemplateSingle(photographerId);
             console.log(photographerModelSingle);
             //Ici on va récupérer l'article dans son ensemble, créé grâce à la fonction getUserCardDOM
-            const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
+            const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM(photographerModelSingleId);
             // ici on va insérer dans les données de la const userCardDOM dans la section .photographer_section.
             photographersSectionSingle.appendChild(userCardDOMSingle);
-        });
+        }     
     }
 
 

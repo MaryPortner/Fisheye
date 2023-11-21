@@ -53,15 +53,16 @@ export function photographerTemplateSingle(data) {
    
     }
 
+    // function getCardDOMPhotographer(){
+
+        
+
+    // }
+    photographerPresentation();
     // function listPhotographerCards(){}
     // on retourne notre constante et notre fonction.
-    return {picture, getUserSingleCardDOM}
-
-    function getCardDOMPhotographer(id){
-        photographerPresentation();
+    return {picture, getUserSingleCardDOM, getCardDOMPhotographer}
 
 
-
-    }
 
 }
