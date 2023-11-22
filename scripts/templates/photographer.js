@@ -1,5 +1,6 @@
 export function photographerTemplate(data) {
     const { name, portrait, id, city, country, tagline, price } = data;
+    // console.log(data);
     // Récupère l'image en fonction de la donnée 'portrait' du tableau JSON récupéré via data
     const picture = `${portrait}`;
     // fonction qui permet la mise en page de la card du photographe
@@ -8,16 +9,16 @@ export function photographerTemplate(data) {
         // On crée un élément article
         const article = document.createElement( 'article' );
         article.classList.add("cardUser");
-        article.dataset.id = id;
+   
         // On crée un lien sur l'élément image
         const linkImgPhotographe = document.createElement('a');
         linkImgPhotographe.setAttribute("title", `page de ${name}`);
-        linkImgPhotographe.setAttribute("href", "");
+        linkImgPhotographe.setAttribute("href", `photographer.html?idPhotographer = `+ id );
 
         const imgPhotographerHomePage = document.createElement('img');
         imgPhotographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
-        imgPhotographerHomePage.setAttribute("title", name);
-        imgPhotographerHomePage.dataset.id = id;
+        imgPhotographerHomePage.setAttribute("title", `${name}`);
+        // imgPhotographerHomePage.dataset.id = id;
         imgPhotographerHomePage.classList.add("cardUser__img");
         linkImgPhotographe.appendChild(imgPhotographerHomePage);
 
@@ -33,7 +34,7 @@ export function photographerTemplate(data) {
 
         // Création du paragraphe de la tagline
         const taglineText = document.createElement('p');
-        taglineText.innerText =  tagline;
+        taglineText.innerText =  `${tagline}`;
         taglineText.classList.add("cardUser__tagline");
 
         // Création du paragraphe du tarif
@@ -58,5 +59,5 @@ export function photographerTemplate(data) {
         return (article);
     }
     // on retourne notre constante et notre fonction.
-    return { name, picture, getUserCardDOM }
+    return {getUserCardDOM }
 }
