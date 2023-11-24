@@ -1,11 +1,15 @@
-export function photographerTemplateSingle(data) {
-    const { name, portrait, id, city, country, tagline } = data;
-    console.log(data);
+export function photographerTemplateSingle(data, dataGallery) {
+    const { name, portrait, city, country, tagline } = data;
+    const { id, photographerId, title, image, likes, date, price } = dataGallery;
     const picture = `${portrait}`;
-    // On récupére la div photographer-header
-    const mainPhotographer = document.querySelector('.photograph-header');
+
+    //récupération de la balise main principale.
+    const mainPhotographer = document.getElementById('mainPhotographer');
 
     function getUserSingleCardDOM() {
+        // On récupére la div photographer-header
+        const photographHeader = document.querySelector('.photograph-header');
+
         const presentationPhotographer = document.createElement('div');
         presentationPhotographer.classList.add("photographer-header__presentation");
 
@@ -39,17 +43,23 @@ export function photographerTemplateSingle(data) {
   
 
         //on ajoute la présentation du photographe
-        mainPhotographer.appendChild(presentationPhotographer);
+        photographHeader.appendChild(presentationPhotographer);
         //On ajoute l'image du photographe 
-        mainPhotographer.appendChild(imgPhographerHomePage);
+        photographHeader.appendChild(imgPhographerHomePage);
         // on retourne l'article
-        return (mainPhotographer);
+        return (photographHeader);
     }
 
-    function galeryPhotographer(){
-        const mainGalery = document.createElement('div');
-        mainGalery.classList.add("photographer-header__presentation");
+    function galleryPhotographer(){
+
+       
+        const mainGallery = document.createElement('div');
+        mainGallery.classList.add("mainPhotographer_gallery");
+
+        mainPhotographer.appendChild(mainGallery);
+
+        return mainPhotographer;
     }
     // on retourne notre constante et notre fonction.
-    return {picture, getUserSingleCardDOM, galeryPhotographer}
+    return {picture, getUserSingleCardDOM, galleryPhotographer}
 }

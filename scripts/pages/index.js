@@ -15,6 +15,7 @@ const { media } = await getPhotographers();
 console.log(media);
 
 
+
 // ********************* Récupération des paramètres d'url *********************
 // Récupération de l'url courante
 const params = new URLSearchParams(window.location.search);
@@ -50,18 +51,21 @@ init();
 // ************* fonction d'affichage de page/photographer.js  *************
 async function displayDataSingle(idPhotographer) {
     const photographersSectionSingle = document.querySelector(".mainPhotographer");
-      // Chercher dans le json tous les éléments dont les id sont égaux à l'id passé en paramètre
+    // Chercher dans le json tous les éléments dont les id sont égaux à l'id passé en paramètre
     const idJson = photographers.find( elements => elements.id == idPhotographer );
-    // const idGallery = media.find( elements => elements.photographerId == idPhotographer );
-    // console.log(idGallery);
-
+  
+    const galleryImg = media.filter(elements => elements.photographerId == idPhotographer );
+  
     //Récupère les données d'un seul photographe du tableau photographers.
-    const photographerModelSingle = photographerTemplateSingle(idJson);
+    const photographerModelSingle = photographerTemplateSingle(idJson, galleryImg);
 
     //Ici on va récupérer l'article dans son ensemble, créé grâce à la fonction getUserCardDOM
     const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
+    const galleryImgPhotographer = photographerModelSingle.galleryPhotographer();
+
     // ici on va insérer dans les données de la const userCardDOM dans la section .photographer_section.
     photographersSectionSingle.appendChild(userCardDOMSingle);
+    photographersSectionSingle.appendChild(galleryImgPhotographer);
 }
 
 async function initSingle() {
