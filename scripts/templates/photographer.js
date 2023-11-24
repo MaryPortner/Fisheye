@@ -13,7 +13,7 @@ export function photographerTemplate(data) {
         // On crée un lien sur l'élément image
         const linkImgPhotographe = document.createElement('a');
         linkImgPhotographe.setAttribute("title", `page de ${name}`);
-        linkImgPhotographe.setAttribute("href", `photographer.html?idPhotographer = `+ id );
+        linkImgPhotographe.setAttribute("href", `photographer.html?idPhotographer=`+ id );
 
         const imgPhotographerHomePage = document.createElement('img');
         imgPhotographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture

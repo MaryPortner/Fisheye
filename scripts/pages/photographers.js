@@ -1,13 +1,11 @@
 export function photographerTemplateSingle(data) {
     const { name, portrait, id, city, country, tagline } = data;
-    // Récupère l'image en fonction de la donnée 'portrait' du tableau JSON récupéré via data
+    console.log(data);
     const picture = `${portrait}`;
-    // fonction qui permet la mise en page de la card du photographe
+    // On récupére la div photographer-header
+    const mainPhotographer = document.querySelector('.photograph-header');
 
     function getUserSingleCardDOM() {
-        // On récupére la div photographer-header
-        const mainPhotographer = document.querySelector('.photograph-header');
-        
         const presentationPhotographer = document.createElement('div');
         presentationPhotographer.classList.add("photographer-header__presentation");
 
@@ -46,10 +44,12 @@ export function photographerTemplateSingle(data) {
         mainPhotographer.appendChild(imgPhographerHomePage);
         // on retourne l'article
         return (mainPhotographer);
-   
     }
 
-    // function listPhotographerCards(){}
+    function galeryPhotographer(){
+        const mainGalery = document.createElement('div');
+        mainGalery.classList.add("photographer-header__presentation");
+    }
     // on retourne notre constante et notre fonction.
-    return {picture, getUserSingleCardDOM}
+    return {picture, getUserSingleCardDOM, galeryPhotographer}
 }

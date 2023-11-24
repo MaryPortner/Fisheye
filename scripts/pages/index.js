@@ -2,30 +2,30 @@ import { photographerTemplateSingle } from './photographers.js';
 import { photographerTemplate } from './../templates/photographer.js';
 // import { photographerPresentation } from './../utils/photographerPresentation.js';
 
+
 async function getPhotographers() {
-// requête sur le fichier JSON en utilisant "fetch".
+    // requête sur le fichier JSON en utilisant "fetch".
     const response = await fetch("./../../data/photographers.json");
     const photographers = await response.json();
-    console.log(photographers);
     return photographers;
 }
 
 const { photographers } = await getPhotographers();
+const { media } = await getPhotographers();
+console.log(media);
 
 
 // ********************* Récupération des paramètres d'url *********************
 // Récupération de l'url courante
-const url = new URL(document.location);
+const params = new URLSearchParams(window.location.search);
 // Récupération paramètres d'url 
-const params = url.searchParams;
-console.log(params);
-
 if (params.has(`idPhotographer`)){
-    displayDataSingle(params.get(`idPhotographer`));
+    console.log(params.get(`idPhotographer`));
+    displayDataSingle(params.get("idPhotographer"));
 }
 
 
-
+// ************ fonction d'affichage de templates/photographer.js  *************
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
@@ -40,8 +40,6 @@ async function displayData(photographers) {
 }
 
 async function init() {
-    // Récupère les datas des photographes de façon asynchrone. 
-    // const { photographers } = await getPhotographers();
     //affiche les données du tableau photographers;
     displayData(photographers);
 }
@@ -49,24 +47,21 @@ async function init() {
 init();
 
 
+// ************* fonction d'affichage de page/photographer.js  *************
 async function displayDataSingle(idPhotographer) {
-    // const { photographers } = await getPhotographers();
-    const photographersSectionSingle = document.querySelector(".photograph-header");
-  
-    // Chercher dans le json tous les éléments dont les id sont égaux à l'id passé en paramètre
-    const idJson = photographers.find( elements=>elements.id == idPhotographer );
-    console.log('id de la catégorie ' + idJson.name);
+    const photographersSectionSingle = document.querySelector(".mainPhotographer");
+      // Chercher dans le json tous les éléments dont les id sont égaux à l'id passé en paramètre
+    const idJson = photographers.find( elements => elements.id == idPhotographer );
+    // const idGallery = media.find( elements => elements.photographerId == idPhotographer );
+    // console.log(idGallery);
 
+    //Récupère les données d'un seul photographe du tableau photographers.
+    const photographerModelSingle = photographerTemplateSingle(idJson);
 
-        // console.log(photographer);
-        //Récupère les données d'un seul photographe du tableau photographers.
-        const photographerModelSingle = photographerTemplateSingle(idPhotographer);
-        // console.log(photographerModelSingle);
-        //Ici on va récupérer l'article dans son ensemble, créé grâce à la fonction getUserCardDOM
-        const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
-        // ici on va insérer dans les données de la const userCardDOM dans la section .photographer_section.
-        photographersSectionSingle.appendChild(userCardDOMSingle);
- 
+    //Ici on va récupérer l'article dans son ensemble, créé grâce à la fonction getUserCardDOM
+    const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
+    // ici on va insérer dans les données de la const userCardDOM dans la section .photographer_section.
+    photographersSectionSingle.appendChild(userCardDOMSingle);
 }
 
 async function initSingle() {
@@ -77,5 +72,3 @@ async function initSingle() {
 }
 
 initSingle();
-
-
