@@ -51,12 +51,15 @@ export function photographerTemplateSingle(data, dataGallery) {
     }
 
     function galleryPhotographer(){
-
        
+
+
         const mainGallery = document.createElement('div');
         mainGallery.classList.add("mainPhotographer_gallery");
-
+    
+ 
         mainPhotographer.appendChild(mainGallery);
+
 
         return mainPhotographer;
     }
