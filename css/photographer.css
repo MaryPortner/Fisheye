@@ -47,7 +47,7 @@ img.cardUser__img{
     object-fit: cover;
 }
 
-.contact_button {
+.contact_button{
     width: 170px;
     height: 70px;
     font-size: 20px;
@@ -64,8 +64,47 @@ img.cardUser__img{
     display: flex;
     margin-top : 20px;
     margin: 0px 100px;
-
 }
+
+nav ul {
+    list-style-type: none;
+}
+
+
+li {
+    width: 160px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 11px;
+    background-color: #901C1C;
+    color: white;
+
+   padding: 5px;
+    cursor: pointer;
+}
+
+.divMenuMedia_nav_li{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: solid white 1px;
+}
+
+.submenu1{
+    border-radius: 0px;
+    border-bottom: solid white 1px;
+    
+}
+.submenu2{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+
+
+/* .divMenuMedia_nav_li::after{
+    content:"fa fa-angle-down";
+} */
 
 .mainPhotographer_gallery{
     background-color: #312E2E;
