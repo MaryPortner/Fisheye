@@ -40,7 +40,6 @@ export function photographerTemplateSingle(data, dataGallery) {
         imgPhographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
         imgPhographerHomePage.setAttribute("title",`photo de ${name}`);
         imgPhographerHomePage.classList.add("cardUser__img");
-  
 
         //on ajoute la présentation du photographe
         photographHeader.appendChild(presentationPhotographer);
@@ -50,16 +49,37 @@ export function photographerTemplateSingle(data, dataGallery) {
         return (photographHeader);
     }
 
+
+    /* menu dropdown */
+    const dropdownBtn = document.getElementById("btn");
+    const dropdownMenu = document.getElementById("dropdown");
+    const toggleArrow = document.getElementById("arrow");
+
+    const toggleDropdown = function () {
+        dropdownMenu.classList.toggle("show");
+        toggleArrow.classList.toggle("arrow");
+        dropdownBtn.classList.toggle("border-bottom-radius");
+    };
+
+    dropdownBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        toggleDropdown();
+    });
+
+    // Ferme quand l'élément du DOM est cliqué
+    document.documentElement.addEventListener("click", function () {
+        if (dropdownMenu.classList.contains("show")) {
+            toggleDropdown();
+        }
+    });
+
+
     function galleryPhotographer(){
-       
-
-
+    
         const mainGallery = document.createElement('div');
         mainGallery.classList.add("mainPhotographer_gallery");
-    
- 
-        mainPhotographer.appendChild(mainGallery);
 
+        mainPhotographer.appendChild(mainGallery);
 
         return mainPhotographer;
     }

@@ -60,51 +60,90 @@ img.cardUser__img{
     cursor: pointer;
 }
 
-.mainPhotographer_divMenuMedia{
+.divMenuMedia{
     display: flex;
-    margin-top : 20px;
+    align-items: center;
     margin: 0px 100px;
 }
 
-nav ul {
-    list-style-type: none;
+.divMenuMedia_p, ul.container li{
+    font-size: 18px;
+    font-weight: 700;
 }
 
+.container{
+    width: 170px;
+}
 
-li {
-    width: 160px;
-    height: 50px;
-    font-size: 20px;
-    font-weight: bold;
-    padding: 11px;
+ul.container li{
+    height: 59px;
     background-color: #901C1C;
     color: white;
+}
 
-   padding: 5px;
+.popularite {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 30px;
+    position: relative;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
     cursor: pointer;
-}
+  }
+  
+  .bx {
+    font-size: 1.1rem;
+  }
+  
+  .dropdown {
+    position: absolute;
+    width: 170px;
+    margin-top: 0.3rem;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(0.5rem);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.5, 1);
+  }
+  
+  .dropdown li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: -6px;
+    padding: 0.4rem 1rem;
+    list-style-type: none;
+    color: white;
+  }
 
-.divMenuMedia_nav_li{
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom: solid white 1px;
-}
-
-.submenu1{
-    border-radius: 0px;
-    border-bottom: solid white 1px;
-    
-}
-.submenu2{
+  .submenu2{
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+} 
+
+.trait{
+    display: inline-block;
+    position: relative;
+    top:-20px;
+    margin-top: 0px;
+    border-top: 2px solid #ffffff;
+}
+    
+.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0rem);
 }
 
+.arrow {
+    transform: rotate(180deg);
+    transition: 0.2s ease;
+}
 
-
-/* .divMenuMedia_nav_li::after{
-    content:"fa fa-angle-down";
-} */
+.border-bottom-radius{
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
 
 .mainPhotographer_gallery{
     background-color: #312E2E;
