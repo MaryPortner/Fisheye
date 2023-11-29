@@ -27,7 +27,7 @@ if (params.has(`idPhotographer`)){
 
 
 // ************ fonction d'affichage de templates/photographer.js  *************
-async function displayData(photographers) {
+ async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
     photographers.forEach((photographer) => {
@@ -52,9 +52,9 @@ init();
 async function displayDataSingle(idPhotographer) {
     const photographersSectionSingle = document.querySelector(".mainPhotographer");
     // Chercher dans le json tous les éléments dont les id sont égaux à l'id passé en paramètre
-    const idJson = photographers.find( elements => elements.id == idPhotographer );
+    const idJson = photographers.find( elements => elements.id == idPhotographer);
     // Filtrer dans le json les éléments de média par id
-    const galleryImg = media.filter(elements => elements.photographerId == idPhotographer );
+    const galleryImg = media.filter(elements => elements.photographerId == idPhotographer);
   
     //Récupère les données d'un seul photographe du tableau photographers.
     const photographerModelSingle = photographerTemplateSingle(idJson, galleryImg);
@@ -69,9 +69,7 @@ async function displayDataSingle(idPhotographer) {
 }
 
 async function initSingle() {
-    // Récupère les datas des photographes de façon asynchrone. 
-    // const { photographers } = await getPhotographers();
-    //affiche les données du tableau photographers;
+
     displayDataSingle(photographers);
 }
 

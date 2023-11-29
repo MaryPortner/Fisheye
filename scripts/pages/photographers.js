@@ -1,6 +1,8 @@
 export function photographerTemplateSingle(data, dataGallery) {
     const { name, portrait, city, country, tagline } = data;
+    console.log(data);
     const { id, photographerId, title, image, likes, date, price } = dataGallery;
+    console.log(dataGallery);
     const picture = `${portrait}`;
 
     //récupération de la balise main principale.
@@ -50,7 +52,7 @@ export function photographerTemplateSingle(data, dataGallery) {
     }
 
 
-    /* menu dropdown */
+    /************** menu dropdown **************/
     const dropdownBtn = document.getElementById("btn");
     const dropdownMenu = document.getElementById("dropdown");
     const toggleArrow = document.getElementById("arrow");
@@ -78,6 +80,9 @@ export function photographerTemplateSingle(data, dataGallery) {
     
         const mainGallery = document.createElement('div');
         mainGallery.classList.add("mainPhotographer_gallery");
+        for (let i ; i < dataGallery.length ; i++){
+
+        }
 
         mainPhotographer.appendChild(mainGallery);
 
