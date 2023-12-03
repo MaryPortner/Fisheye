@@ -90,23 +90,23 @@ ul.container li{
     padding: 0.3rem 1rem;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  .bx {
+}
+
+.bx {
     font-size: 1.1rem;
-  }
-  
-  .dropdown {
+}
+
+.dropdown {
     position: absolute;
     width: 170px;
     margin-top: 0.3rem;
     visibility: hidden;
     opacity: 0;
     transform: translateY(0.5rem);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.5, 1);
-  }
-  
-  .dropdown li {
+    transition: all 0.05s ease-in-out;
+}
+
+.dropdown li {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -114,9 +114,9 @@ ul.container li{
     padding: 0.4rem 1rem;
     list-style-type: none;
     color: white;
-  }
+}
 
-  .submenu2{
+.submenu2{
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 } 
@@ -147,13 +147,25 @@ ul.container li{
 
 .mainPhotographer_gallery{
     background-color: #312E2E;
-    height: 50px;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin: 0px 100px;
 }
+
+.mainPhotographer_gallery > img{
+    width: 350px;
+    min-width: 350px;
+    height: 300px;
+    object-fit: contain;
+}
+/* .mainPhotographer_gallery__img{
+
+} */
+
+
 
 .modal {
     border-radius: 5px;

@@ -1,12 +1,9 @@
-export function photographerTemplateSingle(data, dataGallery) {
-    const { name, portrait, city, country, tagline } = data;
-    console.log(data);
-    const { id, photographerId, title, image, likes, date, price } = dataGallery;
-    console.log(dataGallery);
-    const picture = `${portrait}`;
+//récupération de la balise main principale.
+// const mainPhotographer = document.querySelector("#mainPhotographer");
 
-    //récupération de la balise main principale.
-    const mainPhotographer = document.getElementById('mainPhotographer');
+export function photographerTemplateSingle(data) {
+    const { name, portrait, city, country, tagline } = data;
+    const picture = `${portrait}`;
 
     function getUserSingleCardDOM() {
         // On récupére la div photographer-header
@@ -63,30 +60,34 @@ export function photographerTemplateSingle(data, dataGallery) {
         dropdownBtn.classList.toggle("border-bottom-radius");
     };
 
-    dropdownBtn.addEventListener("click", function (e) {
+    dropdownBtn.addEventListener("click", function(e) {
         e.stopPropagation();
         toggleDropdown();
     });
 
     // Ferme quand l'élément du DOM est cliqué
-    document.documentElement.addEventListener("click", function () {
+    document.documentElement.addEventListener("click", function() {
         if (dropdownMenu.classList.contains("show")) {
             toggleDropdown();
         }
     });
 
-
-    function galleryPhotographer(){
     
-        const mainGallery = document.createElement('div');
-        mainGallery.classList.add("mainPhotographer_gallery");
-        for (let i ; i < dataGallery.length ; i++){
+    const mainGallery = document.createElement('div');
+    mainGallery.classList.add("mainPhotographer_gallery");
 
-        }
+    function galleryPhotographer(galleryImg){
 
-        mainPhotographer.appendChild(mainGallery);
+        const { id, photographerId, title, image, likes, date, price } = galleryImg;
+   
+        const imgPhotographer = document.createElement('img');
+        imgPhotographer.setAttribute("src", image); // On lui met la src qui provient de la constante picture
+        imgPhotographer.setAttribute("title", title);
+        imgPhotographer.classList.add("mainPhotographer_gallery__img");
 
-        return mainPhotographer;
+        mainGallery.appendChild(imgPhotographer);
+        
+        return mainGallery;
     }
     // on retourne notre constante et notre fonction.
     return {picture, getUserSingleCardDOM, galleryPhotographer}
