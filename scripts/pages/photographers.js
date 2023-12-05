@@ -1,6 +1,3 @@
-//récupération de la balise main principale.
-// const mainPhotographer = document.querySelector("#mainPhotographer");
-
 export function photographerTemplateSingle(data) {
     const { name, portrait, city, country, tagline } = data;
     const picture = `${portrait}`;
@@ -33,6 +30,7 @@ export function photographerTemplateSingle(data) {
         // On crée un lien sur l'élément image
         const linkImgPhotographe = document.createElement('a');
         linkImgPhotographe.setAttribute("title", `page de ${name}`);
+        linkImgPhotographe.setAttribute("alt", `photo de ${name}`);
         linkImgPhotographe.setAttribute("href", "");
 
         const imgPhographerHomePage = document.createElement('img');

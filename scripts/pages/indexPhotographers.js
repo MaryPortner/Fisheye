@@ -41,12 +41,8 @@ if (params.has(`idPhotographer`)){
             photographersSectionSingle.appendChild(displayGalleryElement);
         });
 
-
-        // const galleryImgPhotographer = photographerModelSingle.galleryPhotographer(galleryImg);
-    
         // ici on va insérer dans les données de la const userCardDOM dans la section .photographer_section.
         photographersSectionSingle.prepend(userCardDOMSingle);
-        // photographersSectionSingle.appendChild(galleryImgPhotographer);
     }
 
     displayDataSingle(idPhotorapherInUrl);

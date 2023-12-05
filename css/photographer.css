@@ -144,6 +144,7 @@ ul.container li{
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+
 .mainPhotographer_gallery, .mainPhotographer_gallery__title-likes, .mainPhotographer_gallery__price-likes{
     display: flex;
 }
@@ -179,7 +180,6 @@ ul.container li{
     align-items: center;
     gap: 5px;
     font-weight: 500; 
-
 }
 
 .mainPhotographer_gallery__price-likes > img.mainPhotographer_gallery__icone{
@@ -189,18 +189,21 @@ ul.container li{
     margin-top: -2px;
 }
 
-
-
 .modal {
-    border-radius: 5px;
-    background-color: #DB8876;
-    width: 50%;
+    z-index: 10;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 35px;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
     margin: auto;
+    padding: 35px;
+    background-color: #DB8876;
+    border-radius: 5px;
 }
 
 .modal header {
