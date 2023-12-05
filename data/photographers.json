@@ -304,7 +304,7 @@
 			"id": 525834234,
 			"photographerId": 527,
 			"title": "Afternoon Break",
-			"image": "Portrait_AfternoonBreak.jpg",
+			"image": "./../assets/photographers/Nabeel/Portrait_AfternoonBreak.jpg",
 			"likes": 25,
 			"date": "2019-01-02",
 			"price": 45
@@ -441,7 +441,7 @@
 			"id": 235234343,
 			"photographerId": 195,
 			"title": "Adventure Door, India",
-			"image": "./../assets/photographers/Marcel/Travel_Adventure_Door.jpg",
+			"image": "./../assets/photographers/Marcel/Travel _Adventure_Door.jpg",
 			"likes": 63,
 			"date": "2019-06-26",
 			"price": 60

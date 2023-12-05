@@ -63,7 +63,7 @@ img.cardUser__img{
 .divMenuMedia{
     display: flex;
     align-items: center;
-    margin: 0px 100px;
+    margin: 0px 100px 20px 100px;
 }
 
 .divMenuMedia_p, ul.container li{
@@ -144,26 +144,50 @@ ul.container li{
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+.mainPhotographer_gallery, .mainPhotographer_gallery__title-likes, .mainPhotographer_gallery__price-likes{
+    display: flex;
+}
 
 .mainPhotographer_gallery{
-    background-color: #312E2E;
-    display: flex;
-    flex-direction: row;
+    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    gap: 4.375rem 3rem;
     margin: 0px 100px;
 }
 
-.mainPhotographer_gallery > img{
-    width: 350px;
-    min-width: 350px;
-    height: 300px;
-    object-fit: contain;
+.divImgPhotographer{
+    display: flex;
+    flex-direction: column;
 }
-/* .mainPhotographer_gallery__img{
 
-} */
+.divImgPhotographer > img{
+    width: 350px;
+    height: 300px;
+    object-fit: cover;
+}
+
+.mainPhotographer_gallery__title-likes{
+    justify-content: space-between;
+    gap: 0px 10px;
+    color: #901C1C;
+    font-size: 23px;
+}
+
+.mainPhotographer_gallery__price-likes {
+    align-items: center;
+    gap: 5px;
+    font-weight: 500; 
+
+}
+
+.mainPhotographer_gallery__price-likes > img.mainPhotographer_gallery__icone{
+    width: 21px;
+    height: 24px;
+    cursor: pointer;
+    margin-top: -2px;
+}
 
 
 
