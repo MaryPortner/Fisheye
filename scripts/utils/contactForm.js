@@ -5,12 +5,13 @@ const last = document.querySelector("#last").value;
 const mail = document.querySelector("#email").value;
 const message = document.querySelector("#message").value;
 const modal = document.getElementById("contact_modal");
+console.log(firstName);
 
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if(firstName == "" ||  last == "" || mail == "" || message == "" ){ 
-        console.log('Vous devez remplir tous les champs');
+    if(firstName == ''  ||  last == ''   || mail == ''   || message == ''   ){ 
+       alert('Vous devez remplir tous les champs');
     } else {
         confirmSendingForm();
         closeModal();
