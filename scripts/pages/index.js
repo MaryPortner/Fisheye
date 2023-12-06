@@ -1,21 +1,8 @@
 
-import { photographerTemplate } from './../templates/photographer.js';
+import { photographerTemplate } from '../templates/photographers.js';
+import { getDatas } from './../utils/getData.js';
 
-
-
-
-async function getPhotographers() {
-    // requête sur le fichier JSON en utilisant "fetch".
-    const response = await fetch("./../../data/photographers.json");
-    const photographers = await response.json();
-    return photographers;
-}
-
-const { photographers } = await getPhotographers();
-const { media } = await getPhotographers();
-console.log(media);
-
-
+const { photographers } = await getDatas();
 
 // ************ fonction d'affichage de templates/photographer.js  *************
 async function displayData(photographers) {
@@ -37,4 +24,3 @@ async function init() {
 }
 
 init();
-
