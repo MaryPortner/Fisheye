@@ -2,6 +2,22 @@
     display: none;
 }
 
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.50em;
+    color: #e54858;
+    display: block;
+    word-wrap: break-word;
+    padding-bottom: 3px;
+    margin-top: 10px;
+    margin-bottom: 7px;
+    margin-left: -10px;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
 .photograph-header {
     display: flex;
     flex-direction: row;
