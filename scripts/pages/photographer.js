@@ -47,4 +47,27 @@ function getIdFromUrl(){
     const id = params.get("idPhotographer");
     return id;
 }
+
+function sortPopularity(photographer){
+    /************** Tri par popularité **************/
+    const popularite = document.querySelector('.filter_popularite');
+        // Ajout du listener pour trier par popularité
+        popularite.addEventListener("click",function (galleryImg) {
+            //Ici on crée une copie du tableau media pour ne pas modifier l'ordre des données de base avec Array.from.
+            const popularity = Array.from(galleryImg);
+            console.log(popularity);
+            
+            // Ici la methode sort va trier les likes par ordre décroissant
+            popularity.sort(function (a, b) {
+                return b.likes - a.likes;
+            });
+            // Effacement de l'écran et regénération de la page
+            divImgPhotographer.innerHTML = "";
+        
+            galleryPhotographer(popularity) ;
+        });
+        
+}
+
+sortPopularity(photographer);
     

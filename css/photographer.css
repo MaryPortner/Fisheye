@@ -82,16 +82,20 @@ img.cardUser__img{
     margin: 0px 100px 20px 100px;
 }
 
-.divMenuMedia_p, ul.container li{
+.divMenuMedia_p, button{
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
-.container{
+#filter, ul.container{
     width: 170px;
 }
 
-ul.container li{
+ul button{
+    border: none;
+}
+
+button, ul.container li{
     height: 59px;
     background-color: #901C1C;
     color: white;
@@ -100,16 +104,17 @@ ul.container li{
 .popularite {
     display: flex;
     align-items: center;
-    justify-content: left;
-    gap: 30px;
     position: relative;
-    padding: 0.3rem 1rem;
+    width: 100%;
+    padding: 0.3rem 1.6rem;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .bx {
     font-size: 1.1rem;
+    margin-left: 15px;
+    padding: 15px 0px;
 }
 
 .dropdown {
@@ -140,7 +145,6 @@ ul.container li{
 .trait{
     display: inline-block;
     position: relative;
-    top:-20px;
     margin-top: 0px;
     border-top: 2px solid #ffffff;
 }
@@ -154,6 +158,8 @@ ul.container li{
 .arrow {
     transform: rotate(180deg);
     transition: 0.2s ease;
+    margin-left: 15px;
+    padding: 15px 0px;
 }
 
 .border-bottom-radius{

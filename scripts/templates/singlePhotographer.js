@@ -48,7 +48,7 @@ export function photographerTemplateSingle(data) {
 
 
     /************** menu dropdown **************/
-    const dropdownBtn = document.getElementById("btn");
+    const dropdownBtn = document.querySelector(".popularite");
     const dropdownMenu = document.getElementById("dropdown");
     const toggleArrow = document.getElementById("arrow");
 
@@ -58,7 +58,7 @@ export function photographerTemplateSingle(data) {
         dropdownBtn.classList.toggle("border-bottom-radius");
     };
 
-    toggleArrow.addEventListener("click", function(e) {
+    dropdownBtn.addEventListener("click", function(e) {
         e.stopPropagation();
         toggleDropdown();
     });
@@ -127,22 +127,6 @@ export function photographerTemplateSingle(data) {
 
 
 
-        /************** Tri par popularité **************/
-        // Ajout du listener pour trier par popularité
-        dropdownBtn.addEventListener("click",function (galleryImg) {
-            //Ici on crée une copie du tableau media pour ne pas modifier l'ordre des données de base avec Array.from.
-            const popularity = Array.from(galleryImg);
-            console.log(popularity);
-            
-            // Ici la methode sort va trier les likes par ordre décroissant
-            popularity.sort(function (a, b) {
-                return b.likes - a.likes;
-            });
-            // Effacement de l'écran et regénération de la page
-            divImgPhotographer.innerHTML = "";
-        
-            galleryPhotographer(popularity) ;
-        });
         
         return mainGallery;
     }

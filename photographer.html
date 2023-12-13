@@ -21,25 +21,32 @@
       <div class="photograph-header">
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
+
       <!------------------- Dropdonw menu ------------------->
       <div class="divMenuMedia">
         <p class="divMenuMedia_p">Trier par </p>
-        <ul class="container">
-          <li id="btn" class="popularite ">
-            Popularité
-            <svg id="arrow"class="arrow bx bx-chevron-down" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#FFFFFF"d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
-          </li>
-          <div class="dropdown" id="dropdown">
-            <li class="submenu1"> 
-              <span class="trait"></span> 
-              Date
-            </li>
-            <li class="submenu2"> 
-              <span class="trait"></span>
-              Titre 
-            </li>
-          </div>
-        </ul>
+        <div id="filter" >
+          <ul class="container">
+              <button id="currentFilter btn-popularite" class="popularite">
+                  Popularité
+                  <svg id="arrow"class="arrow bx bx-chevron-down" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#FFFFFF"d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+              </button>
+              <div class="dropdown" id="dropdown">
+                  <li>
+                      <button class="filter_popularite submenu1">Popularité</button>
+                  </li>
+                  <li class="submenu1">
+                    <span class="trait"></span> 
+                      <button class="filter_Date submemu2">Date</button>
+                  </li>
+                  <li class="submenu2">
+                    <span class="trait"></span> 
+                      <button class="filter_Titre submenu2">Titre</button>
+                  </li>
+              </div>
+          </ul>
+      </div>
+
       </div>
     </main>
       <!------------------- Modale formulaire de contact  ------------------->
