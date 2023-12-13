@@ -1,47 +1,60 @@
 export function photographerTemplateSingle(data) {
     const { name, portrait, city, country, tagline } = data;
-    const picture = `${portrait}`;
+ 
 
     function getUserSingleCardDOM() {
         // On récupére la div photographer-header
         const photographHeader = document.querySelector('.photograph-header');
 
-        const presentationPhotographer = document.createElement('div');
-        presentationPhotographer.classList.add("photographer-header__presentation");
+        const presentationPhotographer = `
+            <div class="photographer-header__presentation">
+                <h1 class="cardUser__title">${name}</h1>
+                <p class="cardUser__cityCountry">${city}, ${country}</p>
+                <p class="cardUser__tagline">${tagline}</p>
+                <a title="page de ${name}" alt="photo de ${name}" href=""></a>
+                <img class="cardUser__img"
+                    alt="${name}"
+                    src="${portrait}"
+                    title=" photo de ${name}"
+                />
+            </div>
+        `
+        // const presentationPhotographer = document.createElement('div');
+        // presentationPhotographer.classList.add("photographer-header__presentation");
 
         // On crée le titre avec le nom
-        const h2 = document.createElement('h1');
-        h2.textContent = `${name}`;
-        h2.classList.add("cardUser__title");
-        presentationPhotographer.appendChild(h2);
+        // const h2 = document.createElement('h1');
+        // h2.textContent = `${name}`;
+        // h2.classList.add("cardUser__title");
+        // presentationPhotographer.appendChild(h2);
 
         // Création du paragraphe de la ville et du pays.
-        const cityCountry = document.createElement('p');
-        cityCountry.innerText = `${city}, ${country}`;
-        cityCountry.classList.add("cardUser__cityCountry");
-        presentationPhotographer.appendChild(cityCountry);
+        // const cityCountry = document.createElement('p');
+        // cityCountry.innerText = `${city}, ${country}`;
+        // cityCountry.classList.add("cardUser__cityCountry");
+        // presentationPhotographer.appendChild(cityCountry);
 
         // Création du paragraphe de la tagline
-        const taglineText = document.createElement('p');
-        taglineText.innerText =  tagline;
-        taglineText.classList.add("cardUser__tagline");
-        presentationPhotographer.appendChild(taglineText);
+        // const taglineText = document.createElement('p');
+        // taglineText.innerText =  tagline;
+        // taglineText.classList.add("cardUser__tagline");
+        // presentationPhotographer.appendChild(taglineText);
 
         // On crée un lien sur l'élément image
-        const linkImgPhotographe = document.createElement('a');
-        linkImgPhotographe.setAttribute("title", `page de ${name}`);
-        linkImgPhotographe.setAttribute("alt", `photo de ${name}`);
-        linkImgPhotographe.setAttribute("href", "");
+        // const linkImgPhotographe = document.createElement('a');
+        // linkImgPhotographe.setAttribute("title", `page de ${name}`);
+        // linkImgPhotographe.setAttribute("alt", `photo de ${name}`);
+        // linkImgPhotographe.setAttribute("href", "");
 
-        const imgPhographerHomePage = document.createElement('img');
-        imgPhographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
-        imgPhographerHomePage.setAttribute("title",`photo de ${name}`);
-        imgPhographerHomePage.classList.add("cardUser__img");
+        // const imgPhographerHomePage = document.createElement('img');
+        // imgPhographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
+        // imgPhographerHomePage.setAttribute("title",`photo de ${name}`);
+        // imgPhographerHomePage.classList.add("cardUser__img");
 
         //on ajoute la présentation du photographe
-        photographHeader.appendChild(presentationPhotographer);
+        photographHeader.innerHTML = presentationPhotographer;
         //On ajoute l'image du photographe 
-        photographHeader.appendChild(imgPhographerHomePage);
+        // photographHeader.appendChild(imgPhographerHomePage);
         // on retourne l'article
         return (photographHeader);
     }
@@ -133,5 +146,5 @@ export function photographerTemplateSingle(data) {
 
 
     // on retourne notre constante et notre fonction.
-    return {picture, getUserSingleCardDOM, galleryPhotographer}
+    return {getUserSingleCardDOM, galleryPhotographer}
 }
