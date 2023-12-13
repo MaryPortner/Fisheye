@@ -58,7 +58,7 @@ export function photographerTemplateSingle(data) {
         dropdownBtn.classList.toggle("border-bottom-radius");
     };
 
-    dropdownBtn.addEventListener("click", function(e) {
+    toggleArrow.addEventListener("click", function(e) {
         e.stopPropagation();
         toggleDropdown();
     });
@@ -77,7 +77,8 @@ export function photographerTemplateSingle(data) {
 
     function galleryPhotographer(galleryImg){
         const { id, photographerId, title, image, likes, date, price } = galleryImg;
-        
+
+    
         // Création de la div contenant l'image, le titre et les likes
         const divImgPhotographer = document.createElement('div');
         divImgPhotographer.classList.add("divImgPhotographer");
@@ -115,7 +116,6 @@ export function photographerTemplateSingle(data) {
         iconeImgPhotographer.classList.add("mainPhotographer_gallery__icone");
 
 
-
         divImgPhotographer.appendChild(imgPhotographer);
         titlePriceLikes.appendChild(titleImgPhotographer);
         priceLikes.appendChild(likesImgPhotographer);
@@ -124,9 +124,30 @@ export function photographerTemplateSingle(data) {
         divImgPhotographer.appendChild(titlePriceLikes);
         
         mainGallery.appendChild(divImgPhotographer);
+
+
+
+        /************** Tri par popularité **************/
+        // Ajout du listener pour trier par popularité
+        dropdownBtn.addEventListener("click",function (galleryImg) {
+            //Ici on crée une copie du tableau media pour ne pas modifier l'ordre des données de base avec Array.from.
+            const popularity = Array.from(galleryImg);
+            console.log(popularity);
+            
+            // Ici la methode sort va trier les likes par ordre décroissant
+            popularity.sort(function (a, b) {
+                return b.likes - a.likes;
+            });
+            // Effacement de l'écran et regénération de la page
+            divImgPhotographer.innerHTML = "";
+        
+            galleryPhotographer(popularity) ;
+        });
         
         return mainGallery;
     }
+
+
     // on retourne notre constante et notre fonction.
     return {picture, getUserSingleCardDOM, galleryPhotographer}
 }

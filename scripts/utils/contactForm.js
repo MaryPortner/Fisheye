@@ -1,16 +1,14 @@
-const firstName = document.querySelector("#firstName").value;
+const firstName = document.querySelector("#firstName");
 const form = document.querySelector('form');
 const inputDataEnter = form.querySelectorAll(".formData [data-enter]");
-const last = document.querySelector("#last").value;
-const mail = document.querySelector("#email").value;
-const message = document.querySelector("#message").value;
+const last = document.querySelector("#last");
+const mail = document.querySelector("#email");
+const message = document.querySelector("#message");
 const modal = document.getElementById("contact_modal");
-console.log(firstName);
-
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if(firstName == ''  ||  last == ''   || mail == ''   || message == ''   ){ 
+    if(firstName.value == ''  ||  last.value == ''   || mail.value == ''   || message.value == ''   ){ 
        alert('Vous devez remplir tous les champs');
     } else {
         confirmSendingForm();
@@ -26,10 +24,10 @@ function closeModal() {
 
 function confirmSendingForm(){
     const getDataForm = {
-        prenom : firstName,
-        nom : last,
-        mail : mail,
-        message : message
+        prenom : firstName.value,
+        nom : last.value,
+        mail : mail.value,
+        message : message.value
     }
     console.log(getDataForm);
 }
