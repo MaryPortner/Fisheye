@@ -52,7 +52,6 @@ function getIdFromUrl(){
     return id;
 }
 
-
 export const popularite = document.querySelector('.filter_popularite');
 // Ajout du listener pour trier par popularité
 popularite.addEventListener("click",function () {
