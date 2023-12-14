@@ -5,3 +5,9 @@
     return photographers;
 }
 
+
+// *********** Récupération des datas ***********/
+export const { media } = await getDatas();
+export const { photographers } = await getDatas();
+
+

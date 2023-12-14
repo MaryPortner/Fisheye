@@ -1,8 +1,8 @@
 
 import { photographerTemplate } from '../templates/photographers.js';
-import { getDatas } from './../utils/getData.js';
 
-const { photographers } = await getDatas();
+
+import { photographers } from '../utils/getData.js';
 
 // ************ fonction d'affichage de templates/photographer.js  *************
 async function displayData(photographers) {

@@ -30,16 +30,6 @@
     height: 300px;
 }
 
-.photograph-header :nth-child(1) { 
-    order: 2; 
-}
-.photograph-header :nth-child(2){
-    order: 1;
-}
-.photograph-header :nth-child(3){
-    order: 3;
-}
-
 .photograph-header h1{
     color: #D3573C;
     font-size: 64px;
@@ -101,6 +91,11 @@ button, ul.container li{
     color: white;
 }
 
+li.dropdown_popularite{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
 .popularite {
     display: flex;
     align-items: center;
@@ -131,8 +126,8 @@ button, ul.container li{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: -6px;
-    padding: 0.4rem 1rem;
+    margin-top: -9px;
+    padding: 0.3rem 1rem;
     list-style-type: none;
     color: white;
 }
@@ -153,6 +148,7 @@ button, ul.container li{
     visibility: visible;
     opacity: 1;
     transform: translateY(0rem);
+    margin-top: -50px;
 }
 
 .arrow {
