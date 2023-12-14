@@ -52,7 +52,7 @@ function getIdFromUrl(){
     return id;
 }
 
-export const popularite = document.querySelector('.filter_popularite');
+const popularite = document.querySelector('.filter_popularite');
 // Ajout du listener pour trier par popularité
 popularite.addEventListener("click",function () {
     //Ici on crée une copie du tableau media pour ne pas modifier l'ordre des données de base avec Array.from.

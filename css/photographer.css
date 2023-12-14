@@ -217,7 +217,7 @@ li.dropdown_popularite{
     top: 60%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 50%;
+    width: 30%;
     margin: auto;
     padding: 35px;
     background-color: #DB8876;
@@ -234,7 +234,7 @@ li.dropdown_popularite{
 }
 
 .modal header h2 {
-    font-size: 64px;
+    font-size: 36px;
     font-weight: normal;
     text-align: center;
 }
@@ -248,7 +248,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 36px;
+    font-size: 28px;
 }
 
 form div {
