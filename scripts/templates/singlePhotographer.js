@@ -1,3 +1,4 @@
+
 import { dropdown } from './../utils/menuDropDown.js';
 
 export const mainGallery = document.createElement('div');
@@ -36,17 +37,17 @@ export function photographerTemplateSingle(photographers) {
     /************** gallery photographer **************/
     function galleryPhotographer(galleryImg){
         const { id, photographerId, title, image, likes, date, price } = galleryImg;
-
+     
         // Création de la div contenant l'image, le titre et les likes
         const divImgPhotographer = document.createElement('div');
         divImgPhotographer.classList.add("divImgPhotographer");
 
         // Récupération de l'image
-        const imgPhotographer = document.createElement('img');
-        imgPhotographer.setAttribute("src", image); 
-        imgPhotographer.setAttribute("title", title);
-        imgPhotographer.setAttribute("alt", title);
-        imgPhotographer.classList.add("mainPhotographer_gallery__img");
+        // const imgPhotographer = document.createElement('img');
+        // imgPhotographer.setAttribute("src", image); 
+        // imgPhotographer.setAttribute("title", title);
+        // imgPhotographer.setAttribute("alt", title);
+        // imgPhotographer.classList.add("mainPhotographer_gallery__img");
 
         // Création de la div contenant le titre, les likes et l'icône coeur
         const titlePriceLikes = document.createElement('div');
@@ -74,7 +75,7 @@ export function photographerTemplateSingle(photographers) {
         iconeImgPhotographer.classList.add("mainPhotographer_gallery__icone");
 
 
-        divImgPhotographer.appendChild(imgPhotographer);
+        // divImgPhotographer.appendChild(imgPhotographer);
         titlePriceLikes.appendChild(titleImgPhotographer);
         priceLikes.appendChild(likesImgPhotographer);
         priceLikes.appendChild(iconeImgPhotographer);

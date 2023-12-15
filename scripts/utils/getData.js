@@ -5,9 +5,11 @@
     return photographers;
 }
 
-
 // *********** Récupération des datas ***********/
 export const { media } = await getDatas();
 export const { photographers } = await getDatas();
 
 
+// ********* Récupération des données du l'url courante **********/
+const params = new URLSearchParams(window.location.search);
+export const id = parseInt(params.get("idPhotographer"));
