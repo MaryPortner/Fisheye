@@ -6,7 +6,6 @@ mainGallery.classList.add("mainPhotographer_gallery");
 
 export function photographerTemplateSingle(photographers) {
 
- 
     function getUserSingleCardDOM() {
         // On récupére la div photographer-header
         const photographHeader = document.querySelector('.photograph-header');
@@ -37,7 +36,7 @@ export function photographerTemplateSingle(photographers) {
     /************** gallery photographer **************/
     function galleryPhotographer(galleryImg){
         const { id, photographerId, title, image, likes, date, price } = galleryImg;
-     
+    
         // Création de la div contenant l'image, le titre et les likes
         const divImgPhotographer = document.createElement('div');
         divImgPhotographer.classList.add("divImgPhotographer");
@@ -73,7 +72,6 @@ export function photographerTemplateSingle(photographers) {
         iconeImgPhotographer.setAttribute("src", "assets/icons/likesRed.svg");
         iconeImgPhotographer.setAttribute("alt", "icone pour liker");
         iconeImgPhotographer.classList.add("mainPhotographer_gallery__icone");
-
 
         // divImgPhotographer.appendChild(imgPhotographer);
         titlePriceLikes.appendChild(titleImgPhotographer);

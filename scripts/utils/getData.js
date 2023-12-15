@@ -12,4 +12,4 @@ export const { photographers } = await getDatas();
 
 // ********* Récupération des données du l'url courante **********/
 const params = new URLSearchParams(window.location.search);
-export const id = parseInt(params.get("idPhotographer"));
+export const id = params.get("idPhotographer");
