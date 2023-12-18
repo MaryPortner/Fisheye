@@ -218,12 +218,12 @@ button, ul li{
     margin: 0px 100px;
 }
 
-.divImgPhotographer{
+.sectionImgPhotographer{
     display: flex;
     flex-direction: column;
 }
 
-.divImgPhotographer > img{
+.sectionImgPhotographer > img{
     width: 350px;
     height: 300px;
     object-fit: cover;

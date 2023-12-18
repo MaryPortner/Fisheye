@@ -1,23 +1,23 @@
 
 // Récupération des datas
+
 import { id } from '../utils/getData.js';
 import { mainGallery } from './../templates/singlePhotographer.js';
 import { media } from '../utils/getData.js';
 import { photographers } from '../utils/getData.js';
 import { photographerTemplateSingle } from '../templates/singlePhotographer.js';
 
-const btnSort = document.querySelector('#btn-sort');
-const currentSortValue = document.querySelector('#currentSort').innerHTML;
+
+const btnDate = document.querySelector(".filter_date");
+const btnPopularite = document.querySelector(".filter_popularite");
+const btnTitle = document.querySelector(".filter_titre");
 // Filtrer dans le json les éléments de média par id
-const dataGallery = media.filter(elements => elements.photographerId == id);
+export const dataGallery = media.filter(elements => elements.photographerId == id);
 // Chercher dans le json  éléments dont les id = à l'id passé en paramètre
 const photographer = photographers.find( elements => elements.id == id);
 //Récupère les données d'un seul photographe du tableau photographers.
 const photographerModelSingle = photographerTemplateSingle(photographer);
-
 const photographersSectionSingle = document.querySelector("#mainPhotographer");
-
-
 //Copie du tableau de medias
 export const sortDatasGallery= Array.from(dataGallery);
 //Récupérer l'affichage présentation du photographe singlePhotographer
@@ -40,11 +40,12 @@ if (!id){
 } 
 
 
-if (currentSortValue  == "Popularité"){
-    btnSort.addEventListener("click",function () {
+// ************* filtrage des données  *************
+
+    btnPopularite.addEventListener("click",function () {
 
         // Ici la methode sort va trier les likes par ordre décroissant
-        sortDatasGallery.sort((a, b) => b.likes - a.likes)
+        sortDatasGallery.sort((a, b) => b.likes - a.likes);
         // Effacement de l'écran et regénération de la page
         mainGallery.innerHTML = "";
         sortDatasGallery.map((likes) => {
@@ -52,13 +53,12 @@ if (currentSortValue  == "Popularité"){
             photographersSectionSingle.appendChild(displayGalleryElement);
         });
     });
-}
 
-if (currentSortValue  == "Date"){
-    btnSort.addEventListener("click",function () {
+
+    btnDate.addEventListener("click",function () {
 
         // Ici la methode sort va trier les likes par ordre décroissant
-        sortDatasGallery.sort(( a , b ) => new Date(b.date) - new Date(b.date)) 
+        sortDatasGallery.sort(( a , b ) => new Date(b.date) - new Date(a.date)); 
         
         // Effacement de l'écran et regénération de la page
         mainGallery.innerHTML = "";
@@ -67,19 +67,21 @@ if (currentSortValue  == "Date"){
             photographersSectionSingle.appendChild(displayGalleryElement);
         });
     });
-}
 
-if (currentSortValue  == "Titre"){
-    btnSort.addEventListener("click",function () {
 
+    btnTitle.addEventListener("click",function () {
         // Ici la methode sort va trier les likes par ordre décroissant
-        sortDatasGallery.sort(( a , b ) => new Date(b.title) - new Date(b.title)) 
-        
+        // localeCompare renvoie un nombre indiquant si la chaîne courante se situe avant ou après la chaîne passée en paramètre
+        sortDatasGallery.sort(( a , b ) => (a.title.localeCompare(b.title))); 
         // Effacement de l'écran et regénération de la page
         mainGallery.innerHTML = "";
-        sortDatasGallery.map((date) => {
+        sortDatasGallery.map((title) => {
             const displayGalleryElement = photographerModelSingle.galleryPhotographer(title);
             photographersSectionSingle.appendChild(displayGalleryElement);
         });
     });
-}
+
+
+
+
+
