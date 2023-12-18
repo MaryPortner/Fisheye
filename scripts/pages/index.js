@@ -1,7 +1,5 @@
 
 import { photographerTemplate } from '../templates/photographers.js';
-
-
 import { photographers } from '../utils/getData.js';
 
 // ************ fonction d'affichage de templates/photographer.js  *************

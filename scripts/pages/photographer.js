@@ -6,7 +6,8 @@ import { media } from '../utils/getData.js';
 import { photographers } from '../utils/getData.js';
 import { photographerTemplateSingle } from '../templates/singlePhotographer.js';
 
-
+const btnSort = document.querySelector('#btn-sort');
+const currentSortValue = document.querySelector('#currentSort').innerHTML;
 // Filtrer dans le json les éléments de média par id
 const dataGallery = media.filter(elements => elements.photographerId == id);
 // Chercher dans le json  éléments dont les id = à l'id passé en paramètre
@@ -16,9 +17,9 @@ const photographerModelSingle = photographerTemplateSingle(photographer);
 
 const photographersSectionSingle = document.querySelector("#mainPhotographer");
 
-const popularite = document.querySelector('.filter_popularite');
+
 //Copie du tableau de medias
- const sortDatasGallery= Array.from(dataGallery);
+export const sortDatasGallery= Array.from(dataGallery);
 //Récupérer l'affichage présentation du photographe singlePhotographer
 const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
 
@@ -39,21 +40,46 @@ if (!id){
 } 
 
 
-popularite.addEventListener("click",function () {
+if (currentSortValue  == "Popularité"){
+    btnSort.addEventListener("click",function () {
 
-    // Ici la methode sort va trier les likes par ordre décroissant
-    sortDatasGallery.sort(function (a, b) {
-        return b.likes - a.likes;
+        // Ici la methode sort va trier les likes par ordre décroissant
+        sortDatasGallery.sort((a, b) => b.likes - a.likes)
+        // Effacement de l'écran et regénération de la page
+        mainGallery.innerHTML = "";
+        sortDatasGallery.map((likes) => {
+            const displayGalleryElement = photographerModelSingle.galleryPhotographer(likes);
+            photographersSectionSingle.appendChild(displayGalleryElement);
+        });
     });
-    // Effacement de l'écran et regénération de la page
-    mainGallery.innerHTML = "";
-    sortDatasGallery.map((likes) => {
-        const displayGalleryElement = photographerModelSingle.galleryPhotographer(likes);
-        photographersSectionSingle.appendChild(displayGalleryElement);
+}
+
+if (currentSortValue  == "Date"){
+    btnSort.addEventListener("click",function () {
+
+        // Ici la methode sort va trier les likes par ordre décroissant
+        sortDatasGallery.sort(( a , b ) => new Date(b.date) - new Date(b.date)) 
+        
+        // Effacement de l'écran et regénération de la page
+        mainGallery.innerHTML = "";
+        sortDatasGallery.map((date) => {
+            const displayGalleryElement = photographerModelSingle.galleryPhotographer(date);
+            photographersSectionSingle.appendChild(displayGalleryElement);
+        });
     });
+}
 
-});
+if (currentSortValue  == "Titre"){
+    btnSort.addEventListener("click",function () {
 
-// const sortData = sortType => {
-//     if (sortType = )
-// }
+        // Ici la methode sort va trier les likes par ordre décroissant
+        sortDatasGallery.sort(( a , b ) => new Date(b.title) - new Date(b.title)) 
+        
+        // Effacement de l'écran et regénération de la page
+        mainGallery.innerHTML = "";
+        sortDatasGallery.map((date) => {
+            const displayGalleryElement = photographerModelSingle.galleryPhotographer(title);
+            photographersSectionSingle.appendChild(displayGalleryElement);
+        });
+    });
+}

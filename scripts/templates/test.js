@@ -75,3 +75,170 @@ const divImgPhotographer = `
         
         return mainGallery;
     }
+
+
+
+
+
+
+
+
+
+
+    // import { media } from "./getData";
+
+// import { photographer } from "../pages/photographer.js";
+// import { photographerModelSingle } from "../pages/photographer.js";
+// import { sortDatasGallery } from "../pages/photographer.js";
+
+
+
+
+export function dropdown(){
+
+    const btnDrop = document.querySelector('.btn_drop');
+
+    const showHideMenu = () => {
+        const menu = document.querySelector('.dropdown_content');
+        menu.classList.toggle('active');
+        document.querySelector('.arrow').classList.toggle('rotate');
+
+    }
+    btnDrop.addEventListener('click', showHideMenu);
+} 
+
+// // Filtrer les données
+const filters = Array.from(document.querySelectorAll('.dropdown_content li button'));
+const currentSort = document.querySelector('#currentSort');
+
+// Cacher les options déjà sélectionnées
+let optionAlreadySelected = filters.find(filter => filter.textContent == currentSort.textContent);
+optionAlreadySelected.style.display = 'none'; 
+
+
+// // const sortDatas = sortType => {
+// //     switch (sortType){
+// //         case "Popularité" : 
+// //             sortDatasGallery.sort(( a , b ) => b.likes - a.likes)
+// //             const displayGalleryElement = photographerModelSingle.galleryPhotographer(sortDatasGallery.likes);
+// //             photographersSectionSingle.appendChild(displayGalleryElement);
+           
+// //             break;
+
+// //         case "Titre" : 
+// //             sortDatasGallery.sort(( a , b ) => b.title - a.title)
+// //             break;
+
+// //         case "Date" : 
+// //             sortDatasGallery.sort(( a , b ) => new Date(b.date) - new Date(b.date)) 
+// //             break;
+// //     }
+// // }
+
+//  function sortData(sortType){
+//     if (sortType == "Popularité"){
+//         sortDatasGallery.sort(function (a, b) {
+//             return b.likes - a.likes;
+//         });
+
+//     }
+//  }
+
+//  function displaySortDatas(filterValue){
+//     mainGallery.innerHTML = "";
+//     sortDatasGallery.map((sortData) => {
+//         const displayGalleryElement = photographerModelSingle.galleryPhotographer(sortData);
+//         photographersSectionSingle.appendChild(displayGalleryElement);
+//     });
+//  }
+
+// filters.forEach(filter => {
+//     filter.addEventListener('click', () => {
+
+//         const filterValue = filter.textContent;
+//         currentSort.textContent = filterValue;
+
+//         if(optionAlreadySelected) 
+//             optionAlreadySelected.style.display = 'block'; 
+        
+//         filter.style.displayl= "none";
+//         optionAlreadySelected = filter;
+//         sortData(filterValue);
+
+//         if (filterValue == "Popularité"){
+//             sortDatasGallery.sort(function (a, b) {
+//                 return b.likes - a.likes;
+//             });
+//             displaySortDatas(likes);
+//         }
+//         if (filterValue == "Date"){
+//             displaySortDatas(date);
+//         }
+//         if (filterValue == "Titre"){
+//             displaySortDatas(title);
+//         }
+
+//         showHideMenu();
+        
+  
+    
+//     })
+//  })
+
+
+
+
+
+// popularite.addEventListener("click",function () {
+
+//     // Ici la methode sort va trier les likes par ordre décroissant
+//     sortDatasGallery.sort(function (a, b) {
+//         return b.likes - a.likes;
+//     });
+//     // Effacement de l'écran et regénération de la page
+//     mainGallery.innerHTML = "";
+//     sortDatasGallery.map((likes) => {
+//         const displayGalleryElement = photographerModelSingle.galleryPhotographer(likes);
+//         photographersSectionSingle.appendChild(displayGalleryElement);
+//     });
+
+// });
+
+
+
+
+// filters.forEach(filter => {
+// filter.addEventListener('click' , () => {
+//     const filterValue = filter.textContent;
+//     currentSort.textContent = filterValue;
+//     if (optionAlreadySelected) {
+//         optionAlreadySelected.style.display = "block";
+//     }
+//     filter.style.display = "none";
+//     optionAlreadySelected = filter
+// })
+
+// })
+
+
+
+// function sortByFilter(){
+
+//     for(let i = 0; i < filters.length ; i++){
+//         let filter = filters[i];
+//         filter.addEventListener('click' , () => {
+//             const filterValue = filter.textContent;
+//             currentSort.textContent = filterValue;
+
+//             if (optionSelected) {
+//                 optionSelected.style.display = "block";
+//             }
+//             filter.style.display = "none";
+//             optionSelected = filter;
+//             console.log(optionSelected);
+// })
+
+//     }
+
+// }
+// sortByFilter();
