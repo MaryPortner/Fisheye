@@ -4,9 +4,6 @@ import { mediaFactory } from '../factory.js';
 export const mainGallery = document.createElement('div');
 mainGallery.classList.add("mainPhotographer_gallery");
 
-
-
-
 export function photographerTemplateSingle(photographers) {
 
     function getUserSingleCardDOM() {
@@ -40,22 +37,14 @@ export function photographerTemplateSingle(photographers) {
     function galleryPhotographer(galleryImg){
 
         const { id, photographerId, title, image, video, likes, date, price } = galleryImg;
-        //  mediaFactory(galleryImg);
 
         // Création de la div contenant l'image, le titre et les likes
         const sectionImgPhotographer = document.createElement('section');
         sectionImgPhotographer.classList.add("sectionImgPhotographer");
-        // let el;
-
     
+        // affichage des img et vidéos
         let medias = mediaFactory(galleryImg);
         sectionImgPhotographer.appendChild(medias);
-
-       
-
-
-
-
 
         // Création de la div contenant le titre, les likes et l'icône coeur
         const titlePriceLikes = document.createElement('div');
@@ -83,14 +72,12 @@ export function photographerTemplateSingle(photographers) {
         iconeImgPhotographer.classList.add("mainPhotographer_gallery__icone");
 
 
-
         titlePriceLikes.appendChild(titleImgPhotographer);
         priceLikes.appendChild(likesImgPhotographer);
         priceLikes.appendChild(iconeImgPhotographer);
         titlePriceLikes.appendChild(priceLikes);
         sectionImgPhotographer.appendChild(titlePriceLikes);
 
-       
         mainGallery.appendChild(sectionImgPhotographer);
 
         return mainGallery;

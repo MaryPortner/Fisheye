@@ -7,8 +7,10 @@ const menu = document.querySelector('.dropdown_content');
 
 export function dropdown(){
     const showHideMenu = () => {
-        menu.classList.toggle('active');
-        document.querySelector('.arrow').classList.toggle('rotate');
+        document.querySelector('.arrow').classList.remove('rotate');
+        menu.classList.add('active');
+      
+        menu.classList.remove('displayNone');
     }
     btnDrop.addEventListener('click', showHideMenu);
 } 
@@ -22,10 +24,13 @@ function sortByFilter(){
             currentSort.textContent = filterTxtContent;
             if (filterSelected){
                 filterSelected.style.display ="block";
+                menu.classList.add('displayNone');
             }
             filter.style.display = "none";
+            document.querySelector('.arrow').classList.add('rotate');
+            menu.classList.remove('active');
             filterSelected = filter;
-        });
+        });      
     }
 }
 sortByFilter();
