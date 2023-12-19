@@ -1,9 +1,9 @@
-
 import { dropdown } from './../utils/menuDropDown.js';
 import { mediaFactory } from '../factory.js';
 
 export const mainGallery = document.createElement('div');
 mainGallery.classList.add("mainPhotographer_gallery");
+
 
 
 
@@ -41,36 +41,19 @@ export function photographerTemplateSingle(photographers) {
 
         const { id, photographerId, title, image, video, likes, date, price } = galleryImg;
         //  mediaFactory(galleryImg);
-     
-       
+
         // Création de la div contenant l'image, le titre et les likes
         const sectionImgPhotographer = document.createElement('section');
         sectionImgPhotographer.classList.add("sectionImgPhotographer");
-        let el;
+        // let el;
 
-        if (galleryImg.hasOwnProperty('video')){
-           
-            el = document.createElement('video');
-            el.setAttribute("controls", true);
-   
     
-            const sourceVideo = document.createElement('source');
-            sourceVideo.setAttribute("src", galleryImg.video);
-            // sourceVideo.setAttribute("type", "video/mp4" );
-    
-            el.appendChild(sourceVideo);
-            sectionImgPhotographer.appendChild(el);
-    
-        } else if (galleryImg.hasOwnProperty('image')){
-            // let el;
-            el = document.createElement('img');
-            el.setAttribute("src", galleryImg.image); 
-            el.setAttribute("title", galleryImg.title);
-            el.setAttribute("alt", galleryImg.title);
-            el.classList.add("mainPhotographer_gallery__img");
-    
-            sectionImgPhotographer.appendChild(el);
-        } 
+        let medias = mediaFactory(galleryImg);
+        sectionImgPhotographer.appendChild(medias);
+
+       
+
+
 
 
 
@@ -100,22 +83,20 @@ export function photographerTemplateSingle(photographers) {
         iconeImgPhotographer.classList.add("mainPhotographer_gallery__icone");
 
 
-        // sectionImgPhotographer.appendChild(el);
+
         titlePriceLikes.appendChild(titleImgPhotographer);
         priceLikes.appendChild(likesImgPhotographer);
         priceLikes.appendChild(iconeImgPhotographer);
         titlePriceLikes.appendChild(priceLikes);
         sectionImgPhotographer.appendChild(titlePriceLikes);
 
-        // mediaFactory(galleryImg);
-        mainGallery.appendChild(sectionImgPhotographer);
        
+        mainGallery.appendChild(sectionImgPhotographer);
 
         return mainGallery;
     }
 
     dropdown();
-  
 
     // on retourne notre constante et notre fonction.
     return {getUserSingleCardDOM, galleryPhotographer, mediaFactory}

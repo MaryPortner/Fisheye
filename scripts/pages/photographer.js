@@ -33,8 +33,8 @@ if (!id){
     // Insertion des données de la const userCardDOM dans la balise main
     photographersSectionSingle.prepend(userCardDOMSingle);
     
-    dataGallery.map((galleryImgElement) => {
-        const displayGalleryElement = photographerModelSingle.galleryPhotographer(galleryImgElement);
+    dataGallery.map((datas) => {
+        const displayGalleryElement = photographerModelSingle.galleryPhotographer(datas);
         photographersSectionSingle.appendChild(displayGalleryElement);
     });
 } 
