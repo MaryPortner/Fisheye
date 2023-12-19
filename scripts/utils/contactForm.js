@@ -1,3 +1,6 @@
+// import { photographer } from "../pages/photographer";
+
+
 const firstName = document.querySelector("#firstName");
 const form = document.querySelector('form');
 const inputDataEnter = form.querySelectorAll(".formData [data-enter]");
@@ -6,6 +9,10 @@ const mail = document.querySelector("#email");
 const message = document.querySelector("#message");
 const modal = document.getElementById("contact_modal");
 const name = document.querySelector(".namePhotographer");
+// const dataName = photographer.id;
+// console.log(dataName);
+
+
 
 
 form.addEventListener("submit", (e) => {

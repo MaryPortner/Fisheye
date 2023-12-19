@@ -74,7 +74,7 @@ img.cardUser__img{
     background-color: #D3573C;
 }
 
- .divMenuMedia{
+.divMenuMedia{
     display: flex;
     height: 50px;
     margin: 20px 100px 20px 100px;
@@ -97,7 +97,6 @@ img.cardUser__img{
     margin-left: 20px;
     background-color: #901C1C;
     border-radius: 5px;
-  
 }
 
 .btn_drop{
@@ -133,8 +132,6 @@ button, ul li{
     border: none;
 }
 
-
-
 .btn_drop, 
 .dropdown_content li button{
     width: 100%;
@@ -168,10 +165,7 @@ button, ul li{
 .rotate {
     transform: rotate(180deg);
     transition: 0.2s ease;
-    /* margin-left: 15px;
-    padding: 15px 0px; */
 }
-
 
 .submenu{
     display: flex;
@@ -201,6 +195,7 @@ button, ul li{
     border-bottom-right-radius: 0px;
 }
 
+
 .mainPhotographer_gallery, 
 .mainPhotographer_gallery__title-likes, 
 .mainPhotographer_gallery__price-likes{
@@ -229,12 +224,29 @@ button, ul li{
     object-fit: cover;
 }
 
+.sectionImgPhotographer > video{
+    width: 350px;
+    height: 300px;
+    max-height: 300px;
+    object-fit: fill;
+    margin-top: 30px;
+}
+
 .mainPhotographer_gallery__title-likes{
     justify-content: space-between;
+    align-items: center;
     gap: 0px 10px;
+    width: 350px;
     color: #901C1C;
+    /* margin-top : 10px; */
     font-size: 23px;
 }
+
+/* .mainPhotographer_gallery__title{
+    margin-top: 0px;
+    padding-top: 10px;
+} */
+
 
 .mainPhotographer_gallery__price-likes {
     align-items: center;

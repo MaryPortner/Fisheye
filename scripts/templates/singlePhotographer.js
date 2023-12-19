@@ -5,6 +5,8 @@ import { mediaFactory } from '../factory.js';
 export const mainGallery = document.createElement('div');
 mainGallery.classList.add("mainPhotographer_gallery");
 
+
+
 export function photographerTemplateSingle(photographers) {
 
     function getUserSingleCardDOM() {
@@ -36,24 +38,41 @@ export function photographerTemplateSingle(photographers) {
     
     /************** gallery photographer **************/
     function galleryPhotographer(galleryImg){
-        console.log(galleryImg);
-    
+
         const { id, photographerId, title, image, video, likes, date, price } = galleryImg;
+        //  mediaFactory(galleryImg);
      
-        console.log(video);
+       
         // Création de la div contenant l'image, le titre et les likes
         const sectionImgPhotographer = document.createElement('section');
         sectionImgPhotographer.classList.add("sectionImgPhotographer");
+        let el;
 
-        // // Récupération de l'image
-        // const imgPhotographer = document.createElement('img');
-        // imgPhotographer.setAttribute("src", galleryImg.image); 
-        // imgPhotographer.setAttribute("title", title);
-        // imgPhotographer.setAttribute("alt", title);
-        // imgPhotographer.classList.add("mainPhotographer_gallery__img");
-
-        mediaFactory(galleryImg);
+        if (galleryImg.hasOwnProperty('video')){
+           
+            el = document.createElement('video');
+            el.setAttribute("controls", true);
+   
     
+            const sourceVideo = document.createElement('source');
+            sourceVideo.setAttribute("src", galleryImg.video);
+            // sourceVideo.setAttribute("type", "video/mp4" );
+    
+            el.appendChild(sourceVideo);
+            sectionImgPhotographer.appendChild(el);
+    
+        } else if (galleryImg.hasOwnProperty('image')){
+            // let el;
+            el = document.createElement('img');
+            el.setAttribute("src", galleryImg.image); 
+            el.setAttribute("title", galleryImg.title);
+            el.setAttribute("alt", galleryImg.title);
+            el.classList.add("mainPhotographer_gallery__img");
+    
+            sectionImgPhotographer.appendChild(el);
+        } 
+
+
 
         // Création de la div contenant le titre, les likes et l'icône coeur
         const titlePriceLikes = document.createElement('div');
@@ -80,21 +99,25 @@ export function photographerTemplateSingle(photographers) {
         iconeImgPhotographer.setAttribute("alt", "icone pour liker");
         iconeImgPhotographer.classList.add("mainPhotographer_gallery__icone");
 
-   
+
+        // sectionImgPhotographer.appendChild(el);
         titlePriceLikes.appendChild(titleImgPhotographer);
         priceLikes.appendChild(likesImgPhotographer);
         priceLikes.appendChild(iconeImgPhotographer);
         titlePriceLikes.appendChild(priceLikes);
         sectionImgPhotographer.appendChild(titlePriceLikes);
-        
+
+        // mediaFactory(galleryImg);
         mainGallery.appendChild(sectionImgPhotographer);
+       
 
         return mainGallery;
     }
 
     dropdown();
+  
 
     // on retourne notre constante et notre fonction.
-    return {getUserSingleCardDOM, galleryPhotographer}
+    return {getUserSingleCardDOM, galleryPhotographer, mediaFactory}
 }
 

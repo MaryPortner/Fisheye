@@ -1,33 +1,35 @@
-export function mediaFactory(mediaType){
+// import { sectionImgPhotographer } from "./templates/singlePhotographer";
+export function mediaFactory(media){
+  
+    if (media.hasOwnProperty('video')){
 
-    if (mediaType.hasOwnProperty('video')){
-
-        const videoPhotographer = document.createElement('video');
-        videoPhotographer.setAttribute("controls");
-        videoPhotographer.setAttribute("width", "220");
+        el = document.createElement('video');
+        el.setAttribute("controls", true);
+  
 
         const sourceVideo = document.createElement('source');
-        sourceVideo.setAttribute("src", video);
-        sourceVideo.setAttribute("type", "video/mp4" );
+        sourceVideo.setAttribute("src", media.video);
+        // sourceVideo.setAttribute("type", "video/mp4" );
 
-        const linkVideo = document.createElement('a');
+        el.appendChild(sourceVideo);
+        sectionImgPhotographer.appendChild(el);
 
-        videoPhotographer.appendChild(sourceVideo);
-        videoPhotographer.appendChild(linkVideo);
-        sectionImgPhotographer.appendChild(videoPhotographer);
+    } else if (media.hasOwnProperty('image')){
 
+        el = document.createElement('img');
+        el.setAttribute("src", media.image); 
+        el.setAttribute("title", media.title);
+        el.setAttribute("alt", media.title);
+        el.classList.add("mainPhotographer_gallery__img");
 
-    } else if (mediaType.hasOwnProperty('image')){
-
-        const imgPhotographer = document.createElement('img');
-        imgPhotographer.setAttribute("src", image); 
-        imgPhotographer.setAttribute("title", title);
-        imgPhotographer.setAttribute("alt", title);
-        imgPhotographer.classList.add("mainPhotographer_gallery__img");
-
-        sectionImgPhotographer.appendChild(imgPhotographer);
-    
-    } else {
-        console.log ("aucun donnee récupérée");
-    }
+        // sectionImgPhotographer.appendChild(el);
+    } 
+    console.log(el);
+    return el
 }
+
+// .lightbox_media img,
+// .lightbox_media video{
+//     width: 100%;
+//     height: calc(100% - 50px);
+// }
