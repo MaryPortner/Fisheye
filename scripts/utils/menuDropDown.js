@@ -26,10 +26,11 @@ function sortByFilter(){
                 filterSelected.style.display ="block";
                 menu.classList.add('displayNone');
             }
+            filterSelected = filter;
             filter.style.display = "none";
             document.querySelector('.arrow').classList.add('rotate');
             menu.classList.remove('active');
-            filterSelected = filter;
+           
         });      
     }
 }

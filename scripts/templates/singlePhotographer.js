@@ -18,7 +18,7 @@ export function photographerTemplateSingle(photographers) {
                 <a title="page de ${photographers.name}" alt="photo de ${photographers.name}" href=""></a>
             </div>
             <div class="photograph-header">
-                <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+                <button class="contact_button">Contactez-moi</button>
             </div>
             <img class="cardUser__img"
                 alt="${photographers.name}"

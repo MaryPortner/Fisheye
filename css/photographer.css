@@ -284,6 +284,7 @@ button, ul li{
     padding: 35px;
     background-color: #DB8876;
     border-radius: 5px;
+    box-shadow: -5px 10px 30px 0px rgba(0, 0, 0, 0.25);
 }
 
 .modal header {
@@ -291,14 +292,20 @@ button, ul li{
     width: 100%;
 }
 
+.modal_header-contact{
+    margin-bottom : 20px;
+}
+
+
 .modal header img {
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal header h2,.namePhotographer{
     font-size: 36px;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
+    margin: 0;
 }
 
 form {

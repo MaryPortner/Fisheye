@@ -1,19 +1,26 @@
-// import { photographer } from "../pages/photographer";
+import { id } from './getData.js';
+import { photographers } from './getData.js';
 
-
+const contactBtn = document.querySelector(".contact_button");
+const closeModalBtn = document.querySelector(".modal_Close");
 const firstName = document.querySelector("#firstName");
 const form = document.querySelector('form');
-const inputDataEnter = form.querySelectorAll(".formData [data-enter]");
 const last = document.querySelector("#last");
 const mail = document.querySelector("#email");
 const message = document.querySelector("#message");
 const modal = document.getElementById("contact_modal");
 const name = document.querySelector(".namePhotographer");
-// const dataName = photographer.id;
-// console.log(dataName);
+const photographer = photographers.find( elements => elements.id == id);
 
 
 
+closeModalBtn.addEventListener("click", () => {
+    closeModal();
+});
+
+contactBtn.addEventListener("click", () => {
+    displayModal();
+});
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -24,6 +31,10 @@ form.addEventListener("submit", (e) => {
         closeModal();
     }
 });
+
+name.innerHTML = photographer.name;
+
+
 
 function displayModal() {
 	modal.style.display = "block";

@@ -1,20 +1,13 @@
-
 // Récupération des datas
-
 import { id } from '../utils/getData.js';
 import { mainGallery } from './../templates/singlePhotographer.js';
 import { media } from '../utils/getData.js';
 import { photographers } from '../utils/getData.js';
 import { photographerTemplateSingle } from '../templates/singlePhotographer.js';
 
-
-// const btnDate = document.querySelector(".filter_date");
-// const btnPopularite = document.querySelector(".filter_popularite");
-// const btnTitle = document.querySelector(".filter_titre");
-// Filtrer dans le json les éléments de média par id
 export const dataGallery = media.filter(elements => elements.photographerId == id);
 // Chercher dans le json  éléments dont les id = à l'id passé en paramètre
-export const photographer = photographers.find( elements => elements.id == id);
+const photographer = photographers.find( elements => elements.id == id);
 //Récupère les données d'un seul photographe du tableau photographers.
 const photographerModelSingle = photographerTemplateSingle(photographer);
 const photographersSectionSingle = document.querySelector("#mainPhotographer");
