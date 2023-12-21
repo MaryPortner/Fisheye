@@ -1,10 +1,16 @@
 /* Général */
+
+:root {
+    --secondary-color:  #DB8876;
+  }
+
 ul li{
     list-style-type: none;
 }
 
 button:hover, button.filter:hover{
     background-color: #D3573C;
+    color: black;
 }
 
 
@@ -237,6 +243,7 @@ button, ul li{
     width: 350px;
     height: 300px;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .sectionImgPhotographer > video{
@@ -263,11 +270,30 @@ button, ul li{
 }
 
 .mainPhotographer_gallery__price-likes > img.mainPhotographer_gallery__icone{
-    width: 21px;
-    height: 24px;
+    width: 24px;
+    height: 26px;
     cursor: pointer;
     margin-top: -2px;
 }
+
+aside{
+    position: sticky;
+    display: flex;
+    align-items: center;
+    bottom: 0;
+    left: 70%;
+    height: 40px;
+    width: 286px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    background-color: var(--secondary-color);
+
+}
+
 
 .modal {
     z-index: 10;

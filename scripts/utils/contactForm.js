@@ -1,6 +1,7 @@
 import { id } from './getData.js';
 import { photographers } from './getData.js';
 
+
 const contactBtn = document.querySelector(".contact_button");
 const closeModalBtn = document.querySelector(".modal_Close");
 const firstName = document.querySelector("#firstName");
@@ -11,15 +12,18 @@ const message = document.querySelector("#message");
 const modal = document.getElementById("contact_modal");
 const name = document.querySelector(".namePhotographer");
 const photographer = photographers.find( elements => elements.id == id);
-
+const photographHeader = document.querySelector(".photograph-header");
 
 
 closeModalBtn.addEventListener("click", () => {
     closeModal();
+    changeBg("#FFFFFF", "#FAFAFA", "none");
 });
 
 contactBtn.addEventListener("click", () => {
     displayModal();
+    changeBg("#c4c4c466", "#c4c4c466");
+
 });
 
 form.addEventListener("submit", (e) => {
@@ -35,6 +39,10 @@ form.addEventListener("submit", (e) => {
 name.innerHTML = photographer.name;
 
 
+function changeBg(color1, color2) {
+    document.body.style.background = color1;
+    photographHeader.style.background = color2;
+ }
 
 function displayModal() {
 	modal.style.display = "block";

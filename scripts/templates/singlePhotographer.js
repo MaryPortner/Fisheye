@@ -3,6 +3,8 @@ import { mediaFactory } from '../factory.js';
 
 export const mainGallery = document.createElement('div');
 mainGallery.classList.add("mainPhotographer_gallery");
+const main = document.querySelector('main#mainPhotographer');
+
 
 export function photographerTemplateSingle(photographers) {
 
@@ -17,7 +19,7 @@ export function photographerTemplateSingle(photographers) {
                 <p class="cardUser__tagline">${photographers.tagline}</p>
                 <a title="page de ${photographers.name}" alt="photo de ${photographers.name}" href=""></a>
             </div>
-            <div class="photograph-header">
+            <div class="photograph-btn">
                 <button class="contact_button">Contactez-moi</button>
             </div>
             <img class="cardUser__img"
@@ -67,9 +69,12 @@ export function photographerTemplateSingle(photographers) {
         // Insertion icône likes
         const iconeImgPhotographer = document.createElement('img');
         iconeImgPhotographer.setAttribute("aria-hiden", true);
-        iconeImgPhotographer.setAttribute("src", "assets/icons/likesRed.svg");
+        iconeImgPhotographer.setAttribute("aria-label", "like");
+        iconeImgPhotographer.setAttribute("src", "assets/icons/like.svg");
         iconeImgPhotographer.setAttribute("alt", "icone pour liker");
         iconeImgPhotographer.classList.add("mainPhotographer_gallery__icone");
+
+
 
 
         titlePriceLikes.appendChild(titleImgPhotographer);
@@ -83,7 +88,32 @@ export function photographerTemplateSingle(photographers) {
         return mainGallery;
     }
 
+
     dropdown();
+    
+    // insertion des likes et tarifs
+    const priceTotalLikes =  document.createElement("aside");
+
+    const photographerLikes = document.createElement('p');
+    photographerLikes.classList.add("photographerLikes")
+
+    const counterLikes = document.createElement("span");
+    counterLikes.classList.add("photographerLikes_count");
+
+    const counterIcone= document.createElement("span");
+    counterIcone.classList.add("photographerLikes_icone")
+
+    const priceByDay = document.createElement("span");
+    // const icone = 
+    photographerLikes.appendChild(counterLikes);
+    photographerLikes.appendChild(counterIcone);
+    priceTotalLikes.appendChild(photographerLikes);
+    priceTotalLikes.appendChild(priceByDay);
+
+    main.append(priceTotalLikes);
+
+    main.insertAdjacentElement('afterend', priceTotalLikes);
+    // main.insertBefore(mainGallery, priceTotalLikes);
 
     // on retourne notre constante et notre fonction.
     return {getUserSingleCardDOM, galleryPhotographer, mediaFactory}
