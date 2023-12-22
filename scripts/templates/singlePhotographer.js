@@ -3,6 +3,7 @@ import { mediaFactory } from '../factory.js';
 
 export const mainGallery = document.createElement('div');
 mainGallery.classList.add("mainPhotographer_gallery");
+
 const main = document.querySelector('main#mainPhotographer');
 
 
@@ -91,6 +92,8 @@ export function photographerTemplateSingle(photographers) {
 
     dropdown();
     
+   
+  
     // insertion des likes et tarifs
     const priceTotalLikes =  document.createElement("aside");
 
@@ -104,6 +107,7 @@ export function photographerTemplateSingle(photographers) {
     counterIcone.classList.add("photographerLikes_icone")
 
     const priceByDay = document.createElement("span");
+    // priceByDay.innerText = '$'
     // const icone = 
     photographerLikes.appendChild(counterLikes);
     photographerLikes.appendChild(counterIcone);
@@ -113,7 +117,10 @@ export function photographerTemplateSingle(photographers) {
     main.append(priceTotalLikes);
 
     main.insertAdjacentElement('afterend', priceTotalLikes);
-    // main.insertBefore(mainGallery, priceTotalLikes);
+
+   
+
+
 
     // on retourne notre constante et notre fonction.
     return {getUserSingleCardDOM, galleryPhotographer, mediaFactory}

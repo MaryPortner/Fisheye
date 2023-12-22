@@ -26,23 +26,20 @@
       <div class="filter divMenuMedia">
         <p class="divMenuMedia_p">Trier par</p>
         <div class="dropdown">
-          <button id="btn-sort" class="btn_drop">
+          <button id="btn-sort" class="btn_drop" type="button" role="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="filter options" aria-label="Tri par">
             <span id="currentSort">Popularité</span>
             <svg id="arrow" class="rotate arrow bx bx-chevron-down" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#FFFFFF" d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
           </button>
 
-          <ul class="dropdown_content">
-            <li class="submenu">
-              <span class="trait"></span> 
-              <button class="filter" data-filter="popularite">Popularité</button>
+          <ul class="dropdown_content" aria-hidden="true">
+            <li class="submenu" role="option">
+              <button class="filter" data-filter="popularite" type="button" tabindex="-1" aria-label="Tri par popularité">Popularité</button>
             </li>
-            <li class="submenu ">
-              <span class="trait"></span> 
-              <button class="filter" data-filter="date">Date</button>
+            <li class="submenu" role="option">
+              <button class="filter" data-filter="date" type="button" tabindex="-1" aria-label="Tri par date">Date</button>
             </li>
-            <li class="submenu ">
-              <span class="trait"></span> 
-              <button class="filter" data-filter="titre">Titre</button>
+            <li class="submenu"role="option" >
+              <button class="filter" data-filter="titre" type="button" tabindex="-1" aria-label="Tri par titre">Titre</button>
             </li>
           </ul>
         </div>

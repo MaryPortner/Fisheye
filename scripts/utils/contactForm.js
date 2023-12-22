@@ -13,6 +13,10 @@ const modal = document.getElementById("contact_modal");
 const name = document.querySelector(".namePhotographer");
 const photographer = photographers.find( elements => elements.id == id);
 const photographHeader = document.querySelector(".photograph-header");
+const imgs = document.querySelectorAll("img.mainPhotographer_gallery__img");
+const imgHeader = document.querySelector(".cardUser__img");
+console.log(imgs);
+
 
 
 closeModalBtn.addEventListener("click", () => {
@@ -22,7 +26,7 @@ closeModalBtn.addEventListener("click", () => {
 
 contactBtn.addEventListener("click", () => {
     displayModal();
-    changeBg("#c4c4c466", "#c4c4c466");
+    changeBg("#00000040", "#c4c4c466", "contrast(50%)");
 
 });
 
@@ -39,9 +43,13 @@ form.addEventListener("submit", (e) => {
 name.innerHTML = photographer.name;
 
 
-function changeBg(color1, color2) {
+function changeBg(color1, color2, color3) {
     document.body.style.background = color1;
     photographHeader.style.background = color2;
+    imgHeader.style.filter = color3;
+    imgs.forEach(img => {
+        img.style.filter = color3;
+    });
  }
 
 function displayModal() {

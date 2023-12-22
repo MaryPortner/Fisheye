@@ -126,6 +126,7 @@ img.cardUser__img{
     border-radius: 5px;
 }
 
+
 .dropdown_content{
     width: 170px;
     max-height: 0;
@@ -141,6 +142,17 @@ img.cardUser__img{
 .dropdown_content li{
     position: relative;
     width: 170px;
+}
+
+.dropdown_content li::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    height: 1px;
+    background-color: white;
 }
 
 button, ul li{
@@ -327,6 +339,11 @@ aside{
     cursor: pointer;
 }
 
+.modal header img:hover{
+    border: solid 1px white;
+    border-radius: 5px;
+}
+
 .modal header h2,.namePhotographer{
     font-size: 36px;
     font-weight: normal;
@@ -343,7 +360,7 @@ form {
 
 form label {
     color: #312E2E;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 form div {
