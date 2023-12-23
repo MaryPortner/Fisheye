@@ -1,19 +1,9 @@
 // Récupération des datas
-import { id } from '../utils/getData.js';
-import { mainGallery } from './../templates/singlePhotographer.js';
-import { media } from '../utils/getData.js';
-import { photographers } from '../utils/getData.js';
-import { photographerTemplateSingle } from '../templates/singlePhotographer.js';
+import { id, dataPhotographer, dataGallery, sortDatasGallery } from '../utils/getData.js';
+import { mainGallery, photographerTemplateSingle } from './../templates/singlePhotographer.js';
 
-export const dataGallery = media.filter(elements => elements.photographerId == id);
-// Chercher dans le json  éléments dont les id = à l'id passé en paramètre
-const photographer = photographers.find( elements => elements.id == id);
-//Récupère les données d'un seul photographe du tableau photographers.
-const photographerModelSingle = photographerTemplateSingle(photographer);
+const photographerModelSingle = photographerTemplateSingle(dataPhotographer);
 const photographersSectionSingle = document.querySelector("#mainPhotographer");
-//Copie du tableau de medias
-export const sortDatasGallery= Array.from(dataGallery);
-//Récupérer l'affichage présentation du photographe singlePhotographer
 const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
 
 

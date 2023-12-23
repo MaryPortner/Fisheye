@@ -41,7 +41,10 @@ h1 {
 
 .photographer_section article h2 {
     color: #D3573C;
+    margin: 5px;
     font-size: 36px;
+
+    font-weight: 300;
 }
 
 .photographer_section article img {
@@ -53,16 +56,18 @@ h1 {
 
 .photographer_section article .cardUser__cityCountry{
     color: #901C1C;
-    font-size: 13px;
+    font-size: 22px;
+    margin: 0;
 }
 
 .photographer_section article .cardUser__tagline{
     color: black;
-    font-size: 10px;
+    font-size: 18px;
+    margin: 5px;
 }
 
 .photographer_section article .cardUser__priceData{
     color: #757575;
-    font-size: 9px;
+    font-size: 18px;
 }
 

@@ -1,34 +1,34 @@
-import { id } from './getData.js';
-import { photographers } from './getData.js';
+import { dataPhotographer } from './getData.js';
 
 
+const asideLikesPrice = document.querySelector("aside");
 const contactBtn = document.querySelector(".contact_button");
 const closeModalBtn = document.querySelector(".modal_Close");
 const firstName = document.querySelector("#firstName");
 const form = document.querySelector('form');
+const imgs = document.querySelectorAll("img.mainPhotographer_gallery__img");
+const imgHeader = document.querySelector(".cardUser__img");
 const last = document.querySelector("#last");
 const mail = document.querySelector("#email");
 const message = document.querySelector("#message");
 const modal = document.getElementById("contact_modal");
 const name = document.querySelector(".namePhotographer");
-const photographer = photographers.find( elements => elements.id == id);
 const photographHeader = document.querySelector(".photograph-header");
-const imgs = document.querySelectorAll("img.mainPhotographer_gallery__img");
-const imgHeader = document.querySelector(".cardUser__img");
-console.log(imgs);
+const videos = document.querySelector(".sectionImgPhotographer video");
 
 
 
 closeModalBtn.addEventListener("click", () => {
     closeModal();
-    changeBg("#FFFFFF", "#FAFAFA", "none");
+    changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
 });
+
 
 contactBtn.addEventListener("click", () => {
     displayModal();
-    changeBg("#00000040", "#c4c4c466", "contrast(50%)");
-
+    changeBg("#00000040", "#c4c4c466", "contrast(50%)", "none");
 });
+
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -37,23 +37,24 @@ form.addEventListener("submit", (e) => {
     } else {
         confirmSendingForm();
         closeModal();
+        changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
     }
 });
 
-name.innerHTML = photographer.name;
+
+name.innerHTML = dataPhotographer.name;
 
 
-function changeBg(color1, color2, color3) {
+
+function changeBg(color1, color2, color3, display) {
     document.body.style.background = color1;
     photographHeader.style.background = color2;
     imgHeader.style.filter = color3;
     imgs.forEach(img => {
         img.style.filter = color3;
     });
- }
-
-function displayModal() {
-	modal.style.display = "block";
+    videos.style.filter = color3;
+    asideLikesPrice.style.display = display;
 }
 
 function closeModal() {
@@ -70,6 +71,12 @@ function confirmSendingForm(){
     }
     console.log(getDataForm);
 }
+
+function displayModal() {
+	modal.style.display = "block";
+}
+
+
 
 
 

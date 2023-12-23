@@ -49,7 +49,7 @@ button:hover, button.filter:hover{
 
 .photograph-header h1{
     color: #D3573C;
-    font-size: 64px;
+    font-size: 48px;
     margin: 0px;
 }
 
@@ -159,6 +159,7 @@ button, ul li{
     background-color: #901C1C;
     color: white;
     border: none;
+    cursor: pointer;
 }
 
 .btn_drop, 
@@ -281,6 +282,11 @@ button, ul li{
     font-weight: 500; 
 }
 
+button.btnLikes{
+    background-color: transparent;
+    margin-top: 5px;
+}
+
 .mainPhotographer_gallery__price-likes > img.mainPhotographer_gallery__icone{
     width: 24px;
     height: 26px;
@@ -294,7 +300,7 @@ aside{
     align-items: center;
     bottom: 0;
     left: 70%;
-    height: 40px;
+    height: 30px;
     width: 286px;
     padding: 20px;
     margin-top: 20px;
@@ -303,8 +309,30 @@ aside{
     font-size: 24px;
     font-weight: bold;
     background-color: var(--secondary-color);
-
 }
+
+.photographerLikes{
+    width: 55%;
+    height: 30px;
+}
+
+.photographerLikes_count, .priceByDay{
+    display: inline-block;
+    width: 60%;
+    height: 30px;
+    font-size: 22px;
+}
+
+.photographerLikes_icone{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+
 
 
 .modal {
@@ -384,4 +412,5 @@ textarea{
     height: 100px;
     border: none;
     border-radius:5px;
+    font-size: 22px;
 }

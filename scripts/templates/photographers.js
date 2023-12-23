@@ -16,7 +16,7 @@ export function photographerTemplate(data) {
         linkImgPhotographe.setAttribute("href", `photographer.html?idPhotographer=`+ id );
 
         const imgPhotographerHomePage = document.createElement('img');
-        imgPhotographerHomePage.setAttribute("src", picture); // On lui met la src qui provient de la constante picture
+        imgPhotographerHomePage.setAttribute("src", picture); 
         imgPhotographerHomePage.setAttribute("title", `${name}`);
         // imgPhotographerHomePage.dataset.id = id;
         imgPhotographerHomePage.classList.add("cardUser__img");
