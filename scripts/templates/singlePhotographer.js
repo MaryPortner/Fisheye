@@ -101,12 +101,16 @@ export function photographerTemplateSingle(photographers) {
 
         // Insertion icône likes
         const btnLikes = document.createElement('button');
-        btnLikes.classList.add("btnLikes","mainPhotographer_gallery__icone");
+        btnLikes.classList.add("btnLikes");
         btnLikes.setAttribute("type", "button");
         btnLikes.setAttribute("aria-label", "Like");
-        btnLikes.innerHTML = icone;
+        btnLikes.setAttribute("data-id",  `${id}`);
+        // btnLikes.innerHTML = icone;
 
+        const spanIcone = document.createElement('span');
+        spanIcone.classList.add("fas", "fa-heart", "fa-solid", "mainPhotographer_gallery__icone", "aria-hidden=true");
 
+        btnLikes.appendChild(spanIcone);
         titlePriceLikes.appendChild(titleImgPhotographer);
         priceLikes.appendChild(likesImgPhotographer);
         priceLikes.appendChild(btnLikes);

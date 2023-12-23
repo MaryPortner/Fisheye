@@ -284,7 +284,16 @@ button, ul li{
 
 button.btnLikes{
     background-color: transparent;
-    margin-top: 5px;
+    margin-top: 3px;
+    margin-right: 0;
+}
+
+span.fa-solid{
+    color: var(--secondary-color);
+    width: 24px;
+    height: 24px;
+    font-size: 21px;
+    padding: 0px
 }
 
 .mainPhotographer_gallery__price-likes > img.mainPhotographer_gallery__icone{
