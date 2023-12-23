@@ -312,16 +312,26 @@ aside{
 }
 
 .photographerLikes{
+    display: flex;
+    align-items: center;
+    align-content: center;
     width: 55%;
     height: 30px;
 }
 
-.photographerLikes_count, .priceByDay{
+.photographerLikes_total, .priceByDay{
     display: inline-block;
     width: 60%;
     height: 30px;
+    text-align: right;
     font-size: 22px;
 }
+
+.photographerLikes_total{
+ 
+    margin-right: 10px;
+}
+
 
 .photographerLikes_icone{
     display: inline-block;
