@@ -74,8 +74,8 @@ export function photographerTemplateSingle(photographers) {
         const { id, photographerId, title, image, video, likes, date, price } = galleryImg;
 
         // Création de la div contenant l'image, le titre et les likes
-        const sectionImgPhotographer = document.createElement('section');
-        sectionImgPhotographer.classList.add("sectionImgPhotographer");
+        const sectionImgPhotographer = document.createElement('article');
+        sectionImgPhotographer.classList.add("articleImgPhotographer");
     
         // affichage des img et vidéos
         let medias = mediaFactory(galleryImg);
@@ -97,6 +97,7 @@ export function photographerTemplateSingle(photographers) {
         // Récupération des likes
         const likesImgPhotographer = document.createElement('p');
         likesImgPhotographer.innerText =  `${likes}`; 
+        likesImgPhotographer.setAttribute("data-id",  `${id}`);
         likesImgPhotographer.classList.add("mainPhotographer_gallery__likes");
 
         // Insertion icône likes
