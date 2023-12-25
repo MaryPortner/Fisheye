@@ -1,7 +1,9 @@
 /* Général */
 
 :root {
+    --primary-color: #901C1C;
     --secondary-color:  #DB8876;
+    
   }
 
 ul li{

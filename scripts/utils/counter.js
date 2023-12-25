@@ -32,9 +32,11 @@ export const displayNbTotalLikes = async () => {
             const data = dataGallery.find(data => data.id == dataId);
 
             btn.classList.toggle("clicked");
-            if (btn.classList.contains("clicked")){
+            if(btn.classList.contains("clicked")){
+                btn.style.color = "var(--primary-color)";
                 data.likes ++;
             } else if (!btn.classList.contains("clicked")) {
+                btn.style.color = "var(--secondary-color)";
                 data.likes --;
             }
 
