@@ -1,6 +1,3 @@
-import { dataPhotographer } from './getData.js';
-
-
 const asideLikesPrice = document.querySelector("aside");
 const contactBtn = document.querySelector(".contact_button");
 const closeModalBtn = document.querySelector(".modal_Close");
@@ -16,36 +13,40 @@ const name = document.querySelector(".namePhotographer");
 const photographHeader = document.querySelector(".photograph-header");
 const videos = document.querySelector(".sectionImgPhotographer video");
 
+contactBtn.addEventListener("click", () =>{
+    console.log("TEST");
+})
 
+export default function contactFormInit(dataPhotographer){
 
-closeModalBtn.addEventListener("click", () => {
-    closeModal();
-    changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
-});
-
-
-contactBtn.addEventListener("click", () => {
-    displayModal();
-    changeBg("#00000040", "#c4c4c466", "contrast(50%)", "none");
-});
-
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if(firstName.value == ''  ||  last.value == ''   || mail.value == ''   || message.value == ''   ){ 
-        alert('Vous devez remplir tous les champs');
-    } else {
-        confirmSendingForm();
+    closeModalBtn.addEventListener("click", () => {
         closeModal();
         changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
-    }
-});
+    });
+    
+    
+    contactBtn.addEventListener("click", () => {
+        displayModal();
+        changeBg("#00000040", "#c4c4c466", "contrast(50%)", "none");
+    });
+    
+    
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        if(firstName.value == ''  ||  last.value == ''   || mail.value == ''   || message.value == ''   ){ 
+            alert('Vous devez remplir tous les champs');
+        } else {
+            confirmSendingForm();
+            closeModal();
+            changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
+        }
+    });
 
-
-name.innerHTML = dataPhotographer.name;
-
-
-
+    name.innerHTML = dataPhotographer.name;
+}    
+   
+    
+    
 function changeBg(color1, color2, color3, display) {
     document.body.style.background = color1;
     photographHeader.style.background = color2;
@@ -73,8 +74,11 @@ function confirmSendingForm(){
 }
 
 function displayModal() {
-	modal.style.display = "block";
+    modal.style.display = "block";
 }
+
+
+
 
 
 

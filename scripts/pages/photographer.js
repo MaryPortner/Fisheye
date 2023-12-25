@@ -1,8 +1,19 @@
 // Récupération des datas
-import { id, dataPhotographer, dataGallery, sortDatasGallery } from '../utils/getData.js';
-import { mainGallery, photographerTemplateSingle } from './../templates/singlePhotographer.js';
+import { getDatas } from "../utils/getData.js";
+import { mainGallery, photographerTemplateSingle} from "./../templates/singlePhotographer.js"
+import { displayNbTotalLikes } from "../utils/counter.js";
+import  contactFormInit from './../utils/contactForm.js';
 
-const photographerModelSingle = photographerTemplateSingle(dataPhotographer);
+
+// *********** Récupération des datas ***********/
+const params = new URLSearchParams(window.location.search);
+export const { media, photographers } = await getDatas();
+export const id = params.get("idPhotographer");
+export const dataPhotographer = photographers.find( elements => elements.id == id);
+export const dataGallery = media.filter(elements => elements.photographerId == id);
+export const sortDatasGallery= Array.from(dataGallery);
+
+const photographerModelSingle = photographerTemplateSingle(dataPhotographer, dataGallery);
 const photographersSectionSingle = document.querySelector("#mainPhotographer");
 const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
 
@@ -20,6 +31,8 @@ if (!id){
         const displayGalleryElement = photographerModelSingle.galleryPhotographer(datas);
         photographersSectionSingle.appendChild(displayGalleryElement);
     });
+
+    displayNbTotalLikes(dataGallery);
 } 
 
 
@@ -42,6 +55,8 @@ document.querySelectorAll('.filter').forEach(button => {
             const displayGalleryElement = photographerModelSingle.galleryPhotographer(media);
             photographersSectionSingle.appendChild(displayGalleryElement);
         });
+
+        displayNbTotalLikes(dataGallery);
     });
 })
 
