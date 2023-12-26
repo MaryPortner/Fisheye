@@ -193,6 +193,10 @@ button, ul li{
     display: none;
 }
 
+.dropdown_content li.submenu1 #target{
+    display: block;
+}
+
 .submenu{
     display: flex;
     flex-direction: column;

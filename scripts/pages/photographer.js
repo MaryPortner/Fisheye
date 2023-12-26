@@ -27,21 +27,32 @@ if (!id){
     // Insertion des données de la const userCardDOM dans la balise main
     photographersSectionSingle.prepend(userCardDOMSingle);
     
-    dataGallery.map((datas) => {
-        const displayGalleryElement = photographerModelSingle.galleryPhotographer(datas);
+    // dataGallery.map((datas) => {
+    //     const displayGalleryElement = photographerModelSingle.galleryPhotographer(datas);
+    //     photographersSectionSingle.appendChild(displayGalleryElement);
+    // });
+
+
+    // displayNbTotalLikes(dataGallery);
+
+
+    // ************* filtrage des données  *************
+
+document.querySelectorAll('.filter').forEach(button => {
+    const type = button.dataset.filter;
+    if (type === 'popularite'){
+        sortDatasGallery.sort((a, b) => b.likes - a.likes);
+    }
+    mainGallery.innerHTML = "";
+    sortDatasGallery.map((media) => {
+        const displayGalleryElement = photographerModelSingle.galleryPhotographer(media);
         photographersSectionSingle.appendChild(displayGalleryElement);
     });
 
     displayNbTotalLikes(dataGallery);
-} 
-
-
-// ************* filtrage des données  *************
-
-document.querySelectorAll('.filter').forEach(button => {
 
     button.addEventListener("click",function () {
-        const type = button.dataset.filter;
+    
         if (type === 'popularite'){
             sortDatasGallery.sort((a, b) => b.likes - a.likes);
         } else if ( type === 'date'){
@@ -59,6 +70,18 @@ document.querySelectorAll('.filter').forEach(button => {
         displayNbTotalLikes(dataGallery);
     });
 })
+
+
+
+
+
+
+
+
+} 
+
+
+
 
 
 
