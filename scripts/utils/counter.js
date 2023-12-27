@@ -13,7 +13,7 @@ export const displayNbTotalLikes = (dataGallery) => {
             let data = dataGallery.find(data => data.id == dataId);
             // nouvel objet avec les éléments cliqués.
             btnClicked = btnLikes;
-            
+
             btn.classList.toggle("clicked");
         
             if(btn.classList.contains("clicked")){
@@ -33,7 +33,7 @@ export const displayNbTotalLikes = (dataGallery) => {
             });  
             arrayWithBtnClicked = btnClicked;
             console.log(arrayWithBtnClicked);
-            btnLikes = arrayWithBtnClicked;
+            // btnLikes = arrayWithBtnClicked;
             updateNbLikesTotal(dataGallery);
         });
     });
