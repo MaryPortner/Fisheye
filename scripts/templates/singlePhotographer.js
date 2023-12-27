@@ -46,12 +46,18 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
         const { id, photographerId, title, image, video, likes, date, price } = galleryImg;
 
         // Création de la div contenant l'image, le titre et les likes
-        const sectionImgPhotographer = document.createElement('article');
-        sectionImgPhotographer.classList.add("articleImgPhotographer");
+        const articlePhotographer = document.createElement('article');
+        articlePhotographer.classList.add("articleImgPhotographer");
+        articlePhotographer.setAttribute("data-id",`${id}`);
+        articlePhotographer.setAttribute("data-date",`${date}`);
+        articlePhotographer.setAttribute("data-title",`${title}`);
+        articlePhotographer.setAttribute("data-likes",`${likes}`);
+        articlePhotographer.setAttribute("data-photographerId",`${photographerId}`);
+
     
         // affichage des img et vidéos
         let medias = mediaFactory(galleryImg);
-        sectionImgPhotographer.appendChild(medias);
+        articlePhotographer.appendChild(medias);
 
         // Création de la div contenant le titre, les likes et l'icône coeur
         const titlePriceLikes = document.createElement('div');
@@ -88,9 +94,9 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
         priceLikes.appendChild(likesImgPhotographer);
         priceLikes.appendChild(btnLikes);
         titlePriceLikes.appendChild(priceLikes);
-        sectionImgPhotographer.appendChild(titlePriceLikes);
+        articlePhotographer.appendChild(titlePriceLikes);
 
-        mainGallery.appendChild(sectionImgPhotographer);
+        mainGallery.appendChild(articlePhotographer);
 
         return mainGallery;
     }

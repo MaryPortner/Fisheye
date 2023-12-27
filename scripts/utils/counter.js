@@ -1,21 +1,23 @@
 export const displayNbTotalLikes = (dataGallery) => {
-
-    const btnLikes = document.querySelectorAll("button.btnLikes");
+    let btnLikes = document.querySelectorAll("button.btnLikes");
     const likes = document.querySelectorAll(".mainPhotographer_gallery__likes");
- 
     updateNbLikesTotal(dataGallery);
-
 
     btnLikes.forEach(btn => {
         btn.addEventListener("click", () => {
             const dataId = btn.dataset.id
-            const data = dataGallery.find(data => data.id == dataId);
-
+            let data = dataGallery.find(data => data.id == dataId);
+            //nouvel objet avec les éléments cliqués.
+            // btnClicked = btnLikes;
+            // convertBtnClickedArray = btnClicked;
             btn.classList.toggle("clicked");
+        
             if(btn.classList.contains("clicked")){
                 btn.style.color = "var(--primary-color)";
                 data.likes ++;
-            } else if (!btn.classList.contains("clicked")) {
+            }  
+            
+            if (!btn.classList.contains("clicked")) {
                 btn.style.color = "var(--secondary-color)";
                 data.likes --;
             }
@@ -24,10 +26,12 @@ export const displayNbTotalLikes = (dataGallery) => {
                 if(element.dataset.id == dataId){
                     element.innerHTML = data.likes;
                 }
-            });
-
+            });  
+            // arrayWithBtnClicked = convertBtnClickedArray;
+            // console.log(arrayWithBtnClicked);
+            // // console.log(arrayWithBtnClicked);
+            // btnLikes = arrayWithBtnClicked;
             updateNbLikesTotal(dataGallery);
-
         });
     });
 };
@@ -40,3 +44,4 @@ function updateNbLikesTotal(dataGallery) {
     accumulator + currentValue.likes, initialValue);
     counterLikes.innerText = `${nbTotalLikes}`;
 };
+
