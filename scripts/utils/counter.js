@@ -1,3 +1,7 @@
+let btnClicked;
+let arrayWithBtnClicked;
+
+
 export const displayNbTotalLikes = (dataGallery) => {
     let btnLikes = document.querySelectorAll("button.btnLikes");
     const likes = document.querySelectorAll(".mainPhotographer_gallery__likes");
@@ -7,9 +11,9 @@ export const displayNbTotalLikes = (dataGallery) => {
         btn.addEventListener("click", () => {
             const dataId = btn.dataset.id
             let data = dataGallery.find(data => data.id == dataId);
-            //nouvel objet avec les éléments cliqués.
-            // btnClicked = btnLikes;
-            // convertBtnClickedArray = btnClicked;
+            // nouvel objet avec les éléments cliqués.
+            btnClicked = btnLikes;
+            
             btn.classList.toggle("clicked");
         
             if(btn.classList.contains("clicked")){
@@ -27,10 +31,9 @@ export const displayNbTotalLikes = (dataGallery) => {
                     element.innerHTML = data.likes;
                 }
             });  
-            // arrayWithBtnClicked = convertBtnClickedArray;
-            // console.log(arrayWithBtnClicked);
-            // // console.log(arrayWithBtnClicked);
-            // btnLikes = arrayWithBtnClicked;
+            arrayWithBtnClicked = btnClicked;
+            console.log(arrayWithBtnClicked);
+            btnLikes = arrayWithBtnClicked;
             updateNbLikesTotal(dataGallery);
         });
     });
