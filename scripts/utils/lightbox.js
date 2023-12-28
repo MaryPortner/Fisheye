@@ -12,24 +12,23 @@ export function displayLightbox(){
     let currentUrl; 
 
     allArticles.forEach(data => {
-        console.log(data);
         data.addEventListener('click', (e) => {
             e.preventDefault();
 
             currentUrl = e.currentTarget.getAttribute('href');
             buildLightbox(currentUrl);
             main.append(buildLightbox(currentUrl));
-
-               // displayLightbox();
         });
     });
 }
 
 function buildLightbox(currentUrl){
-    const lightbox =  document.createElement("div");
     const extension = currentUrl.split('.').reverse()[0];
     console.log(extension);
+    const lightbox =  document.createElement("div");
+
     lightbox.classList.add("lightbox_content");
+
     lightbox.innerHTML = `
         <button class="btn_lightbox lightbox_close-btn">
             <i class="fa-solid fa-xmark"></i>
@@ -43,23 +42,16 @@ function buildLightbox(currentUrl){
             <i class="fa-solid fa-chevron-left"></i>
         </button>
         
-        <div class="lightbox_img">`
-            // if (extension === mp4){`
-            //     <video controls class="lightbox_img" src="${currentUrl}" alt=""  >`
-            // } else (extension === jpg){``
-            //     `<img class="lightbox_img" src="${currentUrl}" alt=""  >`
-            // }`        
-            
-            extension.mp4 ? ` <video controls class="lightbox_img" src="${currentUrl}" alt=""  >` :  `<img class="lightbox_img" src="${currentUrl}" alt=""  >
-
-
+        <div class="lightbox_img">
         </div>
-
-
-
 
         <span class="lightbox_img-title">Test Texte </span>
     `
+
+        lightbox.querySelector('.lightbox_img').innerHTML = 
+        extension == "mp4" ? ` <video controls class="lightbox_img" src="${currentUrl}" alt=""  >` : `<img class="lightbox_img" src="${currentUrl}" alt=""  >}`
+        
+
    return lightbox;
 };
 
