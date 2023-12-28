@@ -1,8 +1,8 @@
-const asideLikesPrice = document.querySelector("aside");
+export const asideLikesPrice = document.querySelector("aside");
 const contactBtn = document.querySelector(".contact_button");
 const closeModalBtn = document.querySelector(".modal_Close");
 const firstName = document.querySelector("#firstName");
-const form = document.querySelector('form');
+const form = document.querySelector("form");
 const imgs = document.querySelectorAll("img.mainPhotographer_gallery__img");
 const imgHeader = document.querySelector(".cardUser__img");
 const last = document.querySelector("#last");
@@ -12,6 +12,8 @@ const modal = document.getElementById("contact_modal");
 const name = document.querySelector(".namePhotographer");
 const photographHeader = document.querySelector(".photograph-header");
 const videos = document.querySelector(".sectionImgPhotographer video");
+
+
 
 contactBtn.addEventListener("click", () =>{
     console.log("TEST");
@@ -42,11 +44,9 @@ export default function contactFormInit(dataPhotographer){
         }
     });
 
-    name.innerHTML = dataPhotographer.name;
+
 }    
    
-    
-    
 function changeBg(color1, color2, color3, display) {
     document.body.style.background = color1;
     photographHeader.style.background = color2;

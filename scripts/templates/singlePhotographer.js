@@ -1,12 +1,15 @@
+
 import { dropdown } from './../utils/menuDropDown.js';
 import { dataPhotographer, dataGallery } from './../pages/photographer.js';
 import { displayNbTotalLikes } from "../utils/counter.js";
 import { mediaFactory } from '../factory.js';
-import contactFormInit from './../utils/contactForm.js';
+
 
 export const mainGallery = document.createElement('div');
 mainGallery.classList.add("mainPhotographer_gallery");
 export const main = document.querySelector('main#mainPhotographer');
+// const urlCurrent = window.location.href;
+
 
 
 export  function photographerTemplateSingle(photographer, dataGallery) {
@@ -22,13 +25,15 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
         counterLikes.classList.add("photographerLikes_total");
     
         const counterIcone= document.createElement("img");
+        counterIcone.classList.add("photographerLikes_icone");
         counterIcone.setAttribute("src", "assets/icons/likeBlack.svg");
         counterIcone.setAttribute("aria-hiden", true);
-        counterIcone.classList.add("photographerLikes_icone")
+        
 
         const priceByDay = document.createElement("span");
-        priceByDay.innerText = `${photographer.price}€ / Jour`;
         priceByDay.classList.add("priceByDay");
+        priceByDay.innerText = `${photographer.price}€ / Jour`;
+    
 
         photographerLikes.appendChild(counterLikes);
         photographerLikes.appendChild(counterIcone);
@@ -54,10 +59,20 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
         articlePhotographer.setAttribute("data-likes",`${likes}`);
         articlePhotographer.setAttribute("data-photographerId",`${photographerId}`);
 
-    
+        const linkImg = document.createElement('a');
+        linkImg.classList.add('linkImgPhotographer');
+        if (galleryImg.hasOwnProperty('video')){
+            linkImg.setAttribute("href",`${video}`);
+        }
+        if (galleryImg.hasOwnProperty('image')){
+            linkImg.setAttribute("href",`${image}`);
+        }
+        linkImg.setAttribute("data-id",`${id}`);
+        linkImg.setAttribute("role","link");
+        linkImg.setAttribute("aria-label","View image large format");
+
         // affichage des img et vidéos
         let medias = mediaFactory(galleryImg);
-        articlePhotographer.appendChild(medias);
 
         // Création de la div contenant le titre, les likes et l'icône coeur
         const titlePriceLikes = document.createElement('div');
@@ -65,8 +80,8 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
 
         // Récupération du titre de l'image
         const titleImgPhotographer = document.createElement('p');
-        titleImgPhotographer.innerText =  `${title}`; 
         titleImgPhotographer.classList.add("mainPhotographer_gallery__title");
+        titleImgPhotographer.innerText =  `${title}`; 
 
         // Création de la div contenant les likes et l'icône 
         const priceLikes = document.createElement('div');
@@ -74,9 +89,9 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
 
         // Récupération des likes
         const likesImgPhotographer = document.createElement('p');
-        likesImgPhotographer.innerText =  `${likes}`; 
-        likesImgPhotographer.setAttribute("data-id",  `${id}`);
         likesImgPhotographer.classList.add("mainPhotographer_gallery__likes");
+        likesImgPhotographer.innerText =  `${likes}`; 
+        likesImgPhotographer.setAttribute("data-id",`${id}`);
 
         // Insertion icône likes
         const btnLikes = document.createElement('button');
@@ -84,11 +99,13 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
         btnLikes.setAttribute("type", "button");
         btnLikes.setAttribute("aria-label", "Like");
         btnLikes.setAttribute("data-id",  `${id}`);
-        // btnLikes.innerHTML = icone;
-
+    
         const spanIcone = document.createElement('span');
         spanIcone.classList.add("fas", "fa-heart", "fa-solid", "mainPhotographer_gallery__icone", "aria-hidden=true");
 
+
+        articlePhotographer.appendChild(linkImg);
+        linkImg.appendChild(medias);
         btnLikes.appendChild(spanIcone);
         titlePriceLikes.appendChild(titleImgPhotographer);
         priceLikes.appendChild(likesImgPhotographer);
@@ -127,13 +144,12 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
         return photographHeader;
     }
 
-    contactFormInit(dataPhotographer);
+  
     displayLikesPrice();
     displayNbTotalLikes(dataGallery);
     dropdown();
 
-
     // on retourne notre constante et notre fonction.
-    return {getUserSingleCardDOM, galleryPhotographer, mediaFactory, displayLikesPrice, displayNbTotalLikes}
+    return {getUserSingleCardDOM, galleryPhotographer, mediaFactory, displayLikesPrice, displayNbTotalLikes, dataGallery}
 }
 
