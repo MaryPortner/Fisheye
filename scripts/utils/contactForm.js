@@ -1,4 +1,5 @@
-export const asideLikesPrice = document.querySelector("aside");
+import { priceTotalLikes } from "../templates/singlePhotographer.js";
+
 const contactBtn = document.querySelector(".contact_button");
 const closeModalBtn = document.querySelector(".modal_Close");
 const firstName = document.querySelector("#firstName");
@@ -9,7 +10,6 @@ const last = document.querySelector("#last");
 const mail = document.querySelector("#email");
 const message = document.querySelector("#message");
 const modal = document.getElementById("contact_modal");
-const name = document.querySelector(".namePhotographer");
 const photographHeader = document.querySelector(".photograph-header");
 const videos = document.querySelector(".sectionImgPhotographer video");
 
@@ -29,7 +29,7 @@ export default function contactFormInit(dataPhotographer){
     
     contactBtn.addEventListener("click", () => {
         displayModal();
-        changeBg("#00000040", "#c4c4c466", "contrast(50%)", "none");
+        changeBg("#00000080", "#c4c4c466", "contrast(50%)", "none");
     });
     
     
@@ -55,7 +55,7 @@ function changeBg(color1, color2, color3, display) {
         img.style.filter = color3;
     });
     videos.style.filter = color3;
-    asideLikesPrice.style.display = display;
+    priceTotalLikes.style.display = display;
 }
 
 function closeModal() {

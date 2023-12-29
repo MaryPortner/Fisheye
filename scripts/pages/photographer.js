@@ -5,6 +5,7 @@ import { displayNbTotalLikes } from "../utils/counter.js";
 import  contactFormInit from './../utils/contactForm.js';
 import { displayLightbox } from '../utils/lightbox.js';
 
+
 // *********** Récupération des datas ***********/
 const params = new URLSearchParams(window.location.search);
 export const { media, photographers } = await getDatas();
@@ -49,7 +50,6 @@ if (!id){
     })
 } 
 
-
 function displayMedia(){
     mainGallery.innerHTML = "";
     sortDatasGallery.map((media) => {
@@ -61,3 +61,4 @@ function displayMedia(){
 
 contactFormInit(dataPhotographer);
 displayLightbox(dataGallery);
+

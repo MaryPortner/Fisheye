@@ -294,7 +294,7 @@ aside{
     display: flex;
     align-items: center;
     bottom: 0;
-    left: 70%;
+    left: 75%;
     height: 30px;
     width: 286px;
     padding: 20px;
@@ -412,36 +412,20 @@ textarea{
     font-size: 22px;
 }
 
-/* .lightbox_content{
-    position: relative;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    width: 1000px;
-    height: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 5px;
-    background-color: gainsboro;
-} */
-
 .lightbox_content{
     position: fixed;
+    z-index: 10;
     display: flex;
     align-content: center;
     justify-content: center;
     width: 1000px;
-    height: 800px;
+    height: 700px;
     left: 50%;
     top: 5%;
     transform: translate(-50%);
     border-radius: 5px;
-    background-color: black;
+    background-color: white;
 }
-
-
-
-
 
 .lightbox_img{
     position: absolute;
@@ -449,11 +433,10 @@ textarea{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 800px;
-    height: 650px;
+    height: 600px;
     border-radius: 5px;
     background-color: aliceblue;
     object-fit: cover;
-  
 }
 
 .btn_lightbox{
@@ -489,14 +472,16 @@ textarea{
 }
 
 .lightbox_close-btn{
-    top: 60px;
+    top: 45px;
     right: 40px;
 }
 
 .lightbox_img-title{
     position: absolute;
-    bottom: 90px;
+    bottom: 80px;
     left: 212px;
     color: var(--primary-color);
     font-size: 23px;
+    margin-bottom: -70px;
+    margin-left: -110px;
 }

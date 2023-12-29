@@ -8,16 +8,13 @@ import { mediaFactory } from '../factory.js';
 export const mainGallery = document.createElement('div');
 mainGallery.classList.add("mainPhotographer_gallery");
 export const main = document.querySelector('main#mainPhotographer');
-// const urlCurrent = window.location.href;
-
+export const priceTotalLikes =  document.createElement("aside");
 
 
 export  function photographerTemplateSingle(photographer, dataGallery) {
 
     function displayLikesPrice(){
         
-        const priceTotalLikes =  document.createElement("aside");
-
         const photographerLikes = document.createElement('p');
         photographerLikes.classList.add("photographerLikes");
 
@@ -68,6 +65,7 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
             linkImg.setAttribute("href",`${image}`);
         }
         linkImg.setAttribute("data-id",`${id}`);
+        linkImg.setAttribute("alt" , `${title}`);
         linkImg.setAttribute("role","link");
         linkImg.setAttribute("aria-label","View image large format");
 
