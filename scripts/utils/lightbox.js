@@ -1,7 +1,6 @@
 import { main } from "../templates/singlePhotographer.js";
 import { priceTotalLikes } from "../templates/singlePhotographer.js";
 
-const asideLikesPrice = document.getElementsByTagName('aside');
 const photographHeader = document.querySelector(".photograph-header");
 let title;
 
@@ -16,7 +15,7 @@ export function displayLightbox(){
     allArticles.forEach(data => {
         data.addEventListener('click', (e) => {
             e.preventDefault();
-          
+    
             title =  data.getAttribute("alt");
             currentUrl = e.currentTarget.getAttribute('href');
             buildLightbox(currentUrl);
@@ -59,18 +58,14 @@ function buildLightbox(currentUrl){
             lightbox.style.display = "none";
             priceTotalLikes.style.display = "flex";
                changeBg("#FFFFFF", "#FAFAFA", "none");
-
         })
 
-
-        return lightbox;
+    return lightbox;
 };
 
 
 
 function changeBg(color1, color2, color3) {
-
-    console.log(asideLikesPrice);
     const imgs = document.querySelectorAll("img.mainPhotographer_gallery__img");
     const imgHeader = document.querySelector(".cardUser__img");
     const videos = document.querySelector(".linkImgPhotographer > video");
@@ -84,3 +79,13 @@ function changeBg(color1, color2, color3) {
     videos.style.filter = color3;
   
 }
+
+
+// document.addEventListener('keyup', onKeyUp);
+// document.removeEventListener('keyup', onKeyUp);
+     // Fermeture de la lightbox au clavier 
+    //  function onKeyUp(e){
+    //     if (e.key === 'Escape'){
+    //         close(e)
+    //     }
+    // }

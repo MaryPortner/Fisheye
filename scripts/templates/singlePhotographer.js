@@ -150,4 +150,3 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
     // on retourne notre constante et notre fonction.
     return {getUserSingleCardDOM, galleryPhotographer, mediaFactory, displayLikesPrice, displayNbTotalLikes, dataGallery}
 }
-

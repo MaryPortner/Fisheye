@@ -2,7 +2,7 @@
 import { getDatas } from "../utils/getData.js";
 import { mainGallery, photographerTemplateSingle} from "./../templates/singlePhotographer.js"
 import { displayNbTotalLikes } from "../utils/counter.js";
-import  contactFormInit from './../utils/contactForm.js';
+// import  contactFormInit from './../utils/contactForm.js';
 import { displayLightbox } from '../utils/lightbox.js';
 
 
@@ -59,6 +59,5 @@ function displayMedia(){
     displayNbTotalLikes(dataGallery);
 }
 
-contactFormInit(dataPhotographer);
+// contactFormInit(dataPhotographer);
 displayLightbox(dataGallery);
-

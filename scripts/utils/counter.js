@@ -1,5 +1,4 @@
 let btnClicked;
-let arrayWithBtnClicked;
 
 
 export const displayNbTotalLikes = (dataGallery) => {
@@ -31,13 +30,15 @@ export const displayNbTotalLikes = (dataGallery) => {
                     element.innerHTML = data.likes;
                 }
             });  
-            arrayWithBtnClicked = btnClicked;
-            console.log(arrayWithBtnClicked);
-            // btnLikes = arrayWithBtnClicked;
+      
+            console.log(btnClicked);
+
+
             updateNbLikesTotal(dataGallery);
         });
     });
 };
+
 
 
 function updateNbLikesTotal(dataGallery) {
@@ -47,4 +48,3 @@ function updateNbLikesTotal(dataGallery) {
     accumulator + currentValue.likes, initialValue);
     counterLikes.innerText = `${nbTotalLikes}`;
 };
-
