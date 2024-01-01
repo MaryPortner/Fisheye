@@ -2,7 +2,7 @@
 import { getDatas } from "../utils/getData.js";
 import { mainGallery, photographerTemplateSingle} from "./../templates/singlePhotographer.js"
 import { displayNbTotalLikes } from "../utils/counter.js";
-// import  contactFormInit from './../utils/contactForm.js';
+import  contactFormInit from './../utils/contactForm.js';
 import { displayLightbox } from '../utils/lightbox.js';
 
 
@@ -18,37 +18,36 @@ const photographerModelSingle = photographerTemplateSingle(dataPhotographer, dat
 const photographersSectionSingle = document.querySelector("#mainPhotographer");
 const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
 
-
 // ************* Affichage de templates/singlePhotographer.js  *************
 if (!id){
-    alert("Erreur ! Vous allez être redirigé vers la page d'accueil ");
+    alert("Erreur ! Vous allez être redirigé vers la page d'accueil");
     //redirection 
     location.href="index.html";
-} else {
-    // Insertion des données de la const userCardDOM dans la balise main
-    photographersSectionSingle.prepend(userCardDOMSingle);
+} 
+// Insertion des données de la const userCardDOM dans la balise main
+photographersSectionSingle.prepend(userCardDOMSingle);
+
+document.querySelectorAll('.filter').forEach(button => {
+    const type = button.dataset.filter;
+    if (type === 'popularite'){
+        sortDatasGallery.sort((a, b) => b.likes - a.likes);
+    }
+    displayMedia();
+
+    button.addEventListener("click",function () {
     
-    document.querySelectorAll('.filter').forEach(button => {
-        const type = button.dataset.filter;
         if (type === 'popularite'){
             sortDatasGallery.sort((a, b) => b.likes - a.likes);
+        } else if ( type === 'date'){
+            sortDatasGallery.sort(( a , b ) => new Date(b.date) - new Date(a.date)); 
+        } else if ( type === 'titre') {
+            sortDatasGallery.sort(( a , b ) => (a.title.localeCompare(b.title))); 
         }
+
         displayMedia();
+    });
+})
 
-        button.addEventListener("click",function () {
-        
-            if (type === 'popularite'){
-                sortDatasGallery.sort((a, b) => b.likes - a.likes);
-            } else if ( type === 'date'){
-                sortDatasGallery.sort(( a , b ) => new Date(b.date) - new Date(a.date)); 
-            } else if ( type === 'titre') {
-                sortDatasGallery.sort(( a , b ) => (a.title.localeCompare(b.title))); 
-            }
-
-            displayMedia();
-        });
-    })
-} 
 
 function displayMedia(){
     mainGallery.innerHTML = "";
@@ -59,5 +58,5 @@ function displayMedia(){
     displayNbTotalLikes(dataGallery);
 }
 
-// contactFormInit(dataPhotographer);
+contactFormInit();
 displayLightbox(dataGallery);

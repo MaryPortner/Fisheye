@@ -1,36 +1,44 @@
 import { main } from "../templates/singlePhotographer.js";
 import { priceTotalLikes } from "../templates/singlePhotographer.js";
 
+
+const btnPrevious = document.querySelector(".lightbox_previous-btn");
+const lightboxImg = document.querySelector(".lightbox_img");
+const lightImgTitle = document.querySelector(".lightbox_img-title");
+
+// const asideLikesPrice = document.getElementsByTagName('aside');
 const photographHeader = document.querySelector(".photograph-header");
+
+let currentUrl; 
+let lightbox;
 let title;
+let url;
+
 
 export function displayLightbox(){
     const allArticles = Array.from(document.querySelectorAll(".linkImgPhotographer"));
-    const btnNext = document.querySelector(".lightbox_next-btn");
-    const btnPrevious = document.querySelector(".lightbox_previous-btn");
-    let currentUrl; 
-    const lightboxImg = document.querySelector(".lightbox_img");
-    const lightImgTitle = document.querySelector(".lightbox_img-title");
-
     allArticles.forEach(data => {
         data.addEventListener('click', (e) => {
             e.preventDefault();
-    
             title =  data.getAttribute("alt");
             currentUrl = e.currentTarget.getAttribute('href');
             buildLightbox(currentUrl);
             main.append(buildLightbox(currentUrl));
+            // display à none de l'encart likes et prix/jour
             priceTotalLikes.style.display = "none";
             changeBg("#00000080", "#c4c4c466", "contrast(50%)");
         });
     });
+
+    document.addEventListener('keyup', onKeyUp);
 }
 
 
 function buildLightbox(currentUrl){
+
     const extension = currentUrl.split('.').reverse()[0];
-    const lightbox =  document.createElement("div");
- 
+    lightbox = document.createElement("div");
+    lightbox.appendChild = '';
     lightbox.classList.add("lightbox_content");
     lightbox.innerHTML = `
         <button class="btn_lightbox lightbox_close-btn">
@@ -53,18 +61,12 @@ function buildLightbox(currentUrl){
         lightbox.querySelector('.lightbox_img').innerHTML = 
         extension == "mp4" ? ` <video controls class="lightbox_img" src="${currentUrl}" alt=""  >` : `<img class="lightbox_img" src="${currentUrl}" alt=""  >}`
         
-        //close lightbox
-        lightbox.querySelector('.lightbox_close-btn').addEventListener('click', () =>{
-            lightbox.style.display = "none";
-            priceTotalLikes.style.display = "flex";
-               changeBg("#FFFFFF", "#FAFAFA", "none");
-        })
+        close();
 
-    return lightbox;
+        return lightbox;
 };
 
-
-
+// Changement du bg à l'affichage de la lightbox 
 function changeBg(color1, color2, color3) {
     const imgs = document.querySelectorAll("img.mainPhotographer_gallery__img");
     const imgHeader = document.querySelector(".cardUser__img");
@@ -77,15 +79,42 @@ function changeBg(color1, color2, color3) {
         img.style.filter = color3;
     });
     videos.style.filter = color3;
-  
+}
+
+//Fermeture lightbox
+function close(){
+    lightbox.querySelector('.lightbox_close-btn').addEventListener('click', () =>{
+        lightbox.style.display = "none";
+        priceTotalLikes.style.display = "flex";
+        changeBg("#FFFFFF", "#FAFAFA", "none");
+        document.removeEventListener('keyup', onKeyUp);
+    })
+}
+
+// Fermeture de la lightbox au clavier 
+function onKeyUp(e){
+    if (e.key === 'Escape'){
+        close(e);
+    }
 }
 
 
-// document.addEventListener('keyup', onKeyUp);
-// document.removeEventListener('keyup', onKeyUp);
-     // Fermeture de la lightbox au clavier 
-    //  function onKeyUp(e){
-    //     if (e.key === 'Escape'){
-    //         close(e)
-    //     }
-    // }
+
+// btnPrevious.addEventListener('click', prev );
+// btnNext.addEventListener('click', next );
+
+
+// function next(){
+//     url = currentTarget.getAttribute('href');
+//     const images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
+
+//     let i = images.findIndex(i => i === url);
+//     buildLightbox(i[i + 1])
+// }
+
+
+// function next(e){
+//     e.preventDefault();
+//     let pos = allArticles.findIndex(image => image === url);
+//     buildLightbox(image[i + 1])
+// }

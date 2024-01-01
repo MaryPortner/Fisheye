@@ -17,7 +17,7 @@ contactBtn.addEventListener("click", () =>{
     console.log("TEST");
 })
 
-function contactFormInit(){
+export default function contactFormInit(){
 
     closeModalBtn.addEventListener("click", () => {
         closeModal();
@@ -43,7 +43,7 @@ function contactFormInit(){
     });
 }    
 
-contactFormInit();
+// contactFormInit();
     
     
 function changeBg(color1, color2, color3, display) {
