@@ -62,6 +62,7 @@ function buildLightbox(currentUrl){
         extension == "mp4" ? ` <video controls class="lightbox_img" src="${currentUrl}" alt=""  >` : `<img class="lightbox_img" src="${currentUrl}" alt=""  >}`
         
         close();
+        // next();
 
         return lightbox;
 };
@@ -104,17 +105,11 @@ function onKeyUp(e){
 // btnNext.addEventListener('click', next );
 
 
-// function next(){
-//     url = currentTarget.getAttribute('href');
-//     const images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
-
-//     let i = images.findIndex(i => i === url);
-//     buildLightbox(i[i + 1])
-// }
-
 
 // function next(e){
 //     e.preventDefault();
-//     let pos = allArticles.findIndex(image => image === url);
-//     buildLightbox(image[i + 1])
+//     const images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
+//     url = currentTarget.getAttribute('href');
+//     let pos = images.findIndex(image => image === url);
+//     buildLightbox(image[image + 1])
 // }
