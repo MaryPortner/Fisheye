@@ -15,7 +15,6 @@ export const dataGallery = media.filter(elements => elements.photographerId == i
     {
         return { ...m, hasbeenLiked : false } 
     });
-    console.log(dataGallery);
 export const sortDatasGallery= Array.from(dataGallery);
 
 const photographerModelSingle = photographerTemplateSingle(dataPhotographer, dataGallery);
@@ -32,13 +31,11 @@ if (!id){
 // Insertion des données de la const userCardDOM dans la balise main
 photographersSectionSingle.prepend(userCardDOMSingle);
 
-document.querySelectorAll('.filter').forEach(button => {
-   
-        sortDatasGallery.sort((a, b) => b.likes - a.likes);
-  
-    displayMedia();
+sortDatasGallery.sort((a, b) => b.likes - a.likes); 
+displayMedia();
 
-    button.addEventListener("click",function () {
+document.querySelectorAll('.filter').forEach(button => {
+   button.addEventListener("click",function () {
         const type = button.dataset.filter;
         if (type === 'popularite'){
             sortDatasGallery.sort((a, b) => b.likes - a.likes);}
@@ -57,9 +54,11 @@ document.querySelectorAll('.filter').forEach(button => {
 contactFormInit();
 displayLightbox(dataGallery);
 
+
 function displayMedia(){
     mainGallery.innerHTML = "";
     sortDatasGallery.map((media) => {
+    
         const displayGalleryElement = photographerModelSingle.galleryPhotographer(media);
         photographersSectionSingle.appendChild(displayGalleryElement);
     });

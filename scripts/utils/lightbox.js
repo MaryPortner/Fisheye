@@ -2,17 +2,19 @@ import { main } from "../templates/singlePhotographer.js";
 import { priceTotalLikes } from "../templates/singlePhotographer.js";
 
 
+
 const btnPrevious = document.querySelector(".lightbox_previous-btn");
 const lightboxImg = document.querySelector(".lightbox_img");
 const lightImgTitle = document.querySelector(".lightbox_img-title");
-
-// const asideLikesPrice = document.getElementsByTagName('aside');
 const photographHeader = document.querySelector(".photograph-header");
 
 let currentUrl; 
 let lightbox;
 let title;
 let url;
+let slideIndex = 0;
+
+
 
 
 export function displayLightbox(){
@@ -26,12 +28,18 @@ export function displayLightbox(){
             main.append(buildLightbox(currentUrl));
             // display à none de l'encart likes et prix/jour
             priceTotalLikes.style.display = "none";
-            changeBg("#00000080", "#c4c4c466", "contrast(50%)");
+            changeBg("#00000080", "#c4c4c466", "contrast(60%)");
         });
     });
 
     document.addEventListener('keyup', onKeyUp);
 }
+
+
+
+
+
+
 
 
 function buildLightbox(currentUrl){
