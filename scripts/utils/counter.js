@@ -1,6 +1,3 @@
-let btnClicked;
-
-
 export const displayNbTotalLikes = (dataGallery) => {
     let btnLikes = document.querySelectorAll("button.btnLikes");
     const likes = document.querySelectorAll(".mainPhotographer_gallery__likes");
@@ -10,18 +7,15 @@ export const displayNbTotalLikes = (dataGallery) => {
         btn.addEventListener("click", () => {
             const dataId = btn.dataset.id
             let data = dataGallery.find(data => data.id == dataId);
-            // nouvel objet avec les éléments cliqués.
-            btnClicked = btnLikes;
-
             btn.classList.toggle("clicked");
         
-            if(btn.classList.contains("clicked")){
+            if(!data.hasBeenLiked){
                 btn.style.color = "var(--primary-color)";
                 data.likes ++;
-            }  
-            
-            if (!btn.classList.contains("clicked")) {
+                data.hasBeenLiked = true;
+            } else {
                 btn.style.color = "var(--secondary-color)";
+                data.hasBeenLiked = false;
                 data.likes --;
             }
 
@@ -30,9 +24,6 @@ export const displayNbTotalLikes = (dataGallery) => {
                     element.innerHTML = data.likes;
                 }
             });  
-      
-            console.log(btnClicked);
-
 
             updateNbLikesTotal(dataGallery);
         });
@@ -44,7 +35,6 @@ export const displayNbTotalLikes = (dataGallery) => {
 function updateNbLikesTotal(dataGallery) {
     const counterLikes = document.querySelector(".photographerLikes_total");
     const initialValue = 0;
-    const nbTotalLikes = dataGallery.reduce((accumulator, currentValue) => 
-    accumulator + currentValue.likes, initialValue);
+    const nbTotalLikes = dataGallery.reduce((accumulator, currentValue) => accumulator + currentValue.likes, initialValue);
     counterLikes.innerText = `${nbTotalLikes}`;
 };

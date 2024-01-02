@@ -9,7 +9,7 @@ const lightImgTitle = document.querySelector(".lightbox_img-title");
 // const asideLikesPrice = document.getElementsByTagName('aside');
 const photographHeader = document.querySelector(".photograph-header");
 
-let currentUrl; 
+// let currentUrl; 
 let lightbox;
 let title;
 let url;
@@ -21,12 +21,13 @@ export function displayLightbox(){
         data.addEventListener('click', (e) => {
             e.preventDefault();
             title =  data.getAttribute("alt");
-            currentUrl = e.currentTarget.getAttribute('href');
+            let currentUrl = e.currentTarget.getAttribute('href');
             buildLightbox(currentUrl);
             main.append(buildLightbox(currentUrl));
             // display à none de l'encart likes et prix/jour
             priceTotalLikes.style.display = "none";
             changeBg("#00000080", "#c4c4c466", "contrast(50%)");
+            next(e);
         });
     });
 
@@ -106,10 +107,10 @@ function onKeyUp(e){
 
 
 
-// function next(e){
-//     e.preventDefault();
-//     const images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
-//     url = currentTarget.getAttribute('href');
-//     let pos = images.findIndex(image => image === url);
-//     buildLightbox(image[image + 1])
-// }
+function next(e){
+    e.preventDefault();
+    const images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
+    url = e.currentTarget.getAttribute('href');
+    let pos = images.findIndex(image => image === url);
+    buildLightbox(pos[pos + 1])
+}

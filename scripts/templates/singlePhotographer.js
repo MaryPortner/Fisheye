@@ -45,7 +45,7 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
      /************** gallery photographer **************/
     function galleryPhotographer(galleryImg){
 
-        const { id, photographerId, title, image, video, likes, date, price } = galleryImg;
+        const { id, photographerId, title, image, video, likes, date, price, hasBeenLiked } = galleryImg;
 
         // Création de la div contenant l'image, le titre et les likes
         const articlePhotographer = document.createElement('article');
@@ -97,6 +97,12 @@ export  function photographerTemplateSingle(photographer, dataGallery) {
         btnLikes.setAttribute("type", "button");
         btnLikes.setAttribute("aria-label", "Like");
         btnLikes.setAttribute("data-id",  `${id}`);
+
+        if(hasBeenLiked){
+            btnLikes.style.color = "var(--primary-color)";
+        } else {
+            btnLikes.style.color = "var(--secondary-color)";
+        }
     
         const spanIcone = document.createElement('span');
         spanIcone.classList.add("fas", "fa-heart", "fa-solid", "mainPhotographer_gallery__icone", "aria-hidden=true");
