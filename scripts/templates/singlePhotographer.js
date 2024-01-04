@@ -11,7 +11,7 @@ export const main = document.querySelector('main#mainPhotographer');
 export const priceTotalLikes =  document.createElement("aside");
 
 
-export  function photographerTemplateSingle(photographer, dataGallery) {
+export function photographerTemplateSingle(photographer, dataGallery) {
 
     function displayLikesPrice(){
         

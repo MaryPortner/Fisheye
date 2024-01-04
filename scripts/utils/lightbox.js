@@ -15,7 +15,7 @@ let title;
 let url;
 let slideIndex = 0;
 
-
+let extension;
 
 
 export function displayLightbox(){
@@ -34,7 +34,7 @@ export function displayLightbox(){
             btnNext = document.querySelector(".lightbox_next-btn");
 
             close();
-            slider(allImg,data);
+            // slider(allImg,data);
         });
 
     });
@@ -42,36 +42,72 @@ export function displayLightbox(){
     document.addEventListener('keyup', onKeyUp);
 }
 
-
-
 function buildLightbox(currentUrl){
     const extension = currentUrl.split('.').reverse()[0];
+
     lightbox = document.createElement("div");
-    lightbox.appendChild = '';
+    lightbox.textContent = '';
     lightbox.classList.add("lightbox_content");
-    lightbox.innerHTML = `
-        <button class="btn_lightbox lightbox_close-btn">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
 
-        <button class="btn_lightbox lightbox_next-btn">
-            <i class="fa-solid fa-chevron-right"></i>
-        </button>
 
-        <button class="btn_lightbox lightbox_previous-btn">
-            <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        
-        <div class="lightbox_img">
-        </div>
+    const closeBtnLigthbox = document.createElement("button");
+    closeBtnLigthbox.classList.add("btn_lightbox", "lightbox_close-btn");
 
-        <span class="lightbox_img-title">${title}</span>
-    `
-        lightbox.querySelector('.lightbox_img').innerHTML = 
-        extension == "mp4" ? ` <video controls class="lightbox_img" src="${currentUrl}" alt=""  >` : `<img class="lightbox_img" src="${currentUrl}" alt=""  >}`
-        
-        return lightbox;
-};
+    const imgClose = document.createElement("i");
+    imgClose.classList.add("fa-solid", "fa-xmark");
+
+    const btnLigthboxNext = document.createElement("button");
+    btnLigthboxNext.classList.add("btn_lightbox", "lightbox_next-btn");
+
+    const imgBtnNext = document.createElement("i");
+    imgBtnNext.classList.add("fa-solid", "fa-chevron-right");
+
+    const btnLigthboxPrev = document.createElement("button");
+    btnLigthboxPrev.classList.add("btn_lightbox", "lightbox_previous-btn");
+
+    const imgBtnPrev = document.createElement("i");
+    imgBtnPrev.classList.add("fa-solid", "fa-chevron-left");
+
+    const lightboxImg = document.createElement("div");
+    lightboxImg.classList.add("lightbox_img");
+
+
+    if (extension === "mp4"){ 
+        const video = document.createElement("video");
+        video.classList.add("lightbox_img");
+        video.controls = "controls";
+        video.setAttribute("src", `${currentUrl}`);
+        video.setAttribute("alt", "");
+        lightboxImg.appendChild(video);
+    } else {
+        const image = document.createElement("img");
+        image.classList.add("lightbox_img");
+        image.setAttribute("src", `${currentUrl}`);
+        image.setAttribute("alt", "");
+        lightboxImg.appendChild(image);
+    }
+
+
+ 
+    const titleLigthbox = document.createElement("h2");
+    titleLigthbox.classList.add("lightbox_img-title");
+    titleLigthbox.innerText = `${title}`;
+
+
+    closeBtnLigthbox.appendChild(imgClose);
+    btnLigthboxNext.appendChild(imgBtnNext);
+    btnLigthboxPrev.appendChild(imgBtnPrev);
+   
+
+    lightbox.appendChild(closeBtnLigthbox);
+    lightbox.appendChild(btnLigthboxNext);
+    lightbox.appendChild(btnLigthboxPrev);
+    lightbox.appendChild(lightboxImg);
+
+    return lightbox;
+
+}
+
 
 // Changement du bg à l'affichage de la lightbox 
 function changeBg(color1, color2, color3) {
@@ -88,6 +124,7 @@ function changeBg(color1, color2, color3) {
     videos.style.filter = color3;
 }
 
+
 //Fermeture lightbox
 function close(){
     lightbox.querySelector('.lightbox_close-btn').addEventListener('click', () =>{
@@ -97,6 +134,7 @@ function close(){
         document.removeEventListener('keyup', onKeyUp);
     })
 }
+
 
 // Fermeture de la lightbox au clavier 
 function onKeyUp(e){
@@ -108,38 +146,21 @@ function onKeyUp(e){
 
 
 
-function slider(allImg, data){
-  const firstImg = 0;
-  const lastImg = allImg.length -1;
-  let currentImg = 0;
+// function slider(allImg, data){
+//   const firstImg = 0;
+//   const lastImg = allImg.length -1;
+//   let currentImg = 0;
 
 
 
- btnNext.addEventListener('click', () => {
-    let imgTag = allImg.findIndex(data => data === currentUrl);
-  
-    currentImg++;
-    imgTag = allImg[currentImg];
-      console.log(imgTag);
-      buildLightbox(currentUrl)
- });
+// //  btnNext.addEventListener('click', () => {
+// //         let imgTag = allImg.findIndex(data => data === currentUrl);
+    
+// //         currentImg++;
+// //         imgTag = allImg[currentImg];
+// //         console.log(imgTag);
+// //         buildLightbox(currentUrl)
+// //     });
 
- 
-}
-// url = currentTarget.getAttribute('href');
-// let pos = images.findIndex(image => image === url);
-// buildLightbox(image[image + 1])
+// }
 
-
-// if (extension == "jpg"){
-//             `<div class="lightbox_img">
-//                 <img class="lightbox_img" src="${currentUrl}" alt=""  >}
-//             </div>
-//             `
-          
-//         }else {
-//             `<div class="lightbox_img">
-//                 <video controls class="lightbox_img" src="${currentUrl}" alt=""  >
-//             </div>
-//             `
-//         }`
