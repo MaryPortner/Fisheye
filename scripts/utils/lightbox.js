@@ -5,6 +5,7 @@ import { priceTotalLikes } from "../templates/singlePhotographer.js";
 
 let btnPrevious;
 let btnNext;
+let imgTag;
 const lightboxImg = document.querySelector(".lightbox_img");
 
 const photographHeader = document.querySelector(".photograph-header");
@@ -25,6 +26,7 @@ export function displayLightbox(){
             e.preventDefault();
             title =  data.getAttribute("alt");
             currentUrl = e.currentTarget.getAttribute('href');
+            console.log(currentUrl)
             buildLightbox(currentUrl);
             main.append(buildLightbox(currentUrl));
             // display à none de l'encart likes et prix/jour
@@ -34,7 +36,7 @@ export function displayLightbox(){
             btnNext = document.querySelector(".lightbox_next-btn");
 
             close();
-            // slider(allImg,data);
+            slider(allImg, data);
         });
 
     });
@@ -48,7 +50,6 @@ function buildLightbox(currentUrl){
     lightbox = document.createElement("div");
     lightbox.textContent = '';
     lightbox.classList.add("lightbox_content");
-
 
     const closeBtnLigthbox = document.createElement("button");
     closeBtnLigthbox.classList.add("btn_lightbox", "lightbox_close-btn");
@@ -87,22 +88,19 @@ function buildLightbox(currentUrl){
         lightboxImg.appendChild(image);
     }
 
-
- 
     const titleLigthbox = document.createElement("h2");
     titleLigthbox.classList.add("lightbox_img-title");
     titleLigthbox.innerText = `${title}`;
 
-
     closeBtnLigthbox.appendChild(imgClose);
     btnLigthboxNext.appendChild(imgBtnNext);
     btnLigthboxPrev.appendChild(imgBtnPrev);
-   
 
     lightbox.appendChild(closeBtnLigthbox);
     lightbox.appendChild(btnLigthboxNext);
     lightbox.appendChild(btnLigthboxPrev);
     lightbox.appendChild(lightboxImg);
+    lightbox.appendChild(titleLigthbox);
 
     return lightbox;
 
@@ -135,7 +133,6 @@ function close(){
     })
 }
 
-
 // Fermeture de la lightbox au clavier 
 function onKeyUp(e){
     if (e.key === 'Escape'){
@@ -144,23 +141,18 @@ function onKeyUp(e){
 }
 
 
-
-
-// function slider(allImg, data){
-//   const firstImg = 0;
-//   const lastImg = allImg.length -1;
-//   let currentImg = 0;
-
-
-
-// //  btnNext.addEventListener('click', () => {
-// //         let imgTag = allImg.findIndex(data => data === currentUrl);
+function slider(allImg, data){
+    const firstImg = 0;
+    const lastImg = allImg.length -1;
+    let currentImg = 0;
+    btnNext.addEventListener('click', () => {
+        imgTag = allImg.findIndex(data => data === currentUrl);
+        currentImg++;
+        imgTag = allImg[currentImg].getAttribute('href');;
+        console.log(imgTag);
+        return imgTag
     
-// //         currentImg++;
-// //         imgTag = allImg[currentImg];
-// //         console.log(imgTag);
-// //         buildLightbox(currentUrl)
-// //     });
+    });
 
-// }
+}
 
