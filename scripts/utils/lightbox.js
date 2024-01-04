@@ -3,9 +3,10 @@ import { priceTotalLikes } from "../templates/singlePhotographer.js";
 
 
 
-const btnPrevious = document.querySelector(".lightbox_previous-btn");
+let btnPrevious;
+let btnNext;
 const lightboxImg = document.querySelector(".lightbox_img");
-const lightImgTitle = document.querySelector(".lightbox_img-title");
+
 const photographHeader = document.querySelector(".photograph-header");
 
 let currentUrl; 
@@ -18,8 +19,8 @@ let slideIndex = 0;
 
 
 export function displayLightbox(){
-    const allArticles = Array.from(document.querySelectorAll(".linkImgPhotographer"));
-    allArticles.forEach(data => {
+    const allImg = Array.from(document.querySelectorAll(".linkImgPhotographer"));
+    allImg.forEach(data => {
         data.addEventListener('click', (e) => {
             e.preventDefault();
             title =  data.getAttribute("alt");
@@ -29,7 +30,13 @@ export function displayLightbox(){
             // display à none de l'encart likes et prix/jour
             priceTotalLikes.style.display = "none";
             changeBg("#00000080", "#c4c4c466", "contrast(60%)");
+            btnPrevious = document.querySelector(".lightbox_previous-btn");
+            btnNext = document.querySelector(".lightbox_next-btn");
+
+            close();
+            slider(allImg,data);
         });
+
     });
 
     document.addEventListener('keyup', onKeyUp);
@@ -37,13 +44,7 @@ export function displayLightbox(){
 
 
 
-
-
-
-
-
 function buildLightbox(currentUrl){
-
     const extension = currentUrl.split('.').reverse()[0];
     lightbox = document.createElement("div");
     lightbox.appendChild = '';
@@ -69,9 +70,6 @@ function buildLightbox(currentUrl){
         lightbox.querySelector('.lightbox_img').innerHTML = 
         extension == "mp4" ? ` <video controls class="lightbox_img" src="${currentUrl}" alt=""  >` : `<img class="lightbox_img" src="${currentUrl}" alt=""  >}`
         
-        close();
-        // next();
-
         return lightbox;
 };
 
@@ -109,15 +107,39 @@ function onKeyUp(e){
 
 
 
-// btnPrevious.addEventListener('click', prev );
-// btnNext.addEventListener('click', next );
+
+function slider(allImg, data){
+  const firstImg = 0;
+  const lastImg = allImg.length -1;
+  let currentImg = 0;
 
 
 
-// function next(e){
-//     e.preventDefault();
-//     const images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
-//     url = currentTarget.getAttribute('href');
-//     let pos = images.findIndex(image => image === url);
-//     buildLightbox(image[image + 1])
-// }
+ btnNext.addEventListener('click', () => {
+    let imgTag = allImg.findIndex(data => data === currentUrl);
+  
+    currentImg++;
+    imgTag = allImg[currentImg];
+      console.log(imgTag);
+      buildLightbox(currentUrl)
+ });
+
+ 
+}
+// url = currentTarget.getAttribute('href');
+// let pos = images.findIndex(image => image === url);
+// buildLightbox(image[image + 1])
+
+
+// if (extension == "jpg"){
+//             `<div class="lightbox_img">
+//                 <img class="lightbox_img" src="${currentUrl}" alt=""  >}
+//             </div>
+//             `
+          
+//         }else {
+//             `<div class="lightbox_img">
+//                 <video controls class="lightbox_img" src="${currentUrl}" alt=""  >
+//             </div>
+//             `
+//         }`

@@ -15,6 +15,7 @@ export const dataGallery = media.filter(elements => elements.photographerId == i
     {
         return { ...m, hasbeenLiked : false } 
     });
+
 export const sortDatasGallery= Array.from(dataGallery);
 
 const photographerModelSingle = photographerTemplateSingle(dataPhotographer, dataGallery);
