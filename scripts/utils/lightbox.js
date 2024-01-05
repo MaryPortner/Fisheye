@@ -20,13 +20,14 @@ let extension;
 
 
 export function displayLightbox(){
-    const allImg = Array.from(document.querySelectorAll(".linkImgPhotographer"));
-    allImg.forEach(data => {
+    const images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
+    // const images = allImg.map(img => img.getAttribute('href'));
+    images.forEach(data => {
         data.addEventListener('click', (e) => {
             e.preventDefault();
             title =  data.getAttribute("alt");
             currentUrl = e.currentTarget.getAttribute('href');
-            console.log(currentUrl)
+            console.log(currentUrl);
             buildLightbox(currentUrl);
             main.append(buildLightbox(currentUrl));
             // display à none de l'encart likes et prix/jour
@@ -36,15 +37,15 @@ export function displayLightbox(){
             btnNext = document.querySelector(".lightbox_next-btn");
 
             close();
-            slider(allImg, data);
-        });
+            slider(images, currentUrl);
 
+        });
     });
 
     document.addEventListener('keyup', onKeyUp);
 }
 
-function buildLightbox(currentUrl){
+function buildLightbox(){
     const extension = currentUrl.split('.').reverse()[0];
 
     lightbox = document.createElement("div");
@@ -72,20 +73,23 @@ function buildLightbox(currentUrl){
     const lightboxImg = document.createElement("div");
     lightboxImg.classList.add("lightbox_img");
 
-
-    if (extension === "mp4"){ 
-        const video = document.createElement("video");
-        video.classList.add("lightbox_img");
-        video.controls = "controls";
-        video.setAttribute("src", `${currentUrl}`);
-        video.setAttribute("alt", "");
-        lightboxImg.appendChild(video);
-    } else {
-        const image = document.createElement("img");
-        image.classList.add("lightbox_img");
-        image.setAttribute("src", `${currentUrl}`);
-        image.setAttribute("alt", "");
-        lightboxImg.appendChild(image);
+    if (controlExt(extension)){ 
+        if(extension === "mp4"){
+            const video = document.createElement("video");
+            video.classList.add("lightbox_img");
+            video.controls = "controls";
+            video.setAttribute("src", `${currentUrl}`);
+            video.setAttribute("alt", "");
+            lightboxImg.appendChild(video);
+        } else if (extension === "jpg"){
+            const image = document.createElement("img");
+            image.classList.add("lightbox_img");
+            image.setAttribute("src", `${currentUrl}`);
+            image.setAttribute("alt", "");
+            lightboxImg.appendChild(image);
+        } else {
+            console.log(`Le fichier ${currentUrl} n'est pas géré par la lightbox`);
+        }
     }
 
     const titleLigthbox = document.createElement("h2");
@@ -103,7 +107,6 @@ function buildLightbox(currentUrl){
     lightbox.appendChild(titleLigthbox);
 
     return lightbox;
-
 }
 
 
@@ -133,6 +136,18 @@ function close(){
     })
 }
 
+// Contrôle de l'extension du fichier média
+function controlExt(extension) {
+    const allowExt = ["mp4", "jpg"]; 
+
+    if (allowExt.includes(extension)){ 
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
 // Fermeture de la lightbox au clavier 
 function onKeyUp(e){
     if (e.key === 'Escape'){
@@ -141,18 +156,15 @@ function onKeyUp(e){
 }
 
 
-function slider(allImg, data){
+function slider(images, currentUrl){
     const firstImg = 0;
-    const lastImg = allImg.length -1;
+    const lastImg = currentUrl.length -1;
     let currentImg = 0;
     btnNext.addEventListener('click', () => {
-        imgTag = allImg.findIndex(data => data === currentUrl);
+        imgTag = images.findIndex(image => image === currentUrl);
         currentImg++;
-        imgTag = allImg[currentImg].getAttribute('href');;
-        console.log(imgTag);
-        return imgTag
-    
+        console.log(currentImg);
+        currentUrl = images[currentImg].getAttribute('href');
+        console.log(currentUrl);   
     });
-
 }
-
