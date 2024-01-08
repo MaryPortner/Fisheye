@@ -1,14 +1,18 @@
-
 import { dropdown } from './../utils/menuDropDown.js';
-import { dataPhotographer, dataGallery } from './../pages/photographer.js';
+import { dataPhotographer } from './../pages/photographer.js';
 import { displayNbTotalLikes } from "../utils/counter.js";
 import { mediaFactory } from '../factory.js';
+import { contactFormInit } from '../utils/contactForm.js';
 
 
 export const mainGallery = document.createElement('div');
-mainGallery.classList.add("mainPhotographer_gallery");
+
 export const main = document.querySelector('main#mainPhotographer');
 export const priceTotalLikes =  document.createElement("aside");
+export const btnContact = document.createElement("button");
+export const imgPhotographer = document.createElement("img");
+export const linkImg = document.createElement('a');
+const name = document.querySelector(".namePhotographer");
 
 
 export function photographerTemplateSingle(photographer, dataGallery) {
@@ -46,6 +50,8 @@ export function photographerTemplateSingle(photographer, dataGallery) {
     function galleryPhotographer(galleryImg){
 
         const { id, photographerId, title, image, video, likes, date, price, hasBeenLiked } = galleryImg;
+
+        mainGallery.classList.add("mainPhotographer_gallery");
 
         // Création de la div contenant l'image, le titre et les likes
         const articlePhotographer = document.createElement('article');
@@ -107,7 +113,6 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         const spanIcone = document.createElement('span');
         spanIcone.classList.add("fas", "fa-heart", "fa-solid", "mainPhotographer_gallery__icone", "aria-hidden=true");
 
-
         articlePhotographer.appendChild(linkImg);
         linkImg.appendChild(medias);
         btnLikes.appendChild(spanIcone);
@@ -122,37 +127,71 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         return mainGallery;
     }
 
+
     function getUserSingleCardDOM() {
         // On récupére la div photographer-header
-        const photographHeader = document.querySelector('.photograph-header');
+        const photographHeader = document.querySelector(".photograph-header");
 
-        const presentationPhotographer = `
-            <div class="photographer-header__presentation">
-                <h1 class="cardUser__title">${photographer.name}</h1>
-                <p class="cardUser__cityCountry">${photographer.city}, ${photographer.country}</p>
-                <p class="cardUser__tagline">${photographer.tagline}</p>
-                <a title="page de ${photographer.name}" alt="photo de ${photographer.name}" href=""></a>
-            </div>
-            <div class="photograph-btn">
-                <button class="contact_button">Contactez-moi</button>
-            </div>
-            <img class="cardUser__img"
-                alt="${photographer.name}"
-                src="${photographer.portrait}"
-                title=" photo de ${photographer.name}"
-            />
-        `
-        //on ajoute la présentation du photographe
-        photographHeader.innerHTML = presentationPhotographer;
+        const presentationPhotographer = document.createElement("div");
+        presentationPhotographer.classList.add("photographer-header__presentation");
+
+        const photographerName = document.createElement("h1");
+        photographerName.classList.add("cardUser__title");
+        photographerName.innerText = `${photographer.name}`; 
+
+        const cityCountry =  document.createElement("p");
+        cityCountry.classList.add("cardUser__cityCountry");
+        cityCountry.innerText = `${photographer.city}, ${photographer.country}`;
+        
+        const tagline =  document.createElement("p");
+        tagline.classList.add("cardUser__tagline");
+        tagline.innerText = `${photographer.tagline}`;
+
+        const linkPhotographer = document.createElement("a");
+        linkPhotographer.setAttribute("title",`page de ${photographer.name}`);
+        linkPhotographer.setAttribute("alt",`photo de ${photographer.name}`);
+        linkPhotographer.setAttribute("href", "");
+
+        const photographBtn =  document.createElement("div");
+        photographBtn.classList.add("photograph-btn");
+        
+        btnContact.setAttribute("id", "contact");
+        btnContact.classList.add("contact_button");
+        btnContact.innerText = `Contactez-moi`;
+
+        imgPhotographer.classList.add("cardUser__img");
+        imgPhotographer.setAttribute("alt", `${photographer.name}`);
+        imgPhotographer.setAttribute("src", `${photographer.portrait}`);
+        imgPhotographer.setAttribute("title", `photo de ${photographer.name}`);
+
+
+
+        presentationPhotographer.appendChild(photographerName);
+        presentationPhotographer.appendChild(cityCountry);
+        presentationPhotographer.appendChild(tagline);
+        presentationPhotographer.appendChild(linkPhotographer);
+
+        photographBtn.appendChild(btnContact);
+
+        photographHeader.appendChild(presentationPhotographer);
+        photographHeader.appendChild(photographBtn);
+        photographHeader.appendChild(imgPhotographer);
 
         return photographHeader;
     }
 
-  
     displayLikesPrice();
     displayNbTotalLikes(dataGallery);
     dropdown();
 
-    // on retourne notre constante et notre fonction.
+    name.innerHTML = dataPhotographer.name;
+    contactFormInit();
+
     return {getUserSingleCardDOM, galleryPhotographer, mediaFactory, displayLikesPrice, displayNbTotalLikes, dataGallery}
 }
+
+
+
+
+
+

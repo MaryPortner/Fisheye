@@ -427,7 +427,7 @@ textarea{
     background-color: white;
 }
 
-.lightbox_img{
+.lightbox_content-img, .lightbox_img{
     position: absolute;
     top: 50%;
     left: 50%;

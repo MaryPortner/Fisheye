@@ -1,43 +1,45 @@
 import { main } from "../templates/singlePhotographer.js";
 import { priceTotalLikes } from "../templates/singlePhotographer.js";
 
-
-
-let btnPrevious;
-let btnNext;
-let imgTag;
-const lightboxImg = document.querySelector(".lightbox_img");
-
-const photographHeader = document.querySelector(".photograph-header");
-
-let currentUrl; 
+let btnLigthboxPrev;
+let btnLigthboxNext;
+let currentImgIndex;
+let currentUrl;
+let imgDisplayed; 
+let indexImg;
 let lightbox;
+const photographHeader = document.querySelector(".photograph-header");
 let title;
-let url;
-let slideIndex = 0;
 
-let extension;
 
 
 export function displayLightbox(){
-    const images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
-    // const images = allImg.map(img => img.getAttribute('href'));
+    let images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
+ 
+    // console.log(images);
     images.forEach(data => {
         data.addEventListener('click', (e) => {
             e.preventDefault();
+            indexImg = e.currentTarget;
+
+            imgDisplayed  = indexImg.getAttribute('href');
+            console.log(imgDisplayed);
+
+            currentImgIndex = images.findIndex(image => image === indexImg);
+
             title =  data.getAttribute("alt");
-            currentUrl = e.currentTarget.getAttribute('href');
-            console.log(currentUrl);
-            buildLightbox(currentUrl);
-            main.append(buildLightbox(currentUrl));
+
+            buildLightbox(imgDisplayed);
+            main.append(buildLightbox(imgDisplayed));
             // display à none de l'encart likes et prix/jour
             priceTotalLikes.style.display = "none";
             changeBg("#00000080", "#c4c4c466", "contrast(60%)");
-            btnPrevious = document.querySelector(".lightbox_previous-btn");
-            btnNext = document.querySelector(".lightbox_next-btn");
+
+            // btnPrevious = document.querySelector(".lightbox_previous-btn");
+            // btnNext = document.querySelector(".lightbox_next-btn");
 
             close();
-            slider(images, currentUrl);
+            slider(imgDisplayed, currentImgIndex, images);
 
         });
     });
@@ -46,7 +48,7 @@ export function displayLightbox(){
 }
 
 function buildLightbox(){
-    const extension = currentUrl.split('.').reverse()[0];
+    const extension = imgDisplayed.split('.').reverse()[0];
 
     lightbox = document.createElement("div");
     lightbox.textContent = '';
@@ -58,33 +60,33 @@ function buildLightbox(){
     const imgClose = document.createElement("i");
     imgClose.classList.add("fa-solid", "fa-xmark");
 
-    const btnLigthboxNext = document.createElement("button");
+    btnLigthboxNext = document.createElement("button");
     btnLigthboxNext.classList.add("btn_lightbox", "lightbox_next-btn");
 
     const imgBtnNext = document.createElement("i");
     imgBtnNext.classList.add("fa-solid", "fa-chevron-right");
 
-    const btnLigthboxPrev = document.createElement("button");
+    btnLigthboxPrev = document.createElement("button");
     btnLigthboxPrev.classList.add("btn_lightbox", "lightbox_previous-btn");
 
     const imgBtnPrev = document.createElement("i");
     imgBtnPrev.classList.add("fa-solid", "fa-chevron-left");
 
     const lightboxImg = document.createElement("div");
-    lightboxImg.classList.add("lightbox_img");
+    lightboxImg.classList.add("lightbox_content-img");
 
     if (controlExt(extension)){ 
         if(extension === "mp4"){
             const video = document.createElement("video");
             video.classList.add("lightbox_img");
             video.controls = "controls";
-            video.setAttribute("src", `${currentUrl}`);
+            video.setAttribute("src", `${imgDisplayed}`);
             video.setAttribute("alt", "");
             lightboxImg.appendChild(video);
         } else if (extension === "jpg"){
             const image = document.createElement("img");
             image.classList.add("lightbox_img");
-            image.setAttribute("src", `${currentUrl}`);
+            image.setAttribute("src", `${imgDisplayed}`);
             image.setAttribute("alt", "");
             lightboxImg.appendChild(image);
         } else {
@@ -129,11 +131,12 @@ function changeBg(color1, color2, color3) {
 //Fermeture lightbox
 function close(){
     lightbox.querySelector('.lightbox_close-btn').addEventListener('click', () =>{
+        lightbox.textContent = '';
         lightbox.style.display = "none";
         priceTotalLikes.style.display = "flex";
         changeBg("#FFFFFF", "#FAFAFA", "none");
-        document.removeEventListener('keyup', onKeyUp);
-    })
+        document.removeEventListener('keyup', onKeyUp);      
+    });
 }
 
 // Contrôle de l'extension du fichier média
@@ -156,15 +159,72 @@ function onKeyUp(e){
 }
 
 
-function slider(images, currentUrl){
+
+
+
+function slider(imgDisplayed, currentImgIndex, images){
+    // console.log(imgDisplayed);
+
     const firstImg = 0;
-    const lastImg = currentUrl.length -1;
+    const lastImg = imgDisplayed.length -1;
     let currentImg = 0;
-    btnNext.addEventListener('click', () => {
-        imgTag = images.findIndex(image => image === currentUrl);
-        currentImg++;
-        console.log(currentImg);
-        currentUrl = images[currentImg].getAttribute('href');
-        console.log(currentUrl);   
+
+    btnLigthboxNext.addEventListener('click', () => {
+     
+        console.log(currentImgIndex);
+        currentImgIndex++;
+
+        let currentUrl = images[currentImgIndex].getAttribute('href');
+
+        console.log(currentUrl);
+        imgDisplayed = currentUrl;
     });
 }
+
+
+
+
+
+
+
+
+
+
+// function slider(allImg, data){
+//     const firstImg = 0;
+//     const lastImg = allImg.length -1;
+//     let currentImg = 0;
+//     btnNext.addEventListener('click', () => {
+//         imgTag = allImg.findIndex(data => data === currentUrl);
+//         console.log(currentImg);
+//         currentImg++;
+//         console.log(currentImg);
+//         imgTag = allImg[currentImg].getAttribute('href');;
+//         console.log(imgTag);
+//         return imgTag
+    
+//     });
+
+// }
+
+
+
+
+
+// function slider(images, imgDisplayed, indexCurrentImg){
+//     const firstImg = 0;
+//     const lastImg = indexCurrentImg.length -1;
+//     let currentImg = indexCurrentImg;
+
+//     console.log(currentImg);
+//     btnNext.addEventListener('click', () => {
+//         imgTag = images.findIndex(image => image === indexCurrentImg);
+//         currentImg++;
+//     console.log(currentImg);
+//         imgTag = images[currentImg].getAttribute('href');
+//         console.log(imgTag);
+// //   return imgTag;
+//     });
+// } 
+
+

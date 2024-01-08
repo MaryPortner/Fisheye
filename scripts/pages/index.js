@@ -2,6 +2,7 @@
 import { photographerTemplate } from '../templates/photographers.js';
 import { getDatas } from '../utils/getData.js';
 
+
 // *********** Récupération des datas ***********/
 const { photographers } = await getDatas();
 

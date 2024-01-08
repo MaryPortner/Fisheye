@@ -2,7 +2,6 @@
 import { getDatas } from "../utils/getData.js";
 import { mainGallery, photographerTemplateSingle} from "./../templates/singlePhotographer.js"
 import { displayNbTotalLikes } from "../utils/counter.js";
-import  contactFormInit from './../utils/contactForm.js';
 import { displayLightbox } from '../utils/lightbox.js';
 
 
@@ -52,7 +51,7 @@ document.querySelectorAll('.filter').forEach(button => {
 })
 
 
-contactFormInit();
+
 displayLightbox(dataGallery);
 
 
@@ -65,3 +64,4 @@ function displayMedia(){
     });
     displayNbTotalLikes(dataGallery);
 }
+
