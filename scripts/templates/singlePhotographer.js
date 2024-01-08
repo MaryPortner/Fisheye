@@ -13,7 +13,7 @@ export const btnContact = document.createElement("button");
 export const imgPhotographer = document.createElement("img");
 export const linkImg = document.createElement('a');
 const name = document.querySelector(".namePhotographer");
-
+export let allArticles;
 
 export function photographerTemplateSingle(photographer, dataGallery) {
 
@@ -123,7 +123,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         articlePhotographer.appendChild(titlePriceLikes);
 
         mainGallery.appendChild(articlePhotographer);
-
+        allArticles = document.querySelectorAll('.articleImgPhotographer');
         return mainGallery;
     }
 

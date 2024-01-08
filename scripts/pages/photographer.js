@@ -17,6 +17,8 @@ export const dataGallery = media.filter(elements => elements.photographerId == i
 
 export const sortDatasGallery= Array.from(dataGallery);
 
+export let allArticles;
+
 const photographerModelSingle = photographerTemplateSingle(dataPhotographer, dataGallery);
 const photographersSectionSingle = document.querySelector("#mainPhotographer");
 const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
@@ -64,4 +66,3 @@ function displayMedia(){
     });
     displayNbTotalLikes(dataGallery);
 }
-
