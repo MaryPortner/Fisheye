@@ -156,15 +156,19 @@ function onKeyUp(e){
 }
 
 
-let firstImg =0;
-// let lastImg = images.length-1;
+
+
 
 function next(images){
-
+    let currentUrl;
+    let lastImg = images.length-1;
     btnLigthboxNext.addEventListener('click', () => {
         console.log(currentImgIndex);
         currentImgIndex++;
-        let currentUrl = images[currentImgIndex].getAttribute('href');
+        if (currentImgIndex >= lastImg){
+            currentImgIndex = lastImg;
+        }
+        currentUrl = images[currentImgIndex].getAttribute('href');
         console.log(currentUrl);
         return currentUrl;
     });
@@ -173,11 +177,14 @@ function next(images){
 
 
 function prev(images){
-    let lastImg = images.length-1;
+    let lastImg = 0;
     btnLigthboxPrev.addEventListener('click', () => {
         console.log(currentImgIndex);
         currentImgIndex--;
-        let currentUrl = images[currentImgIndex].getAttribute('href');
+        if (currentImgIndex <= lastImg){
+            currentImgIndex = 0;
+        }
+        currentUrl = images[currentImgIndex].getAttribute('href');
         console.log(currentUrl);
         return currentUrl;
     });
