@@ -6,8 +6,6 @@ export function mediaFactory(datas){
         el.setAttribute("src", datas.video);
         el.setAttribute("alt", datas.title);
         el.setAttribute("type", "video/mp4" );
-     
-
 
     } else if (datas.hasOwnProperty('image')){
         el = document.createElement('img');

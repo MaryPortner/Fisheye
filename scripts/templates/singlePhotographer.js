@@ -5,15 +5,16 @@ import { mediaFactory } from '../factory.js';
 import { contactFormInit } from '../utils/contactForm.js';
 
 
-export const mainGallery = document.createElement('div');
-
-export const main = document.querySelector('main#mainPhotographer');
-export const priceTotalLikes =  document.createElement("aside");
+export let allArticles;
 export const btnContact = document.createElement("button");
 export const imgPhotographer = document.createElement("img");
 export const linkImg = document.createElement('a');
+export const main = document.querySelector('main#mainPhotographer');
+export const mainGallery = document.createElement('div');
 const name = document.querySelector(".namePhotographer");
-export let allArticles;
+export const priceTotalLikes =  document.createElement("aside");
+
+
 
 export function photographerTemplateSingle(photographer, dataGallery) {
 
@@ -30,7 +31,6 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         counterIcone.setAttribute("src", "assets/icons/likeBlack.svg");
         counterIcone.setAttribute("aria-hiden", true);
         
-
         const priceByDay = document.createElement("span");
         priceByDay.classList.add("priceByDay");
         priceByDay.innerText = `${photographer.price}€ / Jour`;
@@ -113,6 +113,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         const spanIcone = document.createElement('span');
         spanIcone.classList.add("fas", "fa-heart", "fa-solid", "mainPhotographer_gallery__icone", "aria-hidden=true");
 
+
         articlePhotographer.appendChild(linkImg);
         linkImg.appendChild(medias);
         btnLikes.appendChild(spanIcone);
@@ -124,6 +125,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
 
         mainGallery.appendChild(articlePhotographer);
         allArticles = document.querySelectorAll('.articleImgPhotographer');
+
         return mainGallery;
     }
 

@@ -1,3 +1,59 @@
+
+// function slider(allImg, data){
+//     const firstImg = 0;
+//     const lastImg = allImg.length -1;
+//     let currentImg = 0;
+//     btnNext.addEventListener('click', () => {
+//         imgTag = allImg.findIndex(data => data === currentUrl);
+//         console.log(currentImg);
+//         currentImg++;
+//         console.log(currentImg);
+//         imgTag = allImg[currentImg].getAttribute('href');;
+//         console.log(imgTag);
+//         return imgTag
+    
+//     });
+
+// }
+
+
+
+
+
+// function slider(images, imgDisplayed, indexCurrentImg){
+//     const firstImg = 0;
+//     const lastImg = indexCurrentImg.length -1;
+//     let currentImg = indexCurrentImg;
+
+//     console.log(currentImg);
+//     btnNext.addEventListener('click', () => {
+//         imgTag = images.findIndex(image => image === indexCurrentImg);
+//         currentImg++;
+//     console.log(currentImg);
+//         imgTag = images[currentImg].getAttribute('href');
+//         console.log(imgTag);
+// //   return imgTag;
+//     });
+// } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // // function slider(currentUrl){
 // //     const firstImg = 0;
 // //     const lastImg = currentUrl.length -1;

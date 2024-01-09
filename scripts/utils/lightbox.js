@@ -12,11 +12,9 @@ const photographHeader = document.querySelector(".photograph-header");
 let title;
 
 
-
 export function displayLightbox(){
     let images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
  
-    // console.log(images);
     images.forEach(data => {
         data.addEventListener('click', (e) => {
             e.preventDefault();
@@ -35,11 +33,10 @@ export function displayLightbox(){
             priceTotalLikes.style.display = "none";
             changeBg("#00000080", "#c4c4c466", "contrast(60%)");
 
-            // btnPrevious = document.querySelector(".lightbox_previous-btn");
-            // btnNext = document.querySelector(".lightbox_next-btn");
-
             close();
-            slider(imgDisplayed, currentImgIndex, images);
+            // slider(imgDisplayed, currentImgIndex, images);
+            prev(images)
+            next(images);
 
         });
     });
@@ -159,72 +156,59 @@ function onKeyUp(e){
 }
 
 
+let firstImg =0;
+// let lastImg = images.length-1;
 
-
-
-function slider(imgDisplayed, currentImgIndex, images){
-    // console.log(imgDisplayed);
-
-    const firstImg = 0;
-    const lastImg = imgDisplayed.length -1;
-    let currentImg = 0;
+function next(images){
 
     btnLigthboxNext.addEventListener('click', () => {
-     
         console.log(currentImgIndex);
         currentImgIndex++;
-
         let currentUrl = images[currentImgIndex].getAttribute('href');
-
         console.log(currentUrl);
-        imgDisplayed = currentUrl;
+        return currentUrl;
     });
+
+}
+
+
+function prev(images){
+    let lastImg = images.length-1;
+    btnLigthboxPrev.addEventListener('click', () => {
+        console.log(currentImgIndex);
+        currentImgIndex--;
+        let currentUrl = images[currentImgIndex].getAttribute('href');
+        console.log(currentUrl);
+        return currentUrl;
+    });
+
 }
 
 
 
+// function slider(imgDisplayed, currentImgIndex, images){
+//     // console.log(imgDisplayed);
 
-
-
-
-
-
-
-// function slider(allImg, data){
 //     const firstImg = 0;
-//     const lastImg = allImg.length -1;
+//     const lastImg = imgDisplayed.length -1;
 //     let currentImg = 0;
-//     btnNext.addEventListener('click', () => {
-//         imgTag = allImg.findIndex(data => data === currentUrl);
-//         console.log(currentImg);
-//         currentImg++;
-//         console.log(currentImg);
-//         imgTag = allImg[currentImg].getAttribute('href');;
-//         console.log(imgTag);
-//         return imgTag
-    
-//     });
 
+//     btnLigthboxNext.addEventListener('click', () => {
+     
+//         console.log(currentImgIndex);
+//         currentImgIndex++;
+
+//         let currentUrl = images[currentImgIndex].getAttribute('href');
+
+//         console.log(currentUrl);
+//         imgDisplayed = currentUrl;
+//     });
 // }
 
 
 
 
 
-// function slider(images, imgDisplayed, indexCurrentImg){
-//     const firstImg = 0;
-//     const lastImg = indexCurrentImg.length -1;
-//     let currentImg = indexCurrentImg;
 
-//     console.log(currentImg);
-//     btnNext.addEventListener('click', () => {
-//         imgTag = images.findIndex(image => image === indexCurrentImg);
-//         currentImg++;
-//     console.log(currentImg);
-//         imgTag = images[currentImg].getAttribute('href');
-//         console.log(imgTag);
-// //   return imgTag;
-//     });
-// } 
 
 

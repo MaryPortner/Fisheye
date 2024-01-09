@@ -3,7 +3,6 @@ import { btnContact, imgPhotographer, allArticles, priceTotalLikes } from "../te
 const closeModalBtn = document.querySelector(".modal_Close");
 const firstName = document.querySelector("#firstName");
 const form = document.querySelector('form');
-
 const last = document.querySelector("#last");
 const mail = document.querySelector("#email");
 const message = document.querySelector("#message");
@@ -14,31 +13,29 @@ const photographHeader = document.querySelector(".photograph-header");
 
 export function contactFormInit(){
 
-    console.log(allArticles);
- 
     closeModalBtn.addEventListener("click", () => {
         closeModal();
         changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
     });
-    
     
     btnContact.addEventListener("click", () => {
         displayModal();
         changeBg("#00000040", "#c4c4c466", "contrast(50%)", "none");
     });
     
-    
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         if(firstName.value == ''  ||  last.value == ''   || mail.value == ''   || message.value == ''   ){ 
             alert('Vous devez remplir tous les champs');
         } else {
+
             confirmSendingForm();
             closeModal();
             changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
         }
     });
- }
+}
+
     
 function changeBg(color1, color2, color3, display) {
     document.body.style.background = color1;
@@ -50,10 +47,12 @@ function changeBg(color1, color2, color3, display) {
     priceTotalLikes.style.display = display;
 }
 
+
 function closeModal() {
     modal.style.display = "none";
     form.reset();
 }
+
 
 function confirmSendingForm(){
     const getDataForm = {
@@ -64,6 +63,7 @@ function confirmSendingForm(){
     }
     console.log(getDataForm);
 }
+
 
 function displayModal() {
     modal.style.display = "block";
