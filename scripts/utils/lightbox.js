@@ -35,7 +35,7 @@ export function displayLightbox(){
 
             close();
             // slider(imgDisplayed, currentImgIndex, images);
-            prev(images)
+            prev(images);
             next(images);
 
         });

@@ -1,10 +1,11 @@
 const btnDrop = document.querySelector('.btn_drop');
+const btnTarget = document.querySelector('.dropdown_content li.submenu1 #target');
 const currentSort = document.querySelector('#currentSort');
 const filters = Array.from(document.querySelectorAll('.dropdown_content li button'));
 let filterSelected = "";
 const menu = document.querySelector('.dropdown_content');
-const btnTarget = document.querySelector('.dropdown_content li.submenu1 #target');
-const btnLikes = document.querySelectorAll("button.btnLikes");
+
+
 
 export function dropdown(){
     btnTarget.style.display="none";

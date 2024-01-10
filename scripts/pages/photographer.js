@@ -12,10 +12,11 @@ export const id = params.get("idPhotographer");
 export const dataPhotographer = photographers.find( elements => elements.id == id);
 export const dataGallery = media.filter(elements => elements.photographerId == id).map(m => 
     {
-        return { ...m, hasbeenLiked : false } 
+        return { ...m, hasbeenLiked : false} // Ajoute hasbeenLiked sur chaque élément du tableau
     });
 
-export const sortDatasGallery= Array.from(dataGallery);
+
+export const sortDatasGallery= Array.from(dataGallery); // Copie de dataGallery pour trie de données
 
 export let allArticles;
 
@@ -36,14 +37,16 @@ photographersSectionSingle.prepend(userCardDOMSingle);
 sortDatasGallery.sort((a, b) => b.likes - a.likes); 
 displayMedia();
 
-document.querySelectorAll('.filter').forEach(button => {
+document.querySelectorAll('.dropdown_content-filter').forEach(button => {
    button.addEventListener("click",function () {
         const type = button.dataset.filter;
         if (type === 'popularite'){
-            sortDatasGallery.sort((a, b) => b.likes - a.likes);}
+            sortDatasGallery.sort(( a,  b) => b.likes - a.likes);
+        }
         if ( type === 'date'){
             sortDatasGallery.sort(( a , b ) => new Date(b.date) - new Date(a.date)); 
-        } else if ( type === 'titre') {
+        }
+        if ( type === 'titre') {
             sortDatasGallery.sort(( a , b ) => (a.title.localeCompare(b.title))); 
         }
 
