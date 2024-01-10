@@ -10,8 +10,8 @@ const menu = document.querySelector('.dropdown_content');
 export function dropdown(){
     btnTarget.style.display="none";
     const showHideMenu = () => {
-        document.querySelector('.arrow').classList.remove('rotate');
-        menu.classList.add('active');
+        document.querySelector('.arrow').classList.toggle('rotate');
+        menu.classList.toggle('active');
         menu.classList.remove('displayNone');
     }
     btnDrop.addEventListener('click', showHideMenu);

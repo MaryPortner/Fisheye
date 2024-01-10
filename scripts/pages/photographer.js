@@ -34,14 +34,14 @@ if (!id){
 // Insertion des données de la const userCardDOM dans la balise main
 photographersSectionSingle.prepend(userCardDOMSingle);
 
-sortDatasGallery.sort((a, b) => b.likes - a.likes); 
+sortByPopularity();
 displayMedia();
 
 document.querySelectorAll('.dropdown_content-filter').forEach(button => {
    button.addEventListener("click",function () {
         const type = button.dataset.filter;
         if (type === 'popularite'){
-            sortDatasGallery.sort(( a,  b) => b.likes - a.likes);
+            sortByPopularity();
         }
         if ( type === 'date'){
             sortDatasGallery.sort(( a , b ) => new Date(b.date) - new Date(a.date)); 
@@ -55,8 +55,7 @@ document.querySelectorAll('.dropdown_content-filter').forEach(button => {
     });
 })
 
-
-
+// Affichage lightbox en fonction des données de la galerie
 displayLightbox(dataGallery);
 
 
@@ -68,4 +67,9 @@ function displayMedia(){
         photographersSectionSingle.appendChild(displayGalleryElement);
     });
     displayNbTotalLikes(dataGallery);
+}
+
+// Factorisation du tri par likes
+function sortByPopularity(){
+    sortDatasGallery.sort(( a,  b) => b.likes - a.likes);
 }
