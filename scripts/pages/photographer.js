@@ -2,7 +2,7 @@
 import { getDatas } from "../utils/getData.js";
 import { mainGallery, photographerTemplateSingle} from "./../templates/singlePhotographer.js"
 import { displayNbTotalLikes } from "../utils/counter.js";
-import { displayLightbox } from '../utils/lightbox.js';
+import { startLightbox } from '../utils/lightbox.js';
 
 
 // *********** Récupération des datas ***********/
@@ -51,12 +51,12 @@ document.querySelectorAll('.dropdown_content-filter').forEach(button => {
         }
 
         displayMedia();
-        displayLightbox(dataGallery);
+        startLightbox(dataGallery);
     });
 })
 
 // Affichage lightbox en fonction des données de la galerie
-displayLightbox(dataGallery);
+startLightbox(dataGallery);
 
 
 function displayMedia(){
