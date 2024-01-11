@@ -44,7 +44,7 @@ export function startLightbox(medias){
 }
 
 function buildLightbox(currentMedia){
-    console.log(currentMedia.title);
+    const title = currentMedia.title;
 
     lightbox = document.createElement("div");
     lightbox.textContent = '';
@@ -72,7 +72,7 @@ function buildLightbox(currentMedia){
     lightboxImg.classList.add("lightbox_content-img");
 
     titleLigthbox.classList.add("lightbox_img-title");
-       titleLigthbox.innerText = `${currentMedia.title}`;
+    titleLigthbox.innerText = `${title}`;
 
     closeBtnLigthbox.appendChild(imgClose);
     btnLigthboxNext.appendChild(imgBtnNext);
@@ -82,6 +82,7 @@ function buildLightbox(currentMedia){
     lightbox.appendChild(btnLigthboxNext);
     lightbox.appendChild(btnLigthboxPrev);
     lightbox.appendChild(lightboxImg);
+    lightbox.appendChild(titleLigthbox);
  
 
     return lightbox;
@@ -183,6 +184,3 @@ function prev(images, medias){
     });
 
 }
-
-
-
