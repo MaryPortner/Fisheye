@@ -138,13 +138,26 @@ function listenForCloseLightbox(){
 
 // Fermeture de la lightbox au clavier 
 function onKeyUp(e){
-    if (e.key === 'Escape'){
-        close(e);
-    }
+        if (e.key == 'Escape'){
+            listenForCloseLightbox();
+        }
+
+        if (e.key == 'ArrowLeft'){
+            prev();
+        }
+
+        if (e.key == 'ArrowRight'){
+            next();
+        }
+
 }
 
+
 function next(images, medias){
-    let lastImg = images.length-1;
+    console.log(images);
+
+    console.log(medias);
+
     btnLigthboxNext.addEventListener('click', () => {
         const currentMedia = medias[currentImgIndex];
         const el = displayImage(currentMedia);
@@ -154,10 +167,11 @@ function next(images, medias){
         lightbox.appendChild(titleLigthbox);
 
         currentImgIndex++;
-        if (currentImgIndex >= lastImg){
-            currentImgIndex = lastImg++;
+        if (currentImgIndex >= images.length-1){
+            currentImgIndex = 0;
         }
-        currentUrl = images[currentImgIndex].getAttribute('href');
+        // currentUrl = images[currentImgIndex].getAttribute('href');
+        // console.log(currentUrl)
  
     });
 
@@ -168,6 +182,10 @@ function prev(images, medias){
     let lastImg = 0;
 
     btnLigthboxPrev.addEventListener('click', () => {
+        currentImgIndex--;
+        if (currentImgIndex <= lastImg){
+            currentImgIndex = medias.length-1;
+        }
         const currentMedia = medias[currentImgIndex];
         const el = displayImage(currentMedia);
         document.querySelector(".lightbox_content-img").appendChild(el);
@@ -175,12 +193,13 @@ function prev(images, medias){
         titleLigthbox.innerText = `${currentMedia.title}`;
         lightbox.appendChild(titleLigthbox);
         
-        currentImgIndex--;
-        if (currentImgIndex <= lastImg){
-            currentImgIndex = images.length-1;
-        }
-        currentUrl = images[currentImgIndex].getAttribute('href');
-        console.log(currentMedia);
+       
+
+     
+    // currentUrl = images[currentImgIndex].getAttribute('href');
+    //     console.log(currentMedia);
     });
 
 }
+
+

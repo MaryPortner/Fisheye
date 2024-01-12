@@ -136,7 +136,7 @@ img.cardUser__img{
     width: 170px;
 }
 
-.dropdown_content li::before{
+.dropdown_content button::before{
     content: "";
     position: absolute;
     top: 0px;
