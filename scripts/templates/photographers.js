@@ -18,7 +18,7 @@ export function photographerTemplate(data) {
         const imgPhotographerHomePage = document.createElement('img');
         imgPhotographerHomePage.setAttribute("src", picture); 
         imgPhotographerHomePage.setAttribute("title", `${name}`);
-        imgPhotographerHomePage.setAttribute("alt", `photo de profil de : ${name}`)
+        imgPhotographerHomePage.setAttribute("alt", "")
         imgPhotographerHomePage.classList.add("cardUser__img");
         linkImgPhotographe.appendChild(imgPhotographerHomePage);
 

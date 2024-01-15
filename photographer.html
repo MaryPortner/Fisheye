@@ -19,28 +19,25 @@
     </header>
 
     <main role="main" id="mainPhotographer">
-      <div class="photograph-header">
-      
-      </div>
-
+      <div class="photograph-header"></div>
 
       <div class="filter divMenuMedia">
         <p class="divMenuMedia_p">Trier par</p>
         <div class="dropdown">
-          <button id="btn-sort" class="btn_drop" type="button" role="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="filter options" aria-label="Tri par">
+          <button id="btn-sort" class="btn_drop" type="button" role="button" aria-haspopup="listbox"  aria-active="descendant" aria-expanded="false" aria-controls="expandable" aria-label="Tri par">
             <span id="currentSort">Popularité</span>
             <svg id="arrow" class="rotate arrow bx bx-chevron-up" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#FFFFFF" d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
           </button>
 
           <ul class="dropdown_content" aria-hidden="true">
             <li class="submenu submenu1" role="option">
-              <button id="target" class="filter dropdown_content-filter" data-filter="popularite" type="button" tabindex="-1" aria-label="Tri par popularité">Popularité</button>
+              <button id="target" class="filter dropdown_content-filter" role="option" data-filter="popularite" type="button" aria-selected="false" tabindex="0" aria-label="Tri par popularité">Popularité</button>
             </li>
             <li class="submenu" role="option">
-              <button class="filter dropdown_content-filter" data-filter="date" type="button" tabindex="-1" aria-label="Tri par date">Date</button>
+              <button id="expandable"class="filter dropdown_content-filter"  role="option" data-filter="date" type="button"  aria-selected="false" tabindex="0"  aria-label="Tri par date">Date</button>
             </li>
             <li class="submenu"role="option" >
-              <button class="filter dropdown_content-filter" data-filter="titre" type="button" tabindex="-1" aria-label="Tri par titre">Titre</button>
+              <button id="expandable"class="filter dropdown_content-filter"  role="option" data-filter="titre" type="button" aria-selected="false" tabindex="0"  aria-label="Tri par titre">Titre</button>
             </li>
           </ul>
         </div>

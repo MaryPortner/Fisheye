@@ -8,7 +8,7 @@ let imgDisplayed;
 let indexImg;
 let lightbox;
 const photographHeader = document.querySelector(".photograph-header");
-// let title;
+const lightboxImg = document.createElement("div");
 const titleLigthbox = document.createElement("h2");
 
 
@@ -35,20 +35,18 @@ export function startLightbox(medias){
             listenForCloseLightbox();
             next(images, medias);
             prev(images, medias);
-        
-
         });
     });
-
-    document.addEventListener('keyup', onKeyUp);
 }
 
 function buildLightbox(currentMedia){
     const title = currentMedia.title;
-
+   
     lightbox = document.createElement("div");
-    lightbox.textContent = '';
+    lightbox.innerHTML = '';
+ 
     lightbox.classList.add("lightbox_content");
+    lightbox.setAttribute("aria-label", "image closeup");
 
     const closeBtnLigthbox = document.createElement("button");
     closeBtnLigthbox.classList.add("btn_lightbox", "lightbox_close-btn");
@@ -68,9 +66,9 @@ function buildLightbox(currentMedia){
     const imgBtnPrev = document.createElement("i");
     imgBtnPrev.classList.add("fa-solid", "fa-chevron-left");
 
-    const lightboxImg = document.createElement("div");
+    lightboxImg.innerHTML = '';
     lightboxImg.classList.add("lightbox_content-img");
-
+ 
     titleLigthbox.classList.add("lightbox_img-title");
     titleLigthbox.innerText = `${title}`;
 
@@ -84,25 +82,24 @@ function buildLightbox(currentMedia){
     lightbox.appendChild(lightboxImg);
     lightbox.appendChild(titleLigthbox);
  
-
     return lightbox;
 }
 
+//Affichage du média selon le type
 function displayImage(media){
-
     if(media.hasOwnProperty('video')){
         const video = document.createElement("video");
         video.classList.add("lightbox_img");
         video.controls = "controls";
         video.setAttribute("src", `${media.video}`);
-        video.setAttribute("alt", "");
+        video.setAttribute("alt", `${media.title}`);
         return video;
     }
     if (media.hasOwnProperty('image')){
         const image = document.createElement("img");
         image.classList.add("lightbox_img");
         image.setAttribute("src", `${media.image}`);
-        image.setAttribute("alt", "");
+        image.setAttribute("alt", `${media.title}`);
         return image;
     } 
 }
@@ -127,38 +124,19 @@ function changeBg(color1, color2, color3) {
 //Fermeture lightbox
 function listenForCloseLightbox(){
     lightbox.querySelector('.lightbox_close-btn').addEventListener('click', () =>{
-        lightbox.textContent = '';
+        lightbox.innerHTML = '';
         lightbox.style.display = "none";
         priceTotalLikes.style.display = "flex";
         changeBg("#FFFFFF", "#FAFAFA", "none");
-        document.removeEventListener('keyup', onKeyUp);      
+        // document.removeEventListener('keyup', onKeyUp);      
     });
 }
 
 
-// Fermeture de la lightbox au clavier 
-function onKeyUp(e){
-        if (e.key == 'Escape'){
-            listenForCloseLightbox();
-        }
-
-        if (e.key == 'ArrowLeft'){
-            prev();
-        }
-
-        if (e.key == 'ArrowRight'){
-            next();
-        }
-
-}
-
-
 function next(images, medias){
-    console.log(images);
-
-    console.log(medias);
 
     btnLigthboxNext.addEventListener('click', () => {
+        lightboxImg.innerHTML = '';
         const currentMedia = medias[currentImgIndex];
         const el = displayImage(currentMedia);
         document.querySelector(".lightbox_content-img").appendChild(el);
@@ -167,39 +145,28 @@ function next(images, medias){
         lightbox.appendChild(titleLigthbox);
 
         currentImgIndex++;
-        if (currentImgIndex >= images.length-1){
+        if (currentImgIndex >= images.length){
             currentImgIndex = 0;
         }
-        // currentUrl = images[currentImgIndex].getAttribute('href');
-        // console.log(currentUrl)
- 
     });
-
 }
 
 
 function prev(images, medias){
     let lastImg = 0;
-
     btnLigthboxPrev.addEventListener('click', () => {
+        const currentMedia = medias[currentImgIndex];
+        const el = displayImage(currentMedia);
+        lightboxImg.innerHTML = '';
         currentImgIndex--;
         if (currentImgIndex <= lastImg){
             currentImgIndex = medias.length-1;
         }
-        const currentMedia = medias[currentImgIndex];
-        const el = displayImage(currentMedia);
         document.querySelector(".lightbox_content-img").appendChild(el);
- 
         titleLigthbox.innerText = `${currentMedia.title}`;
         lightbox.appendChild(titleLigthbox);
-        
-       
 
-     
-    // currentUrl = images[currentImgIndex].getAttribute('href');
-    //     console.log(currentMedia);
     });
-
 }
 
 

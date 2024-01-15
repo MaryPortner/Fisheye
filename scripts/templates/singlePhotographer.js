@@ -1,8 +1,10 @@
+
+import { contactFormInit } from '../utils/contactForm.js';
 import { dropdown } from './../utils/menuDropDown.js';
 import { dataPhotographer } from './../pages/photographer.js';
 import { displayNbTotalLikes } from "../utils/counter.js";
 import { mediaFactory } from '../factory.js';
-import { contactFormInit } from '../utils/contactForm.js';
+
 
 
 export let allArticles;
@@ -101,7 +103,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         const btnLikes = document.createElement('button');
         btnLikes.classList.add("btnLikes");
         btnLikes.setAttribute("type", "button");
-        btnLikes.setAttribute("aria-label", "Like");
+        btnLikes.setAttribute("aria-label", "Likes");
         btnLikes.setAttribute("data-id",  `${id}`);
 
         if(hasBeenLiked){
