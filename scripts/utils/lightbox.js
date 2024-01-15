@@ -51,6 +51,10 @@ function buildLightbox(currentMedia){
     const closeBtnLigthbox = document.createElement("button");
     closeBtnLigthbox.classList.add("btn_lightbox", "lightbox_close-btn");
 
+    const descriptionCloseBtnLightbox = document.createElement("span");
+    descriptionCloseBtnLightbox.classList.add("sr-only");
+    descriptionCloseBtnLightbox.innerHTML="Fermeture boîte de dialogue";
+
     const imgClose = document.createElement("i");
     imgClose.classList.add("fa-solid", "fa-xmark");
 
@@ -59,12 +63,20 @@ function buildLightbox(currentMedia){
 
     const imgBtnNext = document.createElement("i");
     imgBtnNext.classList.add("fa-solid", "fa-chevron-right");
+    
+    const descriptionImgBtnNext = document.createElement("span");
+    descriptionImgBtnNext.classList.add("sr-only");
+    descriptionImgBtnNext.innerHTML="Image suivante";
 
     btnLigthboxPrev = document.createElement("button");
     btnLigthboxPrev.classList.add("btn_lightbox", "lightbox_previous-btn");
 
     const imgBtnPrev = document.createElement("i");
     imgBtnPrev.classList.add("fa-solid", "fa-chevron-left");
+
+    const descriptionImgBtnPrev = document.createElement("span");
+    descriptionImgBtnPrev.classList.add("sr-only");
+    descriptionImgBtnPrev.innerHTML="Image précédente";
 
     lightboxImg.innerHTML = '';
     lightboxImg.classList.add("lightbox_content-img");
@@ -73,8 +85,11 @@ function buildLightbox(currentMedia){
     titleLigthbox.innerText = `${title}`;
 
     closeBtnLigthbox.appendChild(imgClose);
+    closeBtnLigthbox.appendChild(descriptionCloseBtnLightbox);
     btnLigthboxNext.appendChild(imgBtnNext);
+    btnLigthboxNext.appendChild(descriptionImgBtnNext);
     btnLigthboxPrev.appendChild(imgBtnPrev);
+    btnLigthboxPrev.appendChild(descriptionImgBtnPrev);
 
     lightbox.appendChild(closeBtnLigthbox);
     lightbox.appendChild(btnLigthboxNext);
