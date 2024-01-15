@@ -43,11 +43,10 @@ export function photographerTemplate(data) {
         priceData.classList.add("cardUser__priceData");
 
 
+        linkImgPhotographe.appendChild(h2);
 
         //on ajoute un enfant img à article 
         article.appendChild(linkImgPhotographe);
-        // Puis on ajoute le h2
-        article.appendChild(h2);
         // ajout de la ville et du pays
         article.appendChild(cityCountry);
         // ajout de la tagline
