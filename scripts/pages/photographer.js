@@ -51,12 +51,12 @@ document.querySelectorAll('.dropdown_content-filter').forEach(button => {
         }
 
         displayMedia();
-        startLightbox(dataGallery);
+        startLightbox(sortDatasGallery);
     });
 })
 
 // Affichage lightbox en fonction des données de la galerie
-startLightbox(dataGallery);
+startLightbox(sortDatasGallery);
 
 
 function displayMedia(){

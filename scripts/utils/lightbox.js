@@ -25,16 +25,14 @@ export function startLightbox(medias){
             indexImg = e.currentTarget;
             imgDisplayed  = indexImg.getAttribute('href');
             currentImgIndex = images.findIndex(image => image === indexImg);
-
             document.querySelector(".lightbox_content-img").appendChild(el);
-
             // display à none de l'encart likes et prix/jour
             priceTotalLikes.style.display = "none";
 
             changeBg("#00000080", "#c4c4c466", "contrast(60%)");
             listenForCloseLightbox();
-            next(images, medias);
-            prev(images, medias);
+            next(medias);
+            prev(medias);
         });
     });
 }
@@ -148,35 +146,31 @@ function listenForCloseLightbox(){
 }
 
 
-function next(images, medias){
-
+function next(medias){
     btnLigthboxNext.addEventListener('click', () => {
-        lightboxImg.innerHTML = '';
+        lightboxImg.innerHTML = '';      
+        currentImgIndex++;
+        if (currentImgIndex >= medias.length){
+            currentImgIndex = 0;
+        }
         const currentMedia = medias[currentImgIndex];
         const el = displayImage(currentMedia);
         document.querySelector(".lightbox_content-img").appendChild(el);
-    
         titleLigthbox.innerText = `${currentMedia.title}`;
         lightbox.appendChild(titleLigthbox);
-
-        currentImgIndex++;
-        if (currentImgIndex >= images.length){
-            currentImgIndex = 0;
-        }
     });
 }
 
 
-function prev(images, medias){
-    let lastImg = 0;
+function prev(medias){
     btnLigthboxPrev.addEventListener('click', () => {
-        const currentMedia = medias[currentImgIndex];
-        const el = displayImage(currentMedia);
         lightboxImg.innerHTML = '';
         currentImgIndex--;
-        if (currentImgIndex <= lastImg){
+        if (currentImgIndex < 0){
             currentImgIndex = medias.length-1;
         }
+        const currentMedia = medias[currentImgIndex];
+        const el = displayImage(currentMedia);
         document.querySelector(".lightbox_content-img").appendChild(el);
         titleLigthbox.innerText = `${currentMedia.title}`;
         lightbox.appendChild(titleLigthbox);
