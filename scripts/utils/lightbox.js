@@ -1,4 +1,5 @@
 import { main, priceTotalLikes } from "../templates/singlePhotographer.js";
+import { mediaFactory } from "../factory.js";
 
 let btnLigthboxPrev;
 let btnLigthboxNext;
@@ -51,30 +52,30 @@ function buildLightbox(currentMedia){
 
     const descriptionCloseBtnLightbox = document.createElement("span");
     descriptionCloseBtnLightbox.classList.add("sr-only");
-    descriptionCloseBtnLightbox.innerHTML="Fermeture boîte de dialogue";
+    descriptionCloseBtnLightbox.innerHTML="Fermer la boîte de dialogue";
 
-    const imgClose = document.createElement("i");
+    const imgClose = document.createElement("span");
     imgClose.classList.add("fa-solid", "fa-xmark");
 
     btnLigthboxNext = document.createElement("button");
     btnLigthboxNext.classList.add("btn_lightbox", "lightbox_next-btn");
 
-    const imgBtnNext = document.createElement("i");
+    const imgBtnNext = document.createElement("span");
     imgBtnNext.classList.add("fa-solid", "fa-chevron-right");
     
     const descriptionImgBtnNext = document.createElement("span");
     descriptionImgBtnNext.classList.add("sr-only");
-    descriptionImgBtnNext.innerHTML="Image suivante";
+    descriptionImgBtnNext.innerHTML="Afficher l'image suivante";
 
     btnLigthboxPrev = document.createElement("button");
     btnLigthboxPrev.classList.add("btn_lightbox", "lightbox_previous-btn");
 
-    const imgBtnPrev = document.createElement("i");
+    const imgBtnPrev = document.createElement("span");
     imgBtnPrev.classList.add("fa-solid", "fa-chevron-left");
 
     const descriptionImgBtnPrev = document.createElement("span");
     descriptionImgBtnPrev.classList.add("sr-only");
-    descriptionImgBtnPrev.innerHTML="Image précédente";
+    descriptionImgBtnPrev.innerHTML="Afficher l'image précédente";
 
     lightboxImg.innerHTML = '';
     lightboxImg.classList.add("lightbox_content-img");
@@ -98,23 +99,13 @@ function buildLightbox(currentMedia){
     return lightbox;
 }
 
+
 //Affichage du média selon le type
 function displayImage(media){
-    if(media.hasOwnProperty('video')){
-        const video = document.createElement("video");
-        video.classList.add("lightbox_img");
-        video.controls = "controls";
-        video.setAttribute("src", `${media.video}`);
-        video.setAttribute("alt", `${media.title}`);
-        return video;
-    }
-    if (media.hasOwnProperty('image')){
-        const image = document.createElement("img");
-        image.classList.add("lightbox_img");
-        image.setAttribute("src", `${media.image}`);
-        image.setAttribute("alt", `${media.title}`);
-        return image;
-    } 
+    const m = mediaFactory(media);
+    m.controls = "controls";
+    m.classList.add("lightbox_img");
+    return m;
 }
 
 

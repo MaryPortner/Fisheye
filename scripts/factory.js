@@ -1,17 +1,17 @@
-export function mediaFactory(datas){
+export function mediaFactory(data){
     let el;
 
-    if (datas.hasOwnProperty('video')){
+    if (data.hasOwnProperty('video')){
         el = document.createElement('video');
-        el.setAttribute("src", datas.video);
-        el.setAttribute("alt", datas.title);
+        el.setAttribute("src", data.video);
+        el.setAttribute("alt", data.title);
         el.setAttribute("type", "video/mp4" );
 
-    } else if (datas.hasOwnProperty('image')){
+    } else if (data.hasOwnProperty('image')){
         el = document.createElement('img');
-        el.setAttribute("src", datas.image); 
-        el.setAttribute("title", datas.title);
-        el.setAttribute("alt", datas.title);
+        el.setAttribute("src", data.image); 
+        el.setAttribute("title", data.title);
+        el.setAttribute("alt", data.title);
         el.classList.add("mainPhotographer_gallery__img");
     } 
 

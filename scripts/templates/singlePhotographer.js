@@ -51,7 +51,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
      /************** gallery photographer **************/
     function galleryPhotographer(galleryImg){
 
-        const { id, photographerId, title, image, video, likes, date, price, hasBeenLiked } = galleryImg;
+        const { id, photographerId, title, likes, date, hasBeenLiked } = galleryImg;
 
         mainGallery.classList.add("mainPhotographer_gallery");
 
@@ -66,16 +66,11 @@ export function photographerTemplateSingle(photographer, dataGallery) {
 
         const linkImg = document.createElement('a');
         linkImg.classList.add('linkImgPhotographer');
-        if (galleryImg.hasOwnProperty('video')){
-            linkImg.setAttribute("href",`${video}`);
-        }
-        if (galleryImg.hasOwnProperty('image')){
-            linkImg.setAttribute("href",`${image}`);
-        }
+        linkImg.setAttribute("href","#");
         linkImg.setAttribute("data-id",`${id}`);
-        linkImg.setAttribute("alt" , `${title}`);
+        linkImg.setAttribute("alt" , `image cliquable pour vue en grand format dans un carrousel`);
         linkImg.setAttribute("role","link");
-        linkImg.setAttribute("aria-label","View image large format");
+        linkImg.setAttribute("aria-label","Vue de l'image en grand format");
 
         // affichage des img et vidéos
         let medias = mediaFactory(galleryImg);
@@ -164,7 +159,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         btnContact.innerText = `Contactez-moi`;
 
         imgPhotographer.classList.add("cardUser__img");
-        imgPhotographer.setAttribute("alt", `${photographer.name}`);
+        imgPhotographer.setAttribute("alt", `Photo de ${photographer.name}`);
         imgPhotographer.setAttribute("src", `${photographer.portrait}`);
         imgPhotographer.setAttribute("title", `photo de ${photographer.name}`);
 
