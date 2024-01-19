@@ -146,11 +146,6 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         tagline.classList.add("cardUser__tagline");
         tagline.innerText = `${photographer.tagline}`;
 
-        const linkPhotographer = document.createElement("a");
-        linkPhotographer.setAttribute("title",`page de ${photographer.name}`);
-        linkPhotographer.setAttribute("alt",`photo de ${photographer.name}`);
-        linkPhotographer.setAttribute("href", "");
-
         const photographBtn =  document.createElement("div");
         photographBtn.classList.add("photograph-btn");
         
@@ -168,7 +163,6 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         presentationPhotographer.appendChild(photographerName);
         presentationPhotographer.appendChild(cityCountry);
         presentationPhotographer.appendChild(tagline);
-        presentationPhotographer.appendChild(linkPhotographer);
 
         photographBtn.appendChild(btnContact);
 

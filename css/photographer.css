@@ -3,7 +3,13 @@
 :root {
     --primary-color: #901C1C;
     --secondary-color:  #DB8876;
+    --hover-color: #007aff;
     
+}
+
+a:focus, button:focus, form .formData input:focus, img:focus, form .formData textarea:focus, video:focus {
+    outline: solid 5px var(--hover-color);
+    border-radius: 5px;
 }
 
 .sr-only {
@@ -302,8 +308,8 @@ button.btnLikes{
     margin-top: -5px;
     margin-right: 0;
     color: var(--secondary-color);
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     font-size: 22px;
 }
 
@@ -383,7 +389,6 @@ aside{
 }
 
 .modal header img:hover{
-    border: solid 1px white;
     border-radius: 5px;
 }
 
@@ -420,6 +425,10 @@ form input {
     height: 48px;
     border: none;
     border-radius: 5px;
+}
+
+.modal header img:hover {
+    outline: 3px solid var(--hover-color);
 }
 
 textarea{

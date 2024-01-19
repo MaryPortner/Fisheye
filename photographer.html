@@ -6,24 +6,66 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   
-
-   
     <title>Fisheye - photographe </title>
   </head>
 
   <body>
     <header role="banner">
-      <a href="http://127.0.0.1:5500/index.html"  title="photographer page">
-        <img src="assets/images/logo.png" alt="Logo Fisheye retour vers la page d'accueil" class="logo">
+      <a class="banner-link" href="http://127.0.0.1:5500/index.html"  title="photographer page" >
+        <img id="logo" class="logo" src="assets/images/logo.png" alt="Logo Fisheye - Accueil" >
       </a>
     </header>
 
     <main role="main" id="mainPhotographer">
       <div class="photograph-header"></div>
 
+
+      <div id="contact_modal" role="dialog" aria-describedby="namePhotographer" aria-labelledby="contactez-moi">
+        <div class="modal">
+          <header class="modal_header">
+            <div class="modal_header-contact">
+              <h2 id ="contactez-moi">Contactez-moi</h2>
+              <p id="namePhotographer" class="namePhotographer"></p>
+            </div>
+            <img class ="modal_Close" alt ="Fermeture du formulaire de contact" aria-label ="Fermer le formulaire de contact" src="assets/icons/close.svg">
+          </header>
+  
+          <form name="reserve" action="photographer.html" method="get">
+            <div class="formData firstName">
+              <label for="firstName">Prénom *</label>
+              <input  type="text" class="text-control" id="firstName" aria-labelledby="firstname-label" data-enter="enter" name="firstName" required="" autocomplete="on" >
+              <br>
+            </div>
+  
+            <div class="formData last">
+              <label for="last">Nom *</label>
+              <input type="text" class="text-control" id="last" aria-labelledby="last-label" data-enter="enter" name="last" required="" autocomplete="on">
+              <br>
+            </div>
+  
+            <div class="formData email">
+              <label for="email">E-mail *</label>
+              <input class="text-control" type="email" id="email" aria-labelledby="email-label" data-enter="enter" name="email"  required="" autocomplete="on">
+              <br>
+            </div>
+  
+            <div class="formData message">
+              <label for="message">Message *</label>
+              <textarea class="text-control" id="message" aria-labelledby="message-label" data-enter="enter" name="message" required=""></textarea>
+              <br>
+            </div>
+  
+            <p>* Champs obligatoires </p>
+  
+            <button type="submit" aria-label="envoyer le formulaire" class="contact_button">Envoyer</button>
+          </form>
+          
+        </div>   
+      </div>
+
       <div class="filter divMenuMedia">
-        <p class="divMenuMedia_p">Trier par</p>
-        <div class="dropdown">
+        <p id="Trier" class="divMenuMedia_p">Trier par</p>
+        <div id="dropdown" class="dropdown">
           <button id="btn-sort" class="btn_drop" type="button" role="button" aria-haspopup="listbox"  aria-active="descendant" aria-expanded="false" aria-controls="expandable" aria-label="Tri par">
             <span id="currentSort">Popularité</span>
             <svg id="arrow" class="rotate arrow bx bx-chevron-up" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path fill="#FFFFFF" d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
@@ -31,59 +73,20 @@
 
           <ul class="dropdown_content" aria-hidden="true">
             <li class="submenu submenu1" role="option">
-              <button id="target" class="filter dropdown_content-filter" role="option" data-filter="popularite" type="button" aria-selected="false" tabindex="0" aria-label="Tri par popularité">Popularité</button>
+              <button id="target" class="filter dropdown_content-filter" role="option" data-filter="popularite" type="button" aria-selected="false" tabindex="-1" aria-label="Tri par popularité">Popularité</button>
             </li>
             <li class="submenu" role="option">
-              <button id="expandable"class="filter dropdown_content-filter"  role="option" data-filter="date" type="button"  aria-selected="false" tabindex="0"  aria-label="Tri par date">Date</button>
+              <button id="expandable"class="filter dropdown_content-filter"  role="option" data-filter="date" type="button"  aria-selected="false" tabindex="-1"  aria-label="Tri par date">Date</button>
             </li>
             <li class="submenu"role="option" >
-              <button id="expandable"class="filter dropdown_content-filter"  role="option" data-filter="titre" type="button" aria-selected="false" tabindex="0"  aria-label="Tri par titre">Titre</button>
+              <button id="expandable"class="filter dropdown_content-filter"  role="option" data-filter="titre" type="button" aria-selected="false" tabindex="-1"  aria-label="Tri par titre">Titre</button>
             </li>
           </ul>
         </div>
       </div>
     </main>
 
-    <div id="contact_modal">
-			<div class="modal">
-				<header class="modal_header">
-          <div class="modal_header-contact">
-            <h2>Contactez-moi</h2>
-            <p class="namePhotographer"></p>
-          </div>
-          <img class ="modal_Close" alt ="Fermeture du formulaire de contact" src="assets/icons/close.svg">
-        </header>
-
-        <form name="reserve" action="photographer.html" method="get">
-          <div class="formData firstName">
-            <label for="firstName">Prénom</label>
-            <input  type="text" class="text-control" id="firstName" data-enter="enter" name="firstName"  >
-            <br>
-          </div>
-
-          <div class="formData last">
-            <label for="last">Nom</label>
-            <input type="text" class="text-control" id="last" data-enter="enter" name="last"  >
-            <br>
-          </div>
-
-          <div class="formData email">
-            <label for="email">E-mail</label>
-            <input class="text-control" type="email" id="email" data-enter="enter" name="email"  >
-            <br>
-          </div>
-
-          <div class="formData message">
-            <label for="message">Message</label>
-            <textarea class="text-control" id="message" data-enter="enter" name="message"></textarea>
-            <br>
-          </div>
-
-          <button type="submit" class="contact_button">Envoyer</button>
-        </form>
-        
-			</div>   
-		</div>
+    
 
     <script src="https://kit.fontawesome.com/a67b637322.js" crossorigin="anonymous"></script>
     <script type="module" src="scripts/pages/photographer.js" ></script>
