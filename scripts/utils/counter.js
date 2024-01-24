@@ -37,4 +37,4 @@ function updateNbLikesTotal(dataGallery) {
     const initialValue = 0;
     const nbTotalLikes = dataGallery.reduce((accumulator, currentValue) => accumulator + currentValue.likes, initialValue);
     counterLikes.innerText = `${nbTotalLikes}`;
-};
+}

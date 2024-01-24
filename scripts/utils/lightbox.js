@@ -4,8 +4,6 @@ import { mediaFactory } from "../factory.js";
 let btnLigthboxPrev;
 let btnLigthboxNext;
 let currentImgIndex;
-let currentUrl;
-let imgDisplayed; 
 let indexImg;
 let lightbox;
 const photographHeader = document.querySelector(".photograph-header");
@@ -20,11 +18,12 @@ export function startLightbox(medias){
         img.addEventListener('click', (e) => {
             e.preventDefault();
             const id = img.getAttribute('data-id');
+            //Récupère le média en fonction de l'id du photographe
             const currentMedia = medias.find(m => m.id == id);
             const el = displayImage(currentMedia);
             main.append(buildLightbox(currentMedia));
             indexImg = e.currentTarget;
-            imgDisplayed  = indexImg.getAttribute('href');
+
             currentImgIndex = images.findIndex(image => image === indexImg);
             document.querySelector(".lightbox_content-img").appendChild(el);
             // display à none de l'encart likes et prix/jour

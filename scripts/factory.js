@@ -1,13 +1,13 @@
 export function mediaFactory(data){
     let el;
 
-    if (data.hasOwnProperty('video')){
+    if (Object.prototype.hasOwnProperty.call(data, 'video')){
         el = document.createElement('video');
         el.setAttribute("src", data.video);
         el.setAttribute("alt", data.title);
         el.setAttribute("type", "video/mp4" );
 
-    } else if (data.hasOwnProperty('image')){
+    } else if (Object.prototype.hasOwnProperty.call(data, 'image')){
         el = document.createElement('img');
         el.setAttribute("src", data.image); 
         el.setAttribute("title", data.title);

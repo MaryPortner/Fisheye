@@ -7,7 +7,7 @@
     
 }
 
-a:focus, button:focus, form .formData input:focus, img:focus, form .formData textarea:focus, video:focus {
+a:focus, button:focus, form .formData input:focus, img:focus, form .formData textarea:focus, video:focus, .photographerPage:hover, .linkImgPhotographer:hover, button > .fa-heart:hover {
     outline: solid 5px var(--hover-color);
     border-radius: 5px;
 }
@@ -42,6 +42,7 @@ a:focus, button:focus, form .formData input:focus, img:focus, form .formData tex
     padding: 0.625em 0.9375em;
     text-decoration: none;
   }
+
   .skip-link:not(:focus):not(:active) {
     border: 0;
     clip: rect(0 0 0 0);
@@ -54,6 +55,7 @@ a:focus, button:focus, form .formData input:focus, img:focus, form .formData tex
     white-space: nowrap;
     width: 1px;
   }
+
   .skip-link:focus {
     left: 0;
     position: absolute;
@@ -74,6 +76,15 @@ button:hover, button.filter:hover{
     background-color: #D3573C;
     color: black;
 }
+
+input:required {
+    border-color: #800000;
+    border-width: 3px;
+  }
+
+input:required:invalid {
+    border-color: #c00000;
+  }
 
 
 /* modale */
@@ -308,18 +319,19 @@ button, ul li{
     flex-direction: column;
 }
 
-.linkImgPhotographer > img{
+.linkImgPhotographer, .linkImgPhotographer > img, .linkImgPhotographer  > video{
     width: 350px;
-    height: 300px;
-    object-fit: cover;
+    height: 100%;
+    min-height: 300px;
+    max-height: 300px;
     border-radius: 5px;
 }
 
+.linkImgPhotographer > img{
+    object-fit: cover;
+}
+
 .linkImgPhotographer  > video{
-    width: 350px;
-    height: 300px;
-    max-height: 300px;
-    border-radius: 5px;
     object-fit: fill;
 }
 
