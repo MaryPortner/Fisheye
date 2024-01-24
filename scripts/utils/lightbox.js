@@ -45,7 +45,7 @@ function buildLightbox(currentMedia){
     lightbox.innerHTML = '';
  
     lightbox.classList.add("lightbox_content");
-    lightbox.setAttribute("aria-label", "image closeup");
+    lightbox.setAttribute("aria-label", "Vue agrandie de l'image");
 
     const closeBtnLigthbox = document.createElement("button");
     closeBtnLigthbox.classList.add("btn_lightbox", "lightbox_close-btn");

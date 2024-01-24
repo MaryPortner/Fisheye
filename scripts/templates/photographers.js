@@ -12,13 +12,18 @@ export function photographerTemplate(data) {
    
         // On crée un lien sur l'élément image
         const linkImgPhotographe = document.createElement('a');
-        linkImgPhotographe.setAttribute("title", `page de ${name}`);
+        linkImgPhotographe.classList.add("outline");
+        linkImgPhotographe.setAttribute("title", `Lien vers la page personnelle de ${name}`);
         linkImgPhotographe.setAttribute("href", `photographer.html?idPhotographer=`+ id );
+
+        const descriptionlinkImgPhotographe = document.createElement("span");
+        descriptionlinkImgPhotographe.classList.add("sr-only");
+        descriptionlinkImgPhotographe.innerHTML=`Lien vers la page personnelle du photographe ${name}`;
 
         const imgPhotographerHomePage = document.createElement('img');
         imgPhotographerHomePage.setAttribute("src", picture); 
         imgPhotographerHomePage.setAttribute("title", `${name}`);
-        imgPhotographerHomePage.setAttribute("alt", "")
+        imgPhotographerHomePage.setAttribute("alt", `Image du photographe ${name}`);
         imgPhotographerHomePage.classList.add("cardUser__img");
         linkImgPhotographe.appendChild(imgPhotographerHomePage);
 
@@ -43,8 +48,9 @@ export function photographerTemplate(data) {
         priceData.classList.add("cardUser__priceData");
 
 
+        linkImgPhotographe.appendChild(descriptionlinkImgPhotographe);
         linkImgPhotographe.appendChild(h2);
-
+  
         //on ajoute un enfant img à article 
         article.appendChild(linkImgPhotographe);
         // ajout de la ville et du pays

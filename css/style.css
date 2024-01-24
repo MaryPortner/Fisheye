@@ -14,7 +14,6 @@ header {
     height: 90px;
 }
 
-
 h1 {
     color: #901C1C;
     margin-right: 100px;
@@ -53,7 +52,6 @@ h1 {
     color: #D3573C;
     margin: 5px;
     font-size: 36px;
-
     font-weight: 300;
 }
 
@@ -68,6 +66,7 @@ h1 {
     color: #901C1C;
     font-size: 22px;
     margin: 0;
+    margin-top: 7px;
 }
 
 .photographer_section article .cardUser__tagline{

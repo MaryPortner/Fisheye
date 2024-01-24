@@ -68,9 +68,12 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         linkImg.classList.add('linkImgPhotographer');
         linkImg.setAttribute("href","#");
         linkImg.setAttribute("data-id",`${id}`);
-        linkImg.setAttribute("alt" , `image cliquable pour vue en grand format dans un carrousel`);
+        linkImg.setAttribute("title", 'lien pour afficher la photo en grand format dans un carrousel');
         linkImg.setAttribute("role","link");
-        linkImg.setAttribute("aria-label","Vue de l'image en grand format");
+
+        const descriptionlinkImg = document.createElement("span");
+        descriptionImgBtnNext.classList.add("sr-only");
+        descriptionImgBtnNext.innerHTML="Lien pour afficher la photo en grand format dans un carrousel";
 
         // affichage des img et vidéos
         let medias = mediaFactory(galleryImg);
@@ -108,15 +111,21 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         }
     
         const spanIcone = document.createElement('span');
-        spanIcone.classList.add("fas", "fa-heart", "fa-solid", "mainPhotographer_gallery__icone", "aria-hidden=true");
+        spanIcone.classList.add("fas", "fa-heart", "fa-solid", "mainPhotographer_gallery__icone", "aria-hidden=true", "aria-label=likes");
 
 
         articlePhotographer.appendChild(linkImg);
+
         linkImg.appendChild(medias);
+        linkImg.appendChild(descriptionlinkImg);
+
         btnLikes.appendChild(spanIcone);
+
         titlePriceLikes.appendChild(titleImgPhotographer);
+
         priceLikes.appendChild(likesImgPhotographer);
         priceLikes.appendChild(btnLikes);
+        
         titlePriceLikes.appendChild(priceLikes);
         articlePhotographer.appendChild(titlePriceLikes);
 
