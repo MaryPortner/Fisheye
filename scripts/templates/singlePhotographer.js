@@ -72,8 +72,8 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         linkImg.setAttribute("role","link");
 
         const descriptionlinkImg = document.createElement("span");
-        descriptionImgBtnNext.classList.add("sr-only");
-        descriptionImgBtnNext.innerHTML="Lien pour afficher la photo en grand format dans un carrousel";
+        descriptionlinkImg.classList.add("sr-only");
+        descriptionlinkImg.innerHTML="Lien pour afficher la photo en grand format dans un carrousel";
 
         // affichage des img et vidéos
         let medias = mediaFactory(galleryImg);
