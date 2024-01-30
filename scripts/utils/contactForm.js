@@ -1,6 +1,6 @@
-import { btnContact, imgPhotographer, allArticles, priceTotalLikes } from "../templates/singlePhotographer.js";
+import { btnContact, imgPhotographer, allArticles, main, priceTotalLikes } from "../templates/singlePhotographer.js";
 
-const closeModalBtn = document.querySelector(".modal_Close");
+const closeModalBtn = document.querySelector("img.modal_Close");
 const firstName = document.querySelector("#firstName");
 const form = document.querySelector('form');
 const last = document.querySelector("#last");
@@ -10,6 +10,43 @@ const modal = document.getElementById("contact_modal");
 const photographHeader = document.querySelector(".photograph-header");
 
 
+//Fermeture de la modale au clavier
+closeModalBtn.addEventListener('keyup', (e) => {
+    if (e.key === 'Escape' || e.key === 'Backspace') {
+        closeModal();
+    }
+});
+
+
+function changeBg(color1, color2, color3, display) {
+    document.body.style.background = color1;
+    photographHeader.style.background = color2;
+    imgPhotographer.style.filter = color3;
+    allArticles.forEach(article => {
+        article.style.filter = color3;
+    });
+    priceTotalLikes.style.display = display;
+}
+
+
+function closeModal() {
+    modal.style.display = "none";
+    modal.setAttribute('aria-hidden', true);
+    main.setAttribute('aria-hidden', false);
+    changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
+    form.reset();
+}
+
+
+function confirmSendingForm(){
+    const getDataForm = {
+        prenom : firstName.value,
+        nom : last.value,
+        mail : mail.value,
+        message : message.value
+    }
+    console.log(getDataForm);
+}
 
 export function contactFormInit(){
 
@@ -36,37 +73,12 @@ export function contactFormInit(){
     });
 }
 
-    
-function changeBg(color1, color2, color3, display) {
-    document.body.style.background = color1;
-    photographHeader.style.background = color2;
-    imgPhotographer.style.filter = color3;
-    allArticles.forEach(article => {
-        article.style.filter = color3;
-    });
-    priceTotalLikes.style.display = display;
-}
-
-
-function closeModal() {
-    modal.style.display = "none";
-    form.reset();
-}
-
-
-function confirmSendingForm(){
-    const getDataForm = {
-        prenom : firstName.value,
-        nom : last.value,
-        mail : mail.value,
-        message : message.value
-    }
-    console.log(getDataForm);
-}
-
 
 function displayModal() {
     modal.style.display = "block";
+    modal.setAttribute('aria-hidden', false);
+    main.setAttribute('aria-hidden', true);
+    closeModalBtn.focus();
 }
 
 

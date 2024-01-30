@@ -7,7 +7,7 @@
     
 }
 
-a:focus, button:focus, form .formData input:focus, img:focus, form .formData textarea:focus, video:focus, .photographerPage:hover, .linkImgPhotographer:hover, button > .fa-heart:hover {
+a:focus, button:focus, form .formData input:focus, img:focus, form .formData textarea:focus, video:focus, .photographerPage:hover, .linkImgPhotographer:hover, .btnLikes:hover {
     outline: solid 5px var(--hover-color);
     border-radius: 5px;
 }
@@ -189,7 +189,6 @@ img.cardUser__img{
     border-radius: 5px;
 }
 
-
 .dropdown_content{
     width: 170px;
     max-height: 0;
@@ -353,7 +352,7 @@ button, ul li{
 
 button.btnLikes{
     background-color: transparent;
-    margin-top: -5px;
+    margin-top: 0px;
     margin-right: 0;
     color: var(--secondary-color);
     width: 30px;

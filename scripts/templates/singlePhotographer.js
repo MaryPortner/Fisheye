@@ -6,7 +6,6 @@ import { displayNbTotalLikes } from "../utils/counter.js";
 import { mediaFactory } from '../factory.js';
 
 
-
 export let allArticles;
 export const btnContact = document.createElement("button");
 export const imgPhotographer = document.createElement("img");
@@ -111,7 +110,9 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         }
     
         const spanIcone = document.createElement('span');
-        spanIcone.classList.add("fas", "fa-heart", "fa-solid", "mainPhotographer_gallery__icone", "aria-hidden=true", "aria-label=likes");
+        spanIcone.classList.add("fas", "fa-heart", "fa-solid", "mainPhotographer_gallery__icone");
+        spanIcone.setAttribute("aria-hidden", true);
+        spanIcone.setAttribute("aria-label", 'likes');
 
 
         articlePhotographer.appendChild(linkImg);

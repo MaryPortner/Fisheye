@@ -1,8 +1,10 @@
 import { main, priceTotalLikes } from "../templates/singlePhotographer.js";
 import { mediaFactory } from "../factory.js";
 
+
 let btnLigthboxPrev;
 let btnLigthboxNext;
+let closeBtnLigthbox;
 let currentImgIndex;
 let indexImg;
 let lightbox;
@@ -18,6 +20,7 @@ export function startLightbox(medias){
         img.addEventListener('click', (e) => {
             e.preventDefault();
             const id = img.getAttribute('data-id');
+            
             //Récupère le média en fonction de l'id du photographe
             const currentMedia = medias.find(m => m.id == id);
             const el = displayImage(currentMedia);
@@ -29,11 +32,21 @@ export function startLightbox(medias){
             // display à none de l'encart likes et prix/jour
             priceTotalLikes.style.display = "none";
 
+            // on masque le main lorsque la lightbox est affichée pour le masquer aux lecteurs d'écran
+            main.setAttribute('aria-hidden', true); 
+            closeBtnLigthbox.focus();
+
             changeBg("#00000080", "#c4c4c466", "contrast(60%)");
             listenForCloseLightbox();
             next(medias);
             prev(medias);
         });
+    });
+
+    closeBtnLigthbox.addEventListener('keyup', (e) => {
+        if (e.key === 'Escape' || e.key === 'Backspace') {
+            listenForCloseLightbox();
+        }
     });
 }
 
@@ -42,12 +55,14 @@ function buildLightbox(currentMedia){
    
     lightbox = document.createElement("div");
     lightbox.innerHTML = '';
- 
     lightbox.classList.add("lightbox_content");
+    lightbox.setAttribute('aria-hidden', false);
     lightbox.setAttribute("aria-label", "Vue agrandie de l'image");
+    lightbox.setAttribute("role", "dialog");
 
-    const closeBtnLigthbox = document.createElement("button");
+    closeBtnLigthbox = document.createElement("button");
     closeBtnLigthbox.classList.add("btn_lightbox", "lightbox_close-btn");
+    closeBtnLigthbox.setAttribute("tabindex", 0);
 
     const descriptionCloseBtnLightbox = document.createElement("span");
     descriptionCloseBtnLightbox.classList.add("sr-only");
@@ -94,7 +109,7 @@ function buildLightbox(currentMedia){
     lightbox.appendChild(btnLigthboxPrev);
     lightbox.appendChild(lightboxImg);
     lightbox.appendChild(titleLigthbox);
- 
+
     return lightbox;
 }
 
@@ -105,6 +120,14 @@ function displayImage(media){
     m.controls = "controls";
     m.classList.add("lightbox_img");
     return m;
+}
+
+function displayMediaNextOrPrev(medias){
+    const currentMedia = medias[currentImgIndex];
+    const el = displayImage(currentMedia);
+    document.querySelector(".lightbox_content-img").appendChild(el);
+    titleLigthbox.innerText = `${currentMedia.title}`;
+    lightbox.appendChild(titleLigthbox);
 }
 
 
@@ -131,7 +154,8 @@ function listenForCloseLightbox(){
         lightbox.style.display = "none";
         priceTotalLikes.style.display = "flex";
         changeBg("#FFFFFF", "#FAFAFA", "none");
-        // document.removeEventListener('keyup', onKeyUp);      
+        lightbox.setAttribute('aria-hidden', true);
+        main.setAttribute('aria-hidden', false); 
     });
 }
 
@@ -143,11 +167,7 @@ function next(medias){
         if (currentImgIndex >= medias.length){
             currentImgIndex = 0;
         }
-        const currentMedia = medias[currentImgIndex];
-        const el = displayImage(currentMedia);
-        document.querySelector(".lightbox_content-img").appendChild(el);
-        titleLigthbox.innerText = `${currentMedia.title}`;
-        lightbox.appendChild(titleLigthbox);
+        displayMediaNextOrPrev(medias);
     });
 }
 
@@ -159,12 +179,7 @@ function prev(medias){
         if (currentImgIndex < 0){
             currentImgIndex = medias.length-1;
         }
-        const currentMedia = medias[currentImgIndex];
-        const el = displayImage(currentMedia);
-        document.querySelector(".lightbox_content-img").appendChild(el);
-        titleLigthbox.innerText = `${currentMedia.title}`;
-        lightbox.appendChild(titleLigthbox);
-
+        displayMediaNextOrPrev(medias);
     });
 }
 

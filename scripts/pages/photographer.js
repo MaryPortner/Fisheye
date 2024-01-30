@@ -34,8 +34,8 @@ if (!id){
 // Insertion des données de la const userCardDOM dans la balise main
 photographersSectionSingle.prepend(userCardDOMSingle);
 
-sortByPopularity();
-displayMedia();
+sortByPopularity(); //on trie par popularité par défaut
+displayMedia(); // On affiche une première fois le la galerie;
 
 document.querySelectorAll('.dropdown_content-filter').forEach(button => {
    button.addEventListener("click",function () {
@@ -50,12 +50,12 @@ document.querySelectorAll('.dropdown_content-filter').forEach(button => {
             sortDatasGallery.sort(( a , b ) => (a.title.localeCompare(b.title))); 
         }
 
-        displayMedia();
-        startLightbox(sortDatasGallery);
+        displayMedia(); // Réaffiche la galerie en fonction du tri.
+        startLightbox(sortDatasGallery); // Réaffiche la lightbox selon le tri
     });
 })
 
-// Affichage lightbox en fonction des données de la galerie
+// Affiche la lightbon la lightbox en fonction du tri par défaut (popularité)
 startLightbox(sortDatasGallery);
 
 
@@ -73,3 +73,5 @@ function displayMedia(){
 function sortByPopularity(){
     sortDatasGallery.sort(( a,  b) => b.likes - a.likes);
 }
+
+

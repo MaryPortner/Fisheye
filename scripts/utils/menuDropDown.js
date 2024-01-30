@@ -13,6 +13,11 @@ export function dropdown(){
         document.querySelector('.arrow').classList.toggle('rotate');
         menu.classList.toggle('active');
         menu.classList.remove('displayNone');
+        if (menu.classList.contains('active')) {
+            btnDrop.setAttribute('aria-expanded', 'true');
+        } else {
+            btnDrop.setAttribute('aria-expanded', 'false');
+        }
     }
     btnDrop.addEventListener('click', showHideMenu);
 } 

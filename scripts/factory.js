@@ -3,10 +3,13 @@ export function mediaFactory(data){
 
     if (Object.prototype.hasOwnProperty.call(data, 'video')){
         el = document.createElement('video');
-        el.setAttribute("src", data.video);
-        el.setAttribute("alt", data.title);
-        el.setAttribute("type", "video/mp4" );
+        el.id="player";
+    
+        const src = document.createElement('source');
+        src.setAttribute("src", data.video);
+        src.setAttribute("type", "video/mp4" );
 
+        el.appendChild(src);
     } else if (Object.prototype.hasOwnProperty.call(data, 'image')){
         el = document.createElement('img');
         el.setAttribute("src", data.image); 
@@ -21,3 +24,5 @@ export function mediaFactory(data){
     
     return el;
 }
+
+
