@@ -7,7 +7,7 @@
     
 }
 
-a:focus, button:focus, form .formData input:focus, img:focus, form .formData textarea:focus, video:focus, .photographerPage:hover, .linkImgPhotographer:hover, .btnLikes:hover {
+a:focus, button:focus, form .formData input:focus, img:focus, form .formData textarea:focus, video:focus, .photographerPage:hover, .linkImgPhotographer:hover, .btnLikes:hover, .dropdown_content-filter:focus , .dropdown_content-filter:hover, button.contact_btn-form:focus{
     outline: solid 5px var(--hover-color);
     border-radius: 5px;
 }
@@ -72,7 +72,7 @@ ul li{
     list-style-type: none;
 }
 
-button:hover, button.filter:hover{
+button:hover, button.filter:hover, .dropdown_content-filter:focus, .btn_drop:focus{
     background-color: #D3573C;
     color: black;
 }
@@ -92,7 +92,7 @@ input:required:invalid {
     display: none;
 }
 
-.formData[data-error]::after {
+/* .formData[data-error]::after {
     content: attr(data-error);
     font-size: 0.50em;
     color: #e54858;
@@ -106,7 +106,7 @@ input:required:invalid {
     line-height: 0.3;
     opacity: 0;
     transition: 0.3s;
-}
+} */
 
 .photograph-header {
     display: flex;
@@ -431,11 +431,24 @@ aside{
     margin-bottom : 20px;
 }
 
-.modal header img {
+.modal header button {
     cursor: pointer;
+    border-radius: 5px;
+    padding : 3px;
 }
 
-.modal header img:hover{
+.modal header button:focus, .modal header button:hover {
+    outline: none;
+    border-radius: 5px;
+    outline: 3px solid var(--hover-color);
+}
+
+.modal header button:hover{
+    outline: none;
+    border-radius: 5px;
+}
+
+.modal header button:hover{
     border-radius: 5px;
 }
 
@@ -474,9 +487,6 @@ form input {
     border-radius: 5px;
 }
 
-.modal header img:hover {
-    outline: 3px solid var(--hover-color);
-}
 
 textarea{
     width: 100%;

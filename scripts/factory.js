@@ -8,6 +8,7 @@ export function mediaFactory(data){
         const src = document.createElement('source');
         src.setAttribute("src", data.video);
         src.setAttribute("type", "video/mp4" );
+        src.setAttribute("alt", data.title);
 
         el.appendChild(src);
     } else if (Object.prototype.hasOwnProperty.call(data, 'image')){
