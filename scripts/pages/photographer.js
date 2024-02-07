@@ -14,10 +14,7 @@ export const dataGallery = media.filter(elements => elements.photographerId == i
     {
         return { ...m, hasbeenLiked : false} // Ajoute hasbeenLiked sur chaque élément du tableau
     });
-
-
 export const sortDatasGallery= Array.from(dataGallery); // Copie de dataGallery pour trie de données
-
 export let allArticles;
 
 const photographerModelSingle = photographerTemplateSingle(dataPhotographer, dataGallery);
@@ -34,10 +31,10 @@ if (!id){
 // Insertion des données de la const userCardDOM dans la balise main
 photographersSectionSingle.prepend(userCardDOMSingle);
 
-sortByPopularity(); //on trie par popularité par défaut
-displayMedia(); // On affiche une première fois le la galerie;
+sortByPopularity(); //on trie les images par popularité par défaut
+displayMedia(); // On affiche une première fois la galerie;
 
-document.querySelectorAll('.dropdown_content-filter').forEach(button => {
+document.querySelectorAll('.dropdown_content-filter').forEach(button => { // Ajoute un listener sur chacun des boutons de tri
    button.addEventListener("click",function () {
         const type = button.dataset.filter;
         if (type === 'popularite'){
@@ -55,7 +52,7 @@ document.querySelectorAll('.dropdown_content-filter').forEach(button => {
     });
 })
 
-// Affiche la lightbon la lightbox en fonction du tri par défaut (popularité)
+// Affiche la lightbox en fonction du tri par défaut (popularité)
 startLightbox(sortDatasGallery);
 
 

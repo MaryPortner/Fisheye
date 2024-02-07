@@ -33,7 +33,7 @@ export function photographerTemplate(data) {
         h2.classList.add("cardUser__title");
 
         // Création du paragraphe de la ville et du pays.
-        const cityCountry = document.createElement('p');
+        const cityCountry = document.createElement('h3');
         cityCountry.innerText = `${city}, ${country}`;
         cityCountry.classList.add("cardUser__cityCountry");
 

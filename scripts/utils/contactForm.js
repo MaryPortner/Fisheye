@@ -85,18 +85,15 @@ function displayModal() {
 
 
 // Focus reste sur le formulaire tant qu'il n'a pas été envoyé ou fermé.
-
-
-        document.addEventListener('keydown', (e) => {
-          if(btnSubmit.hasFocus && e.key === 'Tab'){
-                  document.querySelector('button.modal_Close').focus();
-                  console.log(document.activeElement);
-            }
-    });
+document.addEventListener('keydown', (e) => {
+    if(btnSubmit.hasFocus && e.key === 'Tab'){
+            document.querySelector('button.modal_Close').focus();
+            console.log(document.activeElement);
+    }
+});
 
 
 // Garder le focus dans la modale 
-
 let keepFocus =  () => {
     //On récupère nos éléments
     const focusableElements = [...modal.querySelectorAll( 'button, input, textarea, [tabindex]')];
@@ -136,6 +133,4 @@ let keepFocus =  () => {
 
 keepFocus();
 modal.focus();
-
-
 

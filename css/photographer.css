@@ -12,6 +12,11 @@ a:focus, button:focus, form .formData input:focus, img:focus, form .formData tex
     border-radius: 5px;
 }
 
+.no-scroll {
+    overflow: hidden;
+ }
+ 
+
 .outline{
     margin-bottom: -3px;
     border-bottom: solid 2px transparent;
@@ -82,9 +87,6 @@ input:required {
     border-width: 3px;
   }
 
-input:required:invalid {
-    border-color: #c00000;
-  }
 
 
 /* modale */
@@ -92,7 +94,7 @@ input:required:invalid {
     display: none;
 }
 
-/* .formData[data-error]::after {
+.formData[data-error]::after {
     content: attr(data-error);
     font-size: 0.50em;
     color: #e54858;
@@ -106,7 +108,7 @@ input:required:invalid {
     line-height: 0.3;
     opacity: 0;
     transition: 0.3s;
-} */
+}
 
 .photograph-header {
     display: flex;
@@ -334,14 +336,18 @@ button, ul li{
     object-fit: fill;
 }
 
+h2.mainPhotographer_gallery__title, .mainPhotographer_gallery__title-likes{
+    color: var(--primary-color);
+    font-size: 23px;
+    font-weight: 500;
+}
+
 .mainPhotographer_gallery__title-likes{
     justify-content: space-between;
     align-items: flex-start;
     gap: 0px 10px;
     width: 350px;
     height: 80px;
-    color: var(--primary-color);
-    font-size: 23px;
 }
 
 .mainPhotographer_gallery__price-likes {

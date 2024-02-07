@@ -9,7 +9,7 @@ const { photographers } = await getDatas();
 // ************ fonction d'affichage de templates/photographer.js  *************
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
-
+    // Boucle pour l'affichage de chaque photographe
     photographers.forEach((photographer) => {
         
         const photographerModel = photographerTemplate(photographer);

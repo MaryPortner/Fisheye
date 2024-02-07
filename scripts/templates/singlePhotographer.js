@@ -31,6 +31,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         counterIcone.classList.add("photographerLikes_icone");
         counterIcone.setAttribute("src", "assets/icons/likeBlack.svg");
         counterIcone.setAttribute("aria-hiden", true);
+        counterIcone.setAttribute("alt", "Likes du photographe");
         
         const priceByDay = document.createElement("span");
         priceByDay.classList.add("priceByDay");
@@ -67,7 +68,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         linkImg.classList.add('linkImgPhotographer');
         linkImg.setAttribute("href","#");
         linkImg.setAttribute("data-id",`${id}`);
-        linkImg.setAttribute("title", 'lien pour afficher la photo en grand format dans un carrousel');
+        // linkImg.setAttribute("title", 'lien pour afficher la photo en grand format dans un carrousel');
         linkImg.setAttribute("role","link");
 
         const descriptionlinkImg = document.createElement("span");
@@ -82,7 +83,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         titlePriceLikes.classList.add("mainPhotographer_gallery__title-likes");
 
         // Récupération du titre de l'image
-        const titleImgPhotographer = document.createElement('p');
+        const titleImgPhotographer = document.createElement('h2');
         titleImgPhotographer.classList.add("mainPhotographer_gallery__title");
         titleImgPhotographer.innerText =  `${title}`; 
 
@@ -148,7 +149,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         photographerName.classList.add("cardUser__title");
         photographerName.innerText = `${photographer.name}`; 
 
-        const cityCountry =  document.createElement("p");
+        const cityCountry =  document.createElement("h2");
         cityCountry.classList.add("cardUser__cityCountry");
         cityCountry.innerText = `${photographer.city}, ${photographer.country}`;
         
@@ -166,9 +167,7 @@ export function photographerTemplateSingle(photographer, dataGallery) {
         imgPhotographer.classList.add("cardUser__img");
         imgPhotographer.setAttribute("alt", `Photo de ${photographer.name}`);
         imgPhotographer.setAttribute("src", `${photographer.portrait}`);
-        imgPhotographer.setAttribute("title", `photo de ${photographer.name}`);
-
-
+    
 
         presentationPhotographer.appendChild(photographerName);
         presentationPhotographer.appendChild(cityCountry);

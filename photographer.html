@@ -27,7 +27,7 @@
           <header class="modal_header">
             <div class="modal_header-contact">
               <h2 id ="contactez-moi">Contactez-moi</h2>
-              <p id="namePhotographer" class="namePhotographer"></p>
+              <h2 id="namePhotographer" class="namePhotographer"></h2>
             </div>
             <button type="button" class="modal_Close" aria-label ="Fermer le formulaire de contact" >
               <img alt ="Image cliquable pour la fermeture du formulaire de contact" src="assets/icons/close.svg" >
@@ -36,26 +36,26 @@
   
           <form name="reserve" action="photographer.html" method="get">
             <div class="formData firstName">
-              <label for="firstName">Prénom *</label>
-              <input type="text" class="text-control" id="firstName" aria-labelledby="First Name" data-enter="enter" name="firstName" autocomplete="given-name" required >
+              <label  id="firstName" for="firstName">Prénom *</label>
+              <input class="text-control" id="firstName" aria-labelledby="firstName" data-enter="enter" name="firstName" autocomplete="given-name" required  type="text" >
               <br>
             </div>
   
             <div class="formData last">
-              <label for="last">Nom *</label>
-              <input type="text" class="text-control" id="last" aria-labelledby="Last Name" data-enter="enter" name="last" autocomplete="family-name" required>
+              <label id="LastName" for="last">Nom *</label>
+              <input type="text" class="text-control" id="last" aria-labelledby="LastName" data-enter="enter" name="last" autocomplete="family-name" required type="text" >
               <br>
             </div>
   
             <div class="formData email">
-              <label for="email">E-mail * </label>
-              <input type="email" class="text-control" id="email" aria-labelledby="Email" data-enter="enter" name="email" autocomplete="email" required>
+              <label  id="Email" for="email">E-mail * </label>
+              <input type="email" class="text-control" id="email" aria-labelledby="Email" data-enter="enter" name="email" autocomplete="email" required >
               <br>
             </div>
   
             <div class="formData message">
-              <label for="message">Message *</label>
-              <textarea class="text-control" id="message" aria-labelledby="Your message" data-enter="enter" name="message" required ></textarea>
+              <label id="YourMessage" for="message">Message *</label>
+              <textarea class="text-control" id="message" aria-labelledby="YourMessage" data-enter="enter" name="message" required ></textarea>
               <br>
             </div>
   
@@ -80,10 +80,10 @@
               <button id="target" class="filter dropdown_content-filter" role="option" data-filter="popularite" type="button" aria-selected="false" tabindex="0" aria-label="Tri par popularité">Popularité</button>
             </li>
             <li class="submenu" role="option">
-              <button id="expandable"class="filter dropdown_content-filter"  role="option" data-filter="date" type="button"  aria-selected="false" tabindex="0"  aria-label="Tri par date">Date</button>
+              <button class="filter dropdown_content-filter"  role="option" data-filter="date" type="button"  aria-selected="false" tabindex="0"  aria-label="Tri par date">Date</button>
             </li>
             <li class="submenu"role="option" >
-              <button id="expandable" class="filter dropdown_content-filter"  role="option" data-filter="titre" type="button" aria-selected="false" tabindex="0"  aria-label="Tri par titre">Titre</button>
+              <button class="filter dropdown_content-filter"  role="option" data-filter="titre" type="button" aria-selected="false" tabindex="0"  aria-label="Tri par titre">Titre</button>
             </li>
           </ul>
         </div>
