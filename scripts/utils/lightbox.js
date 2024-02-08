@@ -6,6 +6,7 @@ let btnLigthboxPrev;
 let btnLigthboxNext;
 let closeBtnLigthbox;
 let currentImgIndex;
+let focusableElements;
 let indexImg;
 let lightbox;
 const lightboxImg = document.createElement("div");
@@ -35,7 +36,7 @@ export function startLightbox(medias){
             main.setAttribute('aria-hidden', true);  // Masquer le main aux lecteurs d'écran à l'affichage de la lightbox.
             body.classList.add('no-scroll');
     
-            closeBtnLigthbox.focus();
+            closeBtnLigthbox.focus(); // Focus par défaut à l'ouverture de la lightbox.
 
             //Fermeture de la modale au clavier
             closeBtnLigthbox.addEventListener('keyup', (e) => {
@@ -52,10 +53,14 @@ export function startLightbox(medias){
             // display à none de l'encart likes et prix/jour
             priceTotalLikes.style.display = "none";
 
-
             changeBg("#00000080", "#c4c4c466", "contrast(60%)"); 
-     
-            const focusableElements = [...lightbox.querySelectorAll('.btn_lightbox, div.lightbox_content-img')]; // Récupération de nos éléments focusable dans la lightbox
+
+            if(document.querySelector('video').hasChildNodes("source")){ // Si l'article contient une balise video, on l'intègre à l'élément focusable. 
+                focusableElements = [...lightbox.querySelectorAll("button.btn_lightbox.lightbox_next-btn, video#player, button.btn_lightbox.lightbox_previous-btn, button.btn_lightbox.lightbox_close-btn ")]; // Récupération de nos éléments focusable dans la lightbox
+            } else {
+                focusableElements = [...lightbox.querySelectorAll("button.btn_lightbox.lightbox_next-btn, img.mainPhotographer_galery_img, button.btn_lightbox.lightbox_previous-btn, button.btn_lightbox.lightbox_close-btn ")]; // Récupération de nos éléments focusable dans la lightbox
+            }
+
             keepFocus(focusableElements);   // Appeler la fonction au focus de la lightbox obtient le focus
             next(medias);
             prev(medias);
@@ -198,8 +203,6 @@ function listenForCloseLightbox(){
     changeBg("#FFFFFF", "#FAFAFA", "none");
 }
         
-   
-
 
 //Affichage du média suivant au click ou clavier via les flèches
 function next(medias){
