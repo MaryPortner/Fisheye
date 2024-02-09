@@ -27,4 +27,3 @@ export function mediaFactory(data){
     
     return el;
 }
-

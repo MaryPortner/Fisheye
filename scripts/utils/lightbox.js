@@ -24,20 +24,21 @@ export function startLightbox(medias){
             //Récupère le média en fonction de l'id du photographe
             const currentMedia = medias.find(m => m.id == id);
             const el = displayImage(currentMedia);
+            
             main.append(buildLightbox(currentMedia));
             indexImg = e.currentTarget;
             //on va trouver l'image qui a l'index identique à l'image courante. 
             currentImgIndex = images.findIndex(image => image === indexImg);
             document.querySelector(".lightbox_content-img").appendChild(el);
         
-            lightbox.focus();
             body.setAttribute('aria-hidden', true);
             lightbox.setAttribute('aria-hidden', false); 
             main.setAttribute('aria-hidden', true);  // Masquer le main aux lecteurs d'écran à l'affichage de la lightbox.
             body.classList.add('no-scroll');
     
             closeBtnLigthbox.focus(); // Focus par défaut à l'ouverture de la lightbox.
-
+            lightbox.focus();
+            
             //Fermeture de la modale au clavier
             closeBtnLigthbox.addEventListener('keyup', (e) => {
                 if (e.key === 'Escape' || e.key === 'Backspace') {
@@ -53,14 +54,9 @@ export function startLightbox(medias){
             // display à none de l'encart likes et prix/jour
             priceTotalLikes.style.display = "none";
 
+            focusableElements = [...lightbox.querySelectorAll("button.btn_lightbox.lightbox_next-btn, button.btn_lightbox.lightbox_previous-btn, button.btn_lightbox.lightbox_close-btn, video#player ")]; // Récupération de nos éléments focusable dans la lightbox
+            
             changeBg("#00000080", "#c4c4c466", "contrast(60%)"); 
-
-            if(document.querySelector('video').hasChildNodes("source")){ // Si l'article contient une balise video, on l'intègre à l'élément focusable. 
-                focusableElements = [...lightbox.querySelectorAll("button.btn_lightbox.lightbox_next-btn, video#player, button.btn_lightbox.lightbox_previous-btn, button.btn_lightbox.lightbox_close-btn ")]; // Récupération de nos éléments focusable dans la lightbox
-            } else {
-                focusableElements = [...lightbox.querySelectorAll("button.btn_lightbox.lightbox_next-btn, img.mainPhotographer_galery_img, button.btn_lightbox.lightbox_previous-btn, button.btn_lightbox.lightbox_close-btn ")]; // Récupération de nos éléments focusable dans la lightbox
-            }
-
             keepFocus(focusableElements);   // Appeler la fonction au focus de la lightbox obtient le focus
             next(medias);
             prev(medias);
@@ -257,6 +253,3 @@ let keepFocus =  (focusableElements) => {
 
 	lightbox.addEventListener('keydown', keyListener, false);
 };
-
-
-
