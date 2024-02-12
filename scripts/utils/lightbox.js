@@ -24,7 +24,7 @@ export function startLightbox(medias){
             //Récupère le média en fonction de l'id du photographe
             const currentMedia = medias.find(m => m.id == id);
             const el = displayImage(currentMedia);
-            
+
             main.append(buildLightbox(currentMedia));
             indexImg = e.currentTarget;
             //on va trouver l'image qui a l'index identique à l'image courante. 
@@ -32,7 +32,7 @@ export function startLightbox(medias){
             document.querySelector(".lightbox_content-img").appendChild(el);
         
             body.setAttribute('aria-hidden', true);
-            lightbox.setAttribute('aria-hidden', false); 
+            lightbox.setAttribute('aria-modal', false); 
             main.setAttribute('aria-hidden', true);  // Masquer le main aux lecteurs d'écran à l'affichage de la lightbox.
             body.classList.add('no-scroll');
     
@@ -69,10 +69,9 @@ function buildLightbox(currentMedia){
     lightbox = document.createElement("div");
     lightbox.innerHTML = '';
     lightbox.classList.add("lightbox_content");
-    lightbox.setAttribute('aria-hidden', false);
+    lightbox.setAttribute('aria-modal', false);
     lightbox.setAttribute("aria-label", "Vue agrandie de l'image");
     lightbox.setAttribute("role", "dialog");
-    // lightbox.setAttribute("tabindex", 1);
 
 
     closeBtnLigthbox = document.createElement("button");

@@ -1,14 +1,17 @@
 import { btnContact, imgPhotographer, allArticles, main, priceTotalLikes } from "../templates/singlePhotographer.js";
+const btnSubmit = document.querySelector('button.contact_btn-form');
 
 const closeModalBtn = document.querySelector("button.modal_Close");
-const firstName = document.querySelector("#firstName");
+const firstName = document.querySelector("#first");
 const form = document.querySelector('form');
+const inputDataEnter = form.querySelectorAll(".formData input[data-enter], .formData textarea[data-enter]");
 const last = document.querySelector("#last");
 const mail = document.querySelector("#email");
 const message = document.querySelector("#message");
 const modal = document.getElementById("contact_modal");
 const photographHeader = document.querySelector(".photograph-header");
-const btnSubmit = document.querySelector('button.contact_btn-form');
+let sendValid;
+
 
 
 //Fermeture de la modale au clavier
@@ -61,16 +64,29 @@ export function contactFormInit(){
         changeBg("#00000040", "#c4c4c466", "contrast(50%)", "none");
     });
     
-    form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        if(firstName.value == ''  ||  last.value == ''   || mail.value == ''   || message.value == ''   ){ 
-            alert('Vous devez remplir tous les champs');
-        } else {
+    // form.addEventListener("submit", (e) => {
+    //     e.preventDefault();
+    //     if(firstName.value == ''  ||  last.value == ''   || mail.value == ''   || message.value == ''   ){ 
+    //         alert('Vous devez remplir tous les champs');
+    //     } else {
 
+    //         confirmSendingForm();
+    //         closeModal();
+    //         changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
+    //     }
+    // });
+
+    form.addEventListener("submit", (e) => {
+
+        e.preventDefault();
+        testValidation();
+        if(sendValid){
             confirmSendingForm();
             closeModal();
             changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
         }
+        
+    
     });
 }
 
@@ -128,6 +144,62 @@ let keepFocus =  () => {
 
 	modal.addEventListener('keydown', keyListener, false);
 };
+
+
+/* 
+ * Form validation
+ */
+
+//variable 
+
+
+function testValidation(){
+    sendValid = true;
+
+    emailValidation(); 
+    firstNameValidation();
+    lastValidation();
+    messageValidation();
+
+}
+
+//*************************** Validation des données ******************************/
+
+function emailValidation(){
+    const error = document.querySelector("div.email[data-error]");
+    const email = /^[a-z0-9._-]+@[a-z0-9._-]+.[a-z]{2,20}$/.test(inputDataEnter[2].value.trim());
+    showValidation(email, error);
+} 
+
+function firstNameValidation(){
+    const error = document.querySelector("div.firstName[data-error]");
+    const firstName = /^[a-z A-Z à-ÿ À-Ý]{2,}$/.test(inputDataEnter[0].value.trim());
+    showValidation(firstName, error);
+}   
+
+function lastValidation(){
+    const error = document.querySelector("div.last[data-error]");
+    const last = /^[a-z A-Z à-ÿ À-Ý]{2,}$/.test(inputDataEnter[1].value.trim());
+    showValidation(last, error);
+}   
+
+function messageValidation(){
+    const error = document.querySelector("div.message[data-error]");
+    const message = /^[a-z A-Z à-ÿ À-Ý]{2,}$/.test(inputDataEnter[3].value.trim());
+    showValidation(message, error);
+}   
+
+
+//*******************************/factorisation de la fonction de test ******************************/
+function showValidation(validationCondition, error){
+    if(!validationCondition){
+        error.setAttribute('data-error-visible', 'true');
+        sendValid = false;
+    }else {
+        error.setAttribute('data-error-visible', 'false');
+    }
+}
+
 
 // Appeler la fonction lorsque la partie de la page obtient le focus
 

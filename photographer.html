@@ -29,33 +29,34 @@
               <h2 id ="contactez-moi">Contactez-moi</h2>
               <h2 id="namePhotographer" class="namePhotographer"></h2>
             </div>
-            <button type="button" class="modal_Close" aria-label ="Fermer le formulaire de contact" >
+            <button type="button" id="modalClose-btn"  class="modal_Close" aria-label ="Fermer le formulaire de contact" >
               <img alt ="Image cliquable pour la fermeture du formulaire de contact" src="assets/icons/close.svg" >
             </button>
           </header>
   
           <form name="reserve" action="photographer.html" method="get">
-            <div class="formData firstName">
-              <label  id="firstName" for="firstName">Prénom *</label>
-              <input class="text-control" id="firstName" aria-labelledby="firstName" data-enter="enter" name="firstName" autocomplete="given-name" required  type="text" >
+
+            <div class="formData firstName" data-error="Veuillez entrer 2 caractères ou plus pour le champ prénom" data-error-visible="false" >
+              <label  id="firstName" for="first">Prénom *</label>
+              <input class="text-control" id="first" aria-labelledby="firstName" data-enter="enter" name="firstName"  autocomplete="given-name" aria-required="true"  type="text" >
               <br>
             </div>
-  
-            <div class="formData last">
+
+            <div class="formData last" data-error="Veuillez entrer 2 caractères ou plus pour le champ nom" data-error-visible="false">
               <label id="LastName" for="last">Nom *</label>
-              <input type="text" class="text-control" id="last" aria-labelledby="LastName" data-enter="enter" name="last" autocomplete="family-name" required type="text" >
+              <input type="text" class="text-control" id="last" aria-labelledby="LastName" data-enter="enter" name="last"  autocomplete="family-name" aria-required="true" type="text" >
               <br>
             </div>
   
-            <div class="formData email">
+            <div class="formData email" data-error="Veuillez entrer un email valide." data-error-visible="false" >
               <label  id="Email" for="email">E-mail * </label>
-              <input type="email" class="text-control" id="email" aria-labelledby="Email" data-enter="enter" name="email" autocomplete="email" required >
+              <input type="email" class="text-control" id="email" aria-labelledby="Email" data-enter="enter" name="email" autocomplete="email" aria-required="true" >
               <br>
             </div>
   
-            <div class="formData message">
+            <div class="formData message" data-error="Veuillez entrer un message." data-error-visible="false" >
               <label id="YourMessage" for="message">Message *</label>
-              <textarea class="text-control" id="message" aria-labelledby="YourMessage" data-enter="enter" name="message" required ></textarea>
+              <textarea class="text-control" id="message" aria-labelledby="YourMessage" data-enter="enter" name="message" aria-required="true" ></textarea>
               <br>
             </div>
   

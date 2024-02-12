@@ -7,7 +7,7 @@
     
 }
 
-a:focus, button:focus, form .formData input:focus, img:focus, form .formData textarea:focus, video:focus, .photographerPage:hover, .linkImgPhotographer:hover, .btnLikes:hover, .dropdown_content-filter:focus , .dropdown_content-filter:hover, button.contact_btn-form:focus{
+a:focus, button:focus, form .formData input:focus, img:focus, form .formData textarea:focus, video:focus, .photographerPage:hover, .linkImgPhotographer:hover, .btnLikes:hover, .dropdown_content-filter:focus , .dropdown_content-filter:hover, button.contact_btn-form:focus, #modalClose-btn:hover{
     outline: solid 5px var(--hover-color);
     border-radius: 5px;
 }
@@ -96,8 +96,8 @@ input:required {
 
 .formData[data-error]::after {
     content: attr(data-error);
-    font-size: 0.50em;
-    color: #e54858;
+    font-size: 1em;
+    color: #800000;
     display: block;
     word-wrap: break-word;
     padding-bottom: 3px;
@@ -110,6 +110,24 @@ input:required {
     transition: 0.3s;
 }
 
+.formData[data-error-visible="true"]::after {
+    opacity: 1;
+  }
+  
+.formData[data-error-visible="true"] .text-control {
+    border: 5px solid #800000;
+}
+  
+.formData[data-error-visible="false"] .text-control {
+    border: 5px solid green;
+  }
+
+input[data-error]::after {
+      content: attr(data-error);
+      font-size: 1em;
+      color: red;
+}
+  
 .photograph-header {
     display: flex;
     flex-direction: row;
@@ -482,7 +500,7 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
+    /* margin-bottom: 26px; */
 }
 
 form input {
