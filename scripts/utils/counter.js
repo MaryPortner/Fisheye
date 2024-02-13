@@ -5,7 +5,8 @@ export const displayNbTotalLikes = (dataGallery) => {
 
     btnLikes.forEach(btn => {
         btn.addEventListener("click", () => {
-            const dataId = btn.dataset.id
+            const dataId = btn.dataset.id;
+            console.log(dataId);
             let data = dataGallery.find(data => data.id == dataId);
             btn.classList.toggle("clicked");
         
@@ -29,7 +30,6 @@ export const displayNbTotalLikes = (dataGallery) => {
         });
     });
 };
-
 
 
 function updateNbLikesTotal(dataGallery) {

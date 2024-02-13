@@ -23,11 +23,7 @@ const userCardDOMSingle = photographerModelSingle.getUserSingleCardDOM();
 
 
 // ************* Affichage de templates/singlePhotographer.js  *************
-if (!id){
-    alert("Erreur ! Vous allez être redirigé vers la page d'accueil");
-    //redirection 
-    location.href="index.html";
-} 
+
 // Insertion des données de la const userCardDOM dans la balise main
 photographersSectionSingle.prepend(userCardDOMSingle);
 

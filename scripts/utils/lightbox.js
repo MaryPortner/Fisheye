@@ -16,29 +16,21 @@ const titleLigthbox = document.createElement("h2");
 
 export function startLightbox(medias){
     let images = Array.from(document.querySelectorAll(".linkImgPhotographer"));
-  
+
     images.forEach(img => {
         img.addEventListener('click', (e) => {
             e.preventDefault();
             const id = img.getAttribute('data-id');
-            //Récupère le média en fonction de l'id du photographe
-            const currentMedia = medias.find(m => m.id == id);
+            const currentMedia = medias.find(m => m.id == id);  //Récupère le média en fonction de l'id du photographe
             const el = displayImage(currentMedia);
 
             main.append(buildLightbox(currentMedia));
             indexImg = e.currentTarget;
-            //on va trouver l'image qui a l'index identique à l'image courante. 
-            currentImgIndex = images.findIndex(image => image === indexImg);
+            currentImgIndex = images.findIndex(image => image === indexImg); //Trouver l'image qui a l'index identique à l'image courante. 
             document.querySelector(".lightbox_content-img").appendChild(el);
-        
-            body.setAttribute('aria-hidden', true);
-            lightbox.setAttribute('aria-modal', false); 
-            main.setAttribute('aria-hidden', true);  // Masquer le main aux lecteurs d'écran à l'affichage de la lightbox.
-            body.classList.add('no-scroll');
-    
-            closeBtnLigthbox.focus(); // Focus par défaut à l'ouverture de la lightbox.
-            lightbox.focus();
             
+            closeBtnLigthbox.focus(); // Focus par défaut à l'ouverture de la lightbox.
+
             //Fermeture de la modale au clavier
             closeBtnLigthbox.addEventListener('keyup', (e) => {
                 if (e.key === 'Escape' || e.key === 'Backspace') {
@@ -51,18 +43,16 @@ export function startLightbox(medias){
                 listenForCloseLightbox();
             });
 
-            // display à none de l'encart likes et prix/jour
-            priceTotalLikes.style.display = "none";
+            priceTotalLikes.style.display = "none"; // display à none de l'encart likes et prix/jour
 
-            focusableElements = [...lightbox.querySelectorAll("button.btn_lightbox.lightbox_next-btn, button.btn_lightbox.lightbox_previous-btn, button.btn_lightbox.lightbox_close-btn, video#player ")]; // Récupération de nos éléments focusable dans la lightbox
-            
-            changeBg("#00000080", "#c4c4c466", "contrast(60%)"); 
-            keepFocus(focusableElements);   // Appeler la fonction au focus de la lightbox obtient le focus
+            changeBg("#00000080", "#c4c4c466", "contrast(60%)"); //Filtre sur l'arrière-plan à l'affichage de la lightbox.
             next(medias);
             prev(medias);
         });
     });
 }
+
+
 
 function buildLightbox(currentMedia){
     const title = currentMedia.title; // Titre de l'image
@@ -72,7 +62,6 @@ function buildLightbox(currentMedia){
     lightbox.setAttribute('aria-modal', false);
     lightbox.setAttribute("aria-label", "Vue agrandie de l'image");
     lightbox.setAttribute("role", "dialog");
-
 
     closeBtnLigthbox = document.createElement("button");
     closeBtnLigthbox.classList.add("btn_lightbox", "lightbox_close-btn");
@@ -110,7 +99,6 @@ function buildLightbox(currentMedia){
     lightboxImg.setAttribute("role", "img");
     // lightboxImg.setAttribute("tabindex", 1);
 
-    
     titleLigthbox.classList.add("lightbox_img-title");
     titleLigthbox.innerText = `${title}`;
 
@@ -136,6 +124,7 @@ function displayImage(media){
     const m = mediaFactory(media);
     m.controls = "controls";
     m.classList.add("lightbox_img");
+    m.setAttribute("tabindex", 0);
     return m;
 }
 
@@ -143,9 +132,19 @@ function displayImage(media){
 function displayMediaNextOrPrev(medias){
     const currentMedia = medias[currentImgIndex];
     const el = displayImage(currentMedia);
+
     document.querySelector(".lightbox_content-img").appendChild(el);
     titleLigthbox.innerText = `${currentMedia.title}`;
     lightbox.appendChild(titleLigthbox);
+    body.setAttribute('aria-hidden', true);
+    lightbox.setAttribute('aria-modal', false); 
+    main.setAttribute('aria-hidden', true);  // Masquer le main aux lecteurs d'écran à l'affichage de la lightbox.
+    body.classList.add('no-scroll');
+
+    //Garder le focus dans la lightbox;
+    focusableElements = [...lightbox.querySelectorAll("video#player, button.btn_lightbox.lightbox_close-btn, button.btn_lightbox.lightbox_next-btn, button.btn_lightbox.lightbox_previous-btn")];
+    keepFocus(focusableElements);
+    lightbox.focus();
 }
 
 
@@ -205,11 +204,13 @@ function next(medias){
         displayNextMedia(medias);
     });
 
-    btnLigthboxNext.addEventListener('keydown', (e) => {
-        if(e.keyCode === 39){
+    document.addEventListener('keydown', (e) => {
+        if(e.key === "ArrowRight"){
+            btnLigthboxNext.focus();
             displayNextMedia(medias);
         }
     });
+
 }
 
 
@@ -219,13 +220,14 @@ function prev(medias){
         displayPreviousMedia(medias);
     });
 
-    btnLigthboxPrev.addEventListener('keydown', (e) => {
-        if(e.keyCode === 37){
+    document.addEventListener('keydown', (e) => {
+        if(e.key === "ArrowLeft"){
+            btnLigthboxPrev.focus();
             displayPreviousMedia(medias);
-        }
+        }                        
     });
+  
 }
-
 
 
 let keepFocus =  (focusableElements) => {

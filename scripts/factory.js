@@ -4,14 +4,12 @@ export function mediaFactory(data){
     if (Object.prototype.hasOwnProperty.call(data, 'video')){
         el = document.createElement('video');
         el.id="player";
-        // el.setAttribute("tabindex", 0);
-    
+   
         const src = document.createElement('source');
         src.setAttribute("src", data.video);
         src.setAttribute("type", "video/mp4" );
         src.setAttribute("alt", data.title);
-        src.setAttribute("tabindex", 0);
-
+ 
         el.appendChild(src);
 
     } else if (Object.prototype.hasOwnProperty.call(data, 'image')){
