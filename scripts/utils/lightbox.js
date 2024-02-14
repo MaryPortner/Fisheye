@@ -46,9 +46,10 @@ export function startLightbox(medias){
             priceTotalLikes.style.display = "none"; // display à none de l'encart likes et prix/jour
 
             lightbox.focus();
+            keepFocus();
             next(medias);
             prev(medias);
-            keepFocus();
+           
            
         });
     });
@@ -143,8 +144,8 @@ function displayMediaNextOrPrev(medias){
     body.classList.add('no-scroll');
 
     //Garder le focus dans la lightbox;
-    keepFocus();
     lightbox.focus();
+    keepFocus();
 }
 
 // Changement du bg à l'affichage de la lightbox 
@@ -200,10 +201,11 @@ function listenForCloseLightbox(){
 function next(medias){
     btnLigthboxNext.addEventListener('click', () => {
         displayNextMedia(medias);
+        btnLigthboxNext.focus();
     });
 
     document.addEventListener('keydown', (e) => {
-        if(e.key === "ArrowRight"){
+        if(e.key === "ArrowRight" || e.code === "blank space"){
             displayNextMedia(medias);
             btnLigthboxNext.focus();
         }
@@ -211,15 +213,15 @@ function next(medias){
 
 }
 
-
 //Affichage du média précédent au click ou clavier via les flèches
 function prev(medias){
     btnLigthboxPrev.addEventListener('click', () => {
         displayPreviousMedia(medias);
+        btnLigthboxPrev.focus();
     });
 
     document.addEventListener('keydown', (e) => {
-        if(e.key === "ArrowLeft"){
+        if(e.key === "ArrowLeft" || e.Key === "blank space "){
             displayPreviousMedia(medias);
             btnLigthboxPrev.focus();
         }                        
