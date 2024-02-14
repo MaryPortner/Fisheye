@@ -6,7 +6,6 @@ let btnLigthboxPrev;
 let btnLigthboxNext;
 let closeBtnLigthbox;
 let currentImgIndex;
-let focusableElements;
 let indexImg;
 let lightbox;
 const lightboxImg = document.createElement("div");
@@ -21,16 +20,17 @@ export function startLightbox(medias){
         img.addEventListener('click', (e) => {
             e.preventDefault();
             const id = img.getAttribute('data-id');
-            const currentMedia = medias.find(m => m.id == id);  //Récupère le média en fonction de l'id du photographe
-            const el = displayImage(currentMedia);
+            const currentMedia = medias.find(m => m.id == id); //Récupère l'image courante qui a été cliquée dans la galerie en fonction de son id.
+            const el = displayImage(currentMedia); // affiche l'image courante dans la lightbox
+      
+            changeBg("#00000080", "#c4c4c466", "contrast(60%)"); //Filtre sur l'arrière-plan à l'affichage de la lightbox.
 
-            main.append(buildLightbox(currentMedia));
-            indexImg = e.currentTarget;
-            currentImgIndex = images.findIndex(image => image === indexImg); //Trouver l'image qui a l'index identique à l'image courante. 
+            main.append(buildLightbox(currentMedia)); // Construction de la lightbox à partir de l'iamge courante
+            indexImg = e.currentTarget; // récupère la balise de l'image cliquée dans la galerie
+            currentImgIndex = images.findIndex(image => image === indexImg); // récupère l'index de l'image cliquée dans la galerie
             document.querySelector(".lightbox_content-img").appendChild(el);
             
-            closeBtnLigthbox.focus(); // Focus par défaut à l'ouverture de la lightbox.
-            lightbox.focus();
+            closeBtnLigthbox.focus(); // Focus par défaut  sur la croix pour la fermture à l'ouverture de la lightbox.
             //Fermeture de la modale au clavier
             closeBtnLigthbox.addEventListener('keyup', (e) => {
                 if (e.key === 'Escape' || e.key === 'Backspace') {
@@ -45,13 +45,14 @@ export function startLightbox(medias){
 
             priceTotalLikes.style.display = "none"; // display à none de l'encart likes et prix/jour
 
-            changeBg("#00000080", "#c4c4c466", "contrast(60%)"); //Filtre sur l'arrière-plan à l'affichage de la lightbox.
+            lightbox.focus();
             next(medias);
             prev(medias);
+            keepFocus();
+           
         });
     });
 }
-
 
 
 function buildLightbox(currentMedia){
@@ -62,7 +63,6 @@ function buildLightbox(currentMedia){
     lightbox.setAttribute('aria-modal', false);
     lightbox.setAttribute("aria-label", "Vue agrandie de l'image");
     lightbox.setAttribute("role", "dialog");
-  
 
     closeBtnLigthbox = document.createElement("button");
     closeBtnLigthbox.classList.add("btn_lightbox", "lightbox_close-btn");
@@ -147,7 +147,6 @@ function displayMediaNextOrPrev(medias){
     lightbox.focus();
 }
 
-
 // Changement du bg à l'affichage de la lightbox 
 function changeBg(color1, color2, color3) {
     const imgs = document.querySelectorAll("img.mainPhotographer_gallery__img");
@@ -183,7 +182,6 @@ function displayPreviousMedia(medias){
     displayMediaNextOrPrev(medias);
 }
 
-
 //Fermeture lightbox
 function listenForCloseLightbox(){
     body.setAttribute('aria-hidden', false); 
@@ -206,8 +204,8 @@ function next(medias){
 
     document.addEventListener('keydown', (e) => {
         if(e.key === "ArrowRight"){
-            btnLigthboxNext.focus();
             displayNextMedia(medias);
+            btnLigthboxNext.focus();
         }
     });
 
@@ -222,11 +220,10 @@ function prev(medias){
 
     document.addEventListener('keydown', (e) => {
         if(e.key === "ArrowLeft"){
-            btnLigthboxPrev.focus();
             displayPreviousMedia(medias);
+            btnLigthboxPrev.focus();
         }                        
     });
-  
 }
 
 
@@ -256,4 +253,3 @@ let keepFocus =  () => {
 	lightbox.addEventListener('keydown', keyListener, false);
 };
 
-console.log(document.focusableElements);
