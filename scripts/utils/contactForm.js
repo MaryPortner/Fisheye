@@ -64,18 +64,6 @@ export function contactFormInit(){
         changeBg("#00000040", "#c4c4c466", "contrast(50%)", "none");
     });
     
-    // form.addEventListener("submit", (e) => {
-    //     e.preventDefault();
-    //     if(firstName.value == ''  ||  last.value == ''   || mail.value == ''   || message.value == ''   ){ 
-    //         alert('Vous devez remplir tous les champs');
-    //     } else {
-
-    //         confirmSendingForm();
-    //         closeModal();
-    //         changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
-    //     }
-    // });
-
     form.addEventListener("submit", (e) => {
 
         e.preventDefault();
@@ -84,9 +72,7 @@ export function contactFormInit(){
             confirmSendingForm();
             closeModal();
             changeBg("#FFFFFF", "#FAFAFA", "none", "flex");
-        }
-        
-    
+        } 
     });
 }
 

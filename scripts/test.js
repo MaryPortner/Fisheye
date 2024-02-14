@@ -6,7 +6,7 @@ let btnLigthboxPrev;
 let btnLigthboxNext;
 let closeBtnLigthbox;
 let currentImgIndex;
-let focusableElements;
+// let focusableElements;
 let indexImg;
 let lightbox;
 const lightboxImg = document.createElement("div");
@@ -30,7 +30,7 @@ export function startLightbox(medias){
             document.querySelector(".lightbox_content-img").appendChild(el);
             
             closeBtnLigthbox.focus(); // Focus par défaut à l'ouverture de la lightbox.
-            lightbox.focus();
+         
             //Fermeture de la modale au clavier
             closeBtnLigthbox.addEventListener('keyup', (e) => {
                 if (e.key === 'Escape' || e.key === 'Backspace') {
@@ -44,7 +44,7 @@ export function startLightbox(medias){
             });
 
             priceTotalLikes.style.display = "none"; // display à none de l'encart likes et prix/jour
-
+            lightbox.focus();
             changeBg("#00000080", "#c4c4c466", "contrast(60%)"); //Filtre sur l'arrière-plan à l'affichage de la lightbox.
             next(medias);
             prev(medias);
@@ -62,10 +62,11 @@ function buildLightbox(currentMedia){
     lightbox.setAttribute('aria-modal', false);
     lightbox.setAttribute("aria-label", "Vue agrandie de l'image");
     lightbox.setAttribute("role", "dialog");
-  
+    lightbox.setAttribute("tabindex", 0);
 
     closeBtnLigthbox = document.createElement("button");
     closeBtnLigthbox.classList.add("btn_lightbox", "lightbox_close-btn");
+    closeBtnLigthbox.setAttribute("tabindex", 0);
 
     const descriptionCloseBtnLightbox = document.createElement("span");
     descriptionCloseBtnLightbox.classList.add("sr-only");
@@ -76,6 +77,7 @@ function buildLightbox(currentMedia){
 
     btnLigthboxNext = document.createElement("button");
     btnLigthboxNext.classList.add("btn_lightbox", "lightbox_next-btn");
+    btnLigthboxNext.setAttribute("tabindex", 0);
 
     const imgBtnNext = document.createElement("span");
     imgBtnNext.classList.add("fa-solid", "fa-chevron-right");
@@ -86,6 +88,7 @@ function buildLightbox(currentMedia){
 
     btnLigthboxPrev = document.createElement("button");
     btnLigthboxPrev.classList.add("btn_lightbox", "lightbox_previous-btn");
+    btnLigthboxPrev.setAttribute("tabindex", 0);
 
     const imgBtnPrev = document.createElement("span");
     imgBtnPrev.classList.add("fa-solid", "fa-chevron-left");
@@ -97,6 +100,7 @@ function buildLightbox(currentMedia){
     lightboxImg.innerHTML = '';
     lightboxImg.classList.add("lightbox_content-img");
     lightboxImg.setAttribute("role", "img");
+    // lightboxImg.setAttribute("tabindex", 1);
 
     titleLigthbox.classList.add("lightbox_img-title");
     titleLigthbox.innerText = `${title}`;
@@ -226,13 +230,11 @@ function prev(medias){
             displayPreviousMedia(medias);
         }                        
     });
-  
 }
 
 
 let keepFocus =  () => {
-    let focusableElements = [...lightbox.querySelectorAll("button.btn_lightbox.lightbox_close-btn, button.btn_lightbox.lightbox_next-btn, button.btn_lightbox.lightbox_previous-btn, video")];    
-    // On a préalablement récupéré nos élements dans la variable focusableElements
+    let focusableElements = [...lightbox.querySelectorAll("button.btn_lightbox.lightbox_close-btn, button.btn_lightbox.lightbox_next-btn, button.btn_lightbox.lightbox_previous-btn, video[tabindex]")];    
     // On récupère le premier et le dernier élément focusable
 	let firstTabbableElement = focusableElements[0];
 	let lastTabbableElement = focusableElements[focusableElements.length - 1];
@@ -254,6 +256,5 @@ let keepFocus =  () => {
 	};
 
 	lightbox.addEventListener('keydown', keyListener, false);
+    lightbox.focus();
 };
-
-console.log(document.focusableElements);
